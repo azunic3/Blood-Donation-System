@@ -90,7 +90,6 @@ public class Blood {
         Blood blood = (Blood) o;
         return id == blood.id && BloodBagNumber == blood.BloodBagNumber && Code == blood.Code && BloodAmount == blood.BloodAmount && Objects.equals(DonateDate, blood.DonateDate) && Objects.equals(Status, blood.Status) && Objects.equals(fk_Hospital_id, blood.fk_Hospital_id);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(id, BloodBagNumber, Code, DonateDate, Status, BloodAmount, fk_Hospital_id);
