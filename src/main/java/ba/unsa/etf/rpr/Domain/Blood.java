@@ -13,6 +13,7 @@ public class Blood {
     private Date DonateDate;
     private String Status;
     private int BloodAmount;
+
     private Hospital fk_Hospital_id;
 
     public int getId() {
@@ -69,5 +70,29 @@ public class Blood {
 
     public void setFk_Hospital_id(Hospital fk_Hospital_id) {
         this.fk_Hospital_id = fk_Hospital_id;
+    }
+    @Override
+    public String toString() {
+        return "Blood{" +
+                "id=" + id +
+                ", BloodBagNumber=" + BloodBagNumber +
+                ", Code=" + Code +
+                ", DonateDate=" + DonateDate +
+                ", Status='" + Status + '\'' +
+                ", BloodAmount=" + BloodAmount +
+                ", fk_Hospital_id=" + fk_Hospital_id +
+                '}';
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Blood)) return false;
+        Blood blood = (Blood) o;
+        return id == blood.id && BloodBagNumber == blood.BloodBagNumber && Code == blood.Code && BloodAmount == blood.BloodAmount && Objects.equals(DonateDate, blood.DonateDate) && Objects.equals(Status, blood.Status) && Objects.equals(fk_Hospital_id, blood.fk_Hospital_id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, BloodBagNumber, Code, DonateDate, Status, BloodAmount, fk_Hospital_id);
     }
 }
