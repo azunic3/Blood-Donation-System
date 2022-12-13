@@ -11,6 +11,7 @@ public class Hospital {
     private String Adress;
     private int ContactNumber;
     private String description;
+    private int QuantityOnHand;
 
     public int getHospital_id() {
         return Hospital_id;
@@ -44,6 +45,13 @@ public class Hospital {
     public void setDescription(String description) {
         this.description = description;
     }
+    public int getQuantityOnHand() {
+        return QuantityOnHand;
+    }
+
+    public void setQuantityOnHand(int quantityOnHand) {
+        QuantityOnHand = quantityOnHand;
+    }
     @Override
     public String toString() {
         return "Hospital{" +
@@ -51,19 +59,20 @@ public class Hospital {
                 ", Name='" + Name + '\'' +
                 ", Adress='" + Adress + '\'' +
                 ", ContactNumber=" + ContactNumber +
+                ", QuantityOnHand" + QuantityOnHand +
                 ", description='" + description + '\'' +
                 '}';
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Hospital)) return false;
         Hospital hospital = (Hospital) o;
-        return Hospital_id == hospital.Hospital_id && ContactNumber == hospital.ContactNumber && Objects.equals(Name, hospital.Name) && Objects.equals(Adress, hospital.Adress) && Objects.equals(description, hospital.description);
+        return Hospital_id == hospital.Hospital_id && ContactNumber == hospital.ContactNumber && QuantityOnHand == hospital.QuantityOnHand && Objects.equals(Name, hospital.Name) && Objects.equals(Adress, hospital.Adress) && Objects.equals(description, hospital.description);
     }
-
     @Override
     public int hashCode() {
-        return Objects.hash(Hospital_id, Name, Adress, ContactNumber, description);
+        return Objects.hash(Hospital_id, Name, Adress, ContactNumber, QuantityOnHand, description);
     }
 }

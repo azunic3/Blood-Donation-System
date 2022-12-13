@@ -16,6 +16,16 @@ public class Patient {
     private Blood fk_BloodType;
     private Hospital fk_Hospital_id;
 
+
+    private String Adress;
+    public void setAdress(String adress) {
+        Adress = adress;
+    }
+
+    public String getAdress() {
+        return Adress;
+    }
+
     public int getPatient_id() {
         return Patient_id;
     }
@@ -60,17 +70,10 @@ public class Patient {
     public void setFk_Hospital_id(Hospital fk_Hospital_id) {
         this.fk_Hospital_id = fk_Hospital_id;
     }
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Patient)) return false;
-        Patient patient = (Patient) o;
-        return Patient_id == patient.Patient_id && PhoneNumber == patient.PhoneNumber && Objects.equals(FullName, patient.FullName) && Objects.equals(DateOfBirth, patient.DateOfBirth) && Objects.equals(Gender, patient.Gender) && Objects.equals(fk_BloodType, patient.fk_BloodType) && Objects.equals(fk_Hospital_id, patient.fk_Hospital_id);
-    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Patient_id, FullName, DateOfBirth, Gender, PhoneNumber, fk_BloodType, fk_Hospital_id);
+        return Objects.hash(Patient_id, FullName, DateOfBirth, Gender, Adress, PhoneNumber, fk_BloodType, fk_Hospital_id);
     }
     @Override
     public String toString() {
@@ -79,9 +82,17 @@ public class Patient {
                 ", FullName='" + FullName + '\'' +
                 ", DateOfBirth=" + DateOfBirth +
                 ", Gender='" + Gender + '\'' +
+                ", Adress= " + Adress+
                 ", PhoneNumber=" + PhoneNumber +
                 ", fk_BloodType=" + fk_BloodType +
                 ", fk_Hospital_id=" + fk_Hospital_id +
                 '}';
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Patient)) return false;
+        Patient patient = (Patient) o;
+        return Patient_id == patient.Patient_id && PhoneNumber == patient.PhoneNumber && Objects.equals(FullName, patient.FullName) && Objects.equals(DateOfBirth, patient.DateOfBirth) && Objects.equals(Gender, patient.Gender) && Objects.equals(fk_BloodType, patient.fk_BloodType) && Objects.equals(fk_Hospital_id, patient.fk_Hospital_id) && Objects.equals(Adress, patient.Adress);
     }
 }
