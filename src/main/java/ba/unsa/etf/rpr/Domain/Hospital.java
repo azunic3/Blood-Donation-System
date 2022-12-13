@@ -6,18 +6,20 @@ import java.util.Objects;
  * version 1.0
  */
 public class Hospital {
-    private int id;
+    private int Hospital_id;
     private String Name;
     private String Adress;
     private int ContactNumber;
     private String description;
 
-    public int getId() {
-        return id;
+    public int getHospital_id() {
+        return Hospital_id;
     }
-    public void setId(int id) {
-        this.id = id;
+
+    public void setHospital_id(int hospital_id) {
+        Hospital_id = hospital_id;
     }
+
     public String getName() {
         return Name;
     }
@@ -45,7 +47,7 @@ public class Hospital {
     @Override
     public String toString() {
         return "Hospital{" +
-                "id=" + id +
+                "Hospital_id=" + Hospital_id +
                 ", Name='" + Name + '\'' +
                 ", Adress='" + Adress + '\'' +
                 ", ContactNumber=" + ContactNumber +
@@ -57,11 +59,11 @@ public class Hospital {
         if (this == o) return true;
         if (!(o instanceof Hospital)) return false;
         Hospital hospital = (Hospital) o;
-        return id == hospital.id && ContactNumber == hospital.ContactNumber && Objects.equals(Name, hospital.Name) && Objects.equals(Adress, hospital.Adress) && Objects.equals(description, hospital.description);
+        return Hospital_id == hospital.Hospital_id && ContactNumber == hospital.ContactNumber && Objects.equals(Name, hospital.Name) && Objects.equals(Adress, hospital.Adress) && Objects.equals(description, hospital.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, Name, Adress, ContactNumber, description);
+        return Objects.hash(Hospital_id, Name, Adress, ContactNumber, description);
     }
 }

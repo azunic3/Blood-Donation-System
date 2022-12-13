@@ -7,37 +7,26 @@ import java.util.Date;
  * version 1.0
  */
 public class Blood {
-    private int id;
+    private String BloodType;
     private int BloodBagNumber;
-    private int Code;
     private Date DonateDate;
     private String Status;
     private int BloodAmount;
 
     private Hospital fk_Hospital_id;
 
-    public int getId() {
-        return id;
+    public String getBloodType() {
+        return BloodType;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    public void setBloodType(String bloodType) {
+        BloodType = bloodType;}
     public int getBloodBagNumber() {
         return BloodBagNumber;
     }
 
     public void setBloodBagNumber(int bloodBagNumber) {
         BloodBagNumber = bloodBagNumber;
-    }
-
-    public int getCode() {
-        return Code;
-    }
-
-    public void setCode(int code) {
-        Code = code;
     }
 
     public Date getDonateDate() {
@@ -74,9 +63,9 @@ public class Blood {
     @Override
     public String toString() {
         return "Blood{" +
-                "id=" + id +
+                "BloodType=" + BloodType +
                 ", BloodBagNumber=" + BloodBagNumber +
-                ", Code=" + Code +
+                ", Code="  +
                 ", DonateDate=" + DonateDate +
                 ", Status='" + Status + '\'' +
                 ", BloodAmount=" + BloodAmount +
@@ -88,10 +77,10 @@ public class Blood {
         if (this == o) return true;
         if (!(o instanceof Blood)) return false;
         Blood blood = (Blood) o;
-        return id == blood.id && BloodBagNumber == blood.BloodBagNumber && Code == blood.Code && BloodAmount == blood.BloodAmount && Objects.equals(DonateDate, blood.DonateDate) && Objects.equals(Status, blood.Status) && Objects.equals(fk_Hospital_id, blood.fk_Hospital_id);
+        return BloodType == blood.BloodType && BloodBagNumber == blood.BloodBagNumber && BloodAmount == blood.BloodAmount && Objects.equals(DonateDate, blood.DonateDate) && Objects.equals(Status, blood.Status) && Objects.equals(fk_Hospital_id, blood.fk_Hospital_id);
     }
     @Override
     public int hashCode() {
-        return Objects.hash(id, BloodBagNumber, Code, DonateDate, Status, BloodAmount, fk_Hospital_id);
+        return Objects.hash(BloodType, BloodBagNumber, DonateDate, Status, BloodAmount, fk_Hospital_id);
     }
 }

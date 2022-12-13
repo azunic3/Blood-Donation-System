@@ -7,32 +7,29 @@ import java.util.Date;
  * version 1.0
  */
 public class Donor {
-    private int id;
+    private int Donor_id;
     private String FullName;
-    private Date DateOfDonation;
     private Date DateOfBirth;
     private String Gender;
     private String Adress;
     private int PhoneNumber;
     private Blood fk_BloodType_id;
-    public int getId() {
-        return id;
+
+    public int getDonor_id() {
+        return Donor_id;
     }
-    public void setId(int id) {
-        this.id = id;
+
+    public void setDonor_id(int donor_id) {
+        Donor_id = donor_id;
     }
+
     public String getFullName() {
         return FullName;
     }
     public void setFullName(String fullName) {
         FullName = fullName;
     }
-    public Date getDateOfDonation() {
-        return DateOfDonation;
-    }
-    public void setDateOfDonation(Date dateOfDonation) {
-        DateOfDonation = dateOfDonation;
-    }
+
     public Date getDateOfBirth() {
         return DateOfBirth;
     }
@@ -66,9 +63,9 @@ public class Donor {
     @Override
     public String toString() {
         return "Donor{" +
-                "id=" + id +
+                "Donor_id=" + Donor_id +
                 ", FullName='" + FullName + '\'' +
-                ", DateOfDonation=" + DateOfDonation +
+                ", DateOfDonation=" +
                 ", DateOfBirth=" + DateOfBirth +
                 ", Gender='" + Gender + '\'' +
                 ", Adress='" + Adress + '\'' +
@@ -81,11 +78,11 @@ public class Donor {
         if (this == o) return true;
         if (!(o instanceof Donor)) return false;
         Donor donor = (Donor) o;
-        return id == donor.id && PhoneNumber == donor.PhoneNumber && Objects.equals(FullName, donor.FullName) && Objects.equals(DateOfDonation, donor.DateOfDonation) && Objects.equals(DateOfBirth, donor.DateOfBirth) && Objects.equals(Gender, donor.Gender) && Objects.equals(Adress, donor.Adress) && Objects.equals(fk_BloodType_id, donor.fk_BloodType_id);
+        return Donor_id == donor.Donor_id && PhoneNumber == donor.PhoneNumber && Objects.equals(FullName, donor.FullName)  && Objects.equals(DateOfBirth, donor.DateOfBirth) && Objects.equals(Gender, donor.Gender) && Objects.equals(Adress, donor.Adress) && Objects.equals(fk_BloodType_id, donor.fk_BloodType_id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, FullName, DateOfDonation, DateOfBirth, Gender, Adress, PhoneNumber, fk_BloodType_id);
+        return Objects.hash(Donor_id, FullName, DateOfBirth, Gender, Adress, PhoneNumber, fk_BloodType_id);
     }
 }

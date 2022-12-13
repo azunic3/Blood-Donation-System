@@ -8,7 +8,7 @@ import java.util.Objects;
  * version 1.0
  */
 public class Patient {
-    private int id;
+    private int Patient_id;
     private String FullName;
     private Date DateOfBirth;
     private String Gender;
@@ -16,12 +16,14 @@ public class Patient {
     private Blood fk_BloodType;
     private Hospital fk_Hospital_id;
 
-    public int getId() {
-        return id;
+    public int getPatient_id() {
+        return Patient_id;
     }
-    public void setId(int id) {
-        this.id = id;
+
+    public void setPatient_id(int patient_id) {
+        Patient_id = patient_id;
     }
+
     public String getFullName() {
         return FullName;
     }
@@ -63,17 +65,17 @@ public class Patient {
         if (this == o) return true;
         if (!(o instanceof Patient)) return false;
         Patient patient = (Patient) o;
-        return id == patient.id && PhoneNumber == patient.PhoneNumber && Objects.equals(FullName, patient.FullName) && Objects.equals(DateOfBirth, patient.DateOfBirth) && Objects.equals(Gender, patient.Gender) && Objects.equals(fk_BloodType, patient.fk_BloodType) && Objects.equals(fk_Hospital_id, patient.fk_Hospital_id);
+        return Patient_id == patient.Patient_id && PhoneNumber == patient.PhoneNumber && Objects.equals(FullName, patient.FullName) && Objects.equals(DateOfBirth, patient.DateOfBirth) && Objects.equals(Gender, patient.Gender) && Objects.equals(fk_BloodType, patient.fk_BloodType) && Objects.equals(fk_Hospital_id, patient.fk_Hospital_id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, FullName, DateOfBirth, Gender, PhoneNumber, fk_BloodType, fk_Hospital_id);
+        return Objects.hash(Patient_id, FullName, DateOfBirth, Gender, PhoneNumber, fk_BloodType, fk_Hospital_id);
     }
     @Override
     public String toString() {
         return "Patient{" +
-                "id=" + id +
+                "Patient_id=" + Patient_id +
                 ", FullName='" + FullName + '\'' +
                 ", DateOfBirth=" + DateOfBirth +
                 ", Gender='" + Gender + '\'' +
