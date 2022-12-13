@@ -1,4 +1,4 @@
-package ba.unsa.etf.rpr.DAO;
+package ba.unsa.etf.rpr.Dao;
 import java.util.List;
 /**
  * Root interface for all DAO classes
