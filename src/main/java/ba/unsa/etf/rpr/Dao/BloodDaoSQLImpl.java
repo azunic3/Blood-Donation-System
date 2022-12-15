@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-public abstract class BloodDaoSQLImpl implements BloodDao{
+public class BloodDaoSQLImpl implements BloodDao{
     private Connection connection;
     public BloodDaoSQLImpl(){
         try {
@@ -26,6 +26,7 @@ public abstract class BloodDaoSQLImpl implements BloodDao{
                 e.printStackTrace();
             }
     }
+
     @Override
     public Blood getById(int id) {
         String query = "SELECT * FROM Blood WHERE id = ?";
@@ -35,7 +36,7 @@ public abstract class BloodDaoSQLImpl implements BloodDao{
             ResultSet rs = stmt.executeQuery();
             if (rs.next()){ // result set is iterator.
                 Blood category = new Blood();
-                category.setBloodType(rs.getString("id"));
+                category.setBloodType(rs.getString("BloodType"));
                 category.setBloodBagNumber(rs.getInt("BloodBagNumber"));
                 rs.close();
                 return category;
@@ -47,7 +48,37 @@ public abstract class BloodDaoSQLImpl implements BloodDao{
         }
         return null;
     }
-        @Override
+
+    @Override
+    public Blood add(Blood item) {
+        return null;
+    }
+
+    @Override
+    public List<Blood> searchByBagNumber(int BloodBagNumber) {
+            //mora sa concat jer inace nece raditi jer radi sa key chars
+            String query = "SELECT * FROM quotes WHERE quote LIKE concat('%', ?, '%')";
+            try {
+                PreparedStatement stmt = this.connection.prepareStatement(query);
+                stmt.setString(1, query);
+                ResultSet rs = stmt.executeQuery();
+                ArrayList<Blood> BloodLista = new ArrayList<>();
+                while (rs.next()) {
+                    Blood b = new Blood();
+                    b.setBloodType(rs.getString("BloodType"));
+                    b.setBloodAmount(rs.getInt("BloodAmount"));
+                    b.setDonateDate(rs.getDate("DonateDate"));
+                    BloodLista.add(b);
+                }
+                return BloodLista;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+
+    @Override
         public List<Blood> getAll() {
             String query = "SELECT * FROM Blood";
             List<Blood> Blood = new ArrayList<Blood>();
@@ -82,6 +113,12 @@ public abstract class BloodDaoSQLImpl implements BloodDao{
             return null;
         }
     }
+
+    @Override
+    public void delete(int id) {
+
+    }
+
     public Blood returnBloodBagNumberForBloodType(int BloodType) {
         String query = "SELECT * FROM Blood WHERE BloodType = ?";
         try {
