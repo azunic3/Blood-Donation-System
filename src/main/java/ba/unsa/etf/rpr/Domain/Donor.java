@@ -1,4 +1,6 @@
 package ba.unsa.etf.rpr.Domain;
+import ba.unsa.etf.rpr.Dao.DonorDaoSQLImpl;
+
 import java.util.Objects;
 import java.util.Date;
 /**
@@ -6,7 +8,7 @@ import java.util.Date;
  * @author Azra Žunić
  * version 1.0
  */
-public class Donor {
+public class Donor extends DonorDaoSQLImpl {
     private int Donor_id;
     private String FullName;
     private Date DateOfBirth;

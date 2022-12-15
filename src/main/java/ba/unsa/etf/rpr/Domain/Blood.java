@@ -1,4 +1,6 @@
 package ba.unsa.etf.rpr.Domain;
+import ba.unsa.etf.rpr.Dao.BloodDaoSQLImpl;
+
 import java.util.Objects;
 import java.util.Date;
 /**
@@ -6,14 +8,25 @@ import java.util.Date;
  * @author Azra Žunić
  * version 1.0
  */
-public class Blood {
+public class Blood extends BloodDaoSQLImpl {
     private String BloodType;
     private int BloodBagNumber;
     private Date DonateDate;
     private String Status;
     private int BloodAmount;
-
     private Hospital fk_Hospital_id;
+
+    public Blood() {
+    }
+
+    public Blood(String bloodType, int bloodBagNumber, Date donateDate, String status, int bloodAmount, Hospital fk_Hospital_id) {
+        BloodType = bloodType;
+        BloodBagNumber = bloodBagNumber;
+        DonateDate = donateDate;
+        Status = status;
+        BloodAmount = bloodAmount;
+        this.fk_Hospital_id = fk_Hospital_id;
+    }
 
     public String getBloodType() {
         return BloodType;

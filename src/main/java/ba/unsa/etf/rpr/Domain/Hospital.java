@@ -1,17 +1,31 @@
 package ba.unsa.etf.rpr.Domain;
+import ba.unsa.etf.rpr.Dao.HospitalDaoSQLImpl;
+
 import java.util.Objects;
 /**
  * bean for hospital
  * @author Azra Žunić
  * version 1.0
  */
-public class Hospital {
+public class Hospital extends HospitalDaoSQLImpl {
     private int Hospital_id;
     private String Name;
     private String Adress;
     private int ContactNumber;
     private String description;
     private int QuantityOnHand;
+
+    public Hospital() {
+    }
+
+    public Hospital(int hospital_id, String name, String adress, int contactNumber, String description, int quantityOnHand) {
+        Hospital_id = hospital_id;
+        Name = name;
+        Adress = adress;
+        ContactNumber = contactNumber;
+        this.description = description;
+        QuantityOnHand = quantityOnHand;
+    }
 
     public int getHospital_id() {
         return Hospital_id;

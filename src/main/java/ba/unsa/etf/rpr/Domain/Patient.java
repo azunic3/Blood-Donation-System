@@ -1,4 +1,6 @@
 package ba.unsa.etf.rpr.Domain;
+import ba.unsa.etf.rpr.Dao.PatientDaoSQLImpl;
+
 import java.util.Date;
 import java.util.Objects;
 
@@ -7,7 +9,7 @@ import java.util.Objects;
  * @author Azra Žunić
  * version 1.0
  */
-public class Patient {
+public class Patient extends PatientDaoSQLImpl {
     private int Patient_id;
     private String FullName;
     private Date DateOfBirth;
@@ -15,9 +17,22 @@ public class Patient {
     private int PhoneNumber;
     private Blood fk_BloodType;
     private Hospital fk_Hospital_id;
-
-
     private String Adress;
+
+    public Patient(int patient_id, String fullName, Date dateOfBirth, String gender, int phoneNumber, Blood fk_BloodType, Hospital fk_Hospital_id, String adress) {
+        Patient_id = patient_id;
+        FullName = fullName;
+        DateOfBirth = dateOfBirth;
+        Gender = gender;
+        PhoneNumber = phoneNumber;
+        this.fk_BloodType = fk_BloodType;
+        this.fk_Hospital_id = fk_Hospital_id;
+        Adress = adress;
+    }
+
+    public Patient() {
+    }
+
     public void setAdress(String adress) {
         Adress = adress;
     }
