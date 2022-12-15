@@ -13,14 +13,14 @@ public abstract class BloodDaoSQLImpl implements BloodDao{
     private Connection connection;
     public BloodDaoSQLImpl(){
         try {
-            FileReader reader = new FileReader("");
+            FileReader reader = new FileReader("src/main/resources/database.properties");
             Properties p = new Properties();
             p.load(reader);
-            String url = p.getProperty("sql7.freemysqlhosting.net");
-            String user = p.getProperty("sql7582883");
-            String password = p.getProperty("siF4VIbzWy");
+            String url = p.getProperty("url");
+            String user = p.getProperty("username");
+            String password = p.getProperty("password");
 
-            this.connection = DriverManager.getConnection("sql7.freemysqlhosting.net", "sql7582883", "siF4VIbzWy");
+            this.connection = DriverManager.getConnection(url, user, password);
         }
             catch (Exception e){
                 e.printStackTrace();

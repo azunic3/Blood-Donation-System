@@ -10,17 +10,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-public abstract class DonorDaoSQLImpl implements DonorDao{
+public class DonorDaoSQLImpl implements DonorDao{
     private Connection connection;
     public DonorDaoSQLImpl(){
         try {
-            FileReader reader = new FileReader("");
+            FileReader reader = new FileReader("src/main/resources/database.properties");
             Properties p = new Properties();
             p.load(reader);
-            String url = p.getProperty("sql7.freemysqlhosting.net");
-            String user = p.getProperty("sql7582883");
-            String password = p.getProperty("siF4VIbzWy");
-            this.connection = DriverManager.getConnection("sql7.freemysqlhosting.net", "sql7582883", "siF4VIbzWy");
+            String url = p.getProperty("url");
+            String user = p.getProperty("username");
+            String password = p.getProperty("password");
+            this.connection = DriverManager.getConnection(url, user, password);
         }
         catch (Exception e){
             e.printStackTrace();
@@ -96,10 +96,11 @@ public abstract class DonorDaoSQLImpl implements DonorDao{
         return Donors;
     }@Override
     public Donor add(Donor item) {
-        String insert = "INSERT INTO categories(name) VALUES(?)";
+        String insert = "INSERT INTO Donor VALUES(?,?)";
         try{
             PreparedStatement stmt = this.connection.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
-            stmt.setString(1, item.getFullName());
+            stmt.setString(1, item.getUsername());
+            stmt.setString(2, item.getPassword());
             stmt.executeUpdate();
 
             ResultSet rs = stmt.getGeneratedKeys();
