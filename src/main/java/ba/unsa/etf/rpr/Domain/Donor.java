@@ -15,6 +15,53 @@ public class Donor {
     private int PhoneNumber;
     private Blood fk_BloodType_id;
 
+    private String Password;
+    public Donor(int donor_id, String fullName, Date dateOfBirth, String gender, String adress, int phoneNumber, Blood fk_BloodType_id, String password, String username) {
+        Donor_id = donor_id;
+        FullName = fullName;
+        DateOfBirth = dateOfBirth;
+        Gender = gender;
+        Adress = adress;
+        PhoneNumber = phoneNumber;
+        this.fk_BloodType_id = fk_BloodType_id;
+        Password = password;
+        Username = username;
+    }
+
+    public Donor() {
+    }
+
+    public String getUsername() {
+        return Username;
+    }
+
+    public void setUsername(String username) {
+        Username = username;
+    }
+
+    private String Username;
+    @Override
+    public String toString() {
+        return "Donor{" +
+                "Donor_id=" + Donor_id +
+                ", FullName='" + FullName + '\'' +
+                ", DateOfBirth=" + DateOfBirth +
+                ", Gender='" + Gender + '\'' +
+                ", Adress='" + Adress + '\'' +
+                ", PhoneNumber=" + PhoneNumber +
+                ", fk_BloodType_id=" + fk_BloodType_id +
+                ", Username=" + Username +
+                '}';
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
+    }
+
     public int getDonor_id() {
         return Donor_id;
     }
@@ -60,29 +107,18 @@ public class Donor {
     public void setFk_BloodType_id(Blood fk_BloodType_id) {
         this.fk_BloodType_id = fk_BloodType_id;
     }
-    @Override
-    public String toString() {
-        return "Donor{" +
-                "Donor_id=" + Donor_id +
-                ", FullName='" + FullName + '\'' +
-                ", DateOfDonation=" +
-                ", DateOfBirth=" + DateOfBirth +
-                ", Gender='" + Gender + '\'' +
-                ", Adress='" + Adress + '\'' +
-                ", PhoneNumber=" + PhoneNumber +
-                ", fk_BloodType_id=" + fk_BloodType_id +
-                '}';
-    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Donor)) return false;
         Donor donor = (Donor) o;
-        return Donor_id == donor.Donor_id && PhoneNumber == donor.PhoneNumber && Objects.equals(FullName, donor.FullName)  && Objects.equals(DateOfBirth, donor.DateOfBirth) && Objects.equals(Gender, donor.Gender) && Objects.equals(Adress, donor.Adress) && Objects.equals(fk_BloodType_id, donor.fk_BloodType_id);
+        return Donor_id == donor.Donor_id && PhoneNumber == donor.PhoneNumber && Objects.equals(FullName, donor.FullName) && Objects.equals(DateOfBirth, donor.DateOfBirth) && Objects.equals(Gender, donor.Gender) && Objects.equals(Adress, donor.Adress) && Objects.equals(fk_BloodType_id, donor.fk_BloodType_id) && Objects.equals(Password, donor.Password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Donor_id, FullName, DateOfBirth, Gender, Adress, PhoneNumber, fk_BloodType_id);
+        return Objects.hash(Donor_id, FullName, DateOfBirth, Gender, Adress, PhoneNumber, fk_BloodType_id, Password);
     }
+
 }
