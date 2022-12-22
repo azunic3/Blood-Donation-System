@@ -8,17 +8,32 @@ import java.util.Date;
  * @author Azra Žunić
  * version 1.0
  */
-public class Donor extends DonorDaoSQLImpl {
+public class Donor extends DonorDaoSQLImpl implements Idable {
     private int Donor_id;
     private String FullName;
     private Date DateOfBirth;
     private String Gender;
+
     private String Adress;
     private int PhoneNumber;
     private Blood fk_BloodType_id;
 
+    private String AlreadyDonated;
+
     private String Password;
-    public Donor(int donor_id, String fullName, Date dateOfBirth, String gender, String adress, int phoneNumber, Blood fk_BloodType_id, String password, String username) {
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
+    }
+
+    public Donor() {
+    }
+
+    public Donor(int donor_id, String fullName, Date dateOfBirth, String gender, String adress, int phoneNumber, Blood fk_BloodType_id, String alreadyDonated, String password) {
         Donor_id = donor_id;
         FullName = fullName;
         DateOfBirth = dateOfBirth;
@@ -26,22 +41,23 @@ public class Donor extends DonorDaoSQLImpl {
         Adress = adress;
         PhoneNumber = phoneNumber;
         this.fk_BloodType_id = fk_BloodType_id;
+        AlreadyDonated = alreadyDonated;
         Password = password;
-        Username = username;
     }
 
-    public Donor() {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Donor)) return false;
+        Donor donor = (Donor) o;
+        return Donor_id == donor.Donor_id && PhoneNumber == donor.PhoneNumber && Objects.equals(FullName, donor.FullName) && Objects.equals(DateOfBirth, donor.DateOfBirth) && Objects.equals(Gender, donor.Gender) && Objects.equals(Adress, donor.Adress) && Objects.equals(fk_BloodType_id, donor.fk_BloodType_id) && Objects.equals(AlreadyDonated, donor.AlreadyDonated) && Objects.equals(Password, donor.Password);
     }
 
-    public String getUsername() {
-        return Username;
+    @Override
+    public int hashCode() {
+        return Objects.hash(Donor_id, FullName, DateOfBirth, Gender, Adress, PhoneNumber, fk_BloodType_id, AlreadyDonated, Password);
     }
 
-    public void setUsername(String username) {
-        Username = username;
-    }
-
-    private String Username;
     @Override
     public String toString() {
         return "Donor{" +
@@ -52,16 +68,9 @@ public class Donor extends DonorDaoSQLImpl {
                 ", Adress='" + Adress + '\'' +
                 ", PhoneNumber=" + PhoneNumber +
                 ", fk_BloodType_id=" + fk_BloodType_id +
-                ", Username=" + Username +
+                ", AlreadyDonated='" + AlreadyDonated + '\'' +
+                ", Password='" + Password + '\'' +
                 '}';
-    }
-
-    public String getPassword() {
-        return Password;
-    }
-
-    public void setPassword(String password) {
-        Password = password;
     }
 
     public int getDonor_id() {
@@ -109,18 +118,22 @@ public class Donor extends DonorDaoSQLImpl {
     public void setFk_BloodType_id(Blood fk_BloodType_id) {
         this.fk_BloodType_id = fk_BloodType_id;
     }
+    public String getAlreadyDonated() {
+        return AlreadyDonated;
+    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Donor)) return false;
-        Donor donor = (Donor) o;
-        return Donor_id == donor.Donor_id && PhoneNumber == donor.PhoneNumber && Objects.equals(FullName, donor.FullName) && Objects.equals(DateOfBirth, donor.DateOfBirth) && Objects.equals(Gender, donor.Gender) && Objects.equals(Adress, donor.Adress) && Objects.equals(fk_BloodType_id, donor.fk_BloodType_id) && Objects.equals(Password, donor.Password);
+    public void setAlreadyDonated(String alreadyDonated) {
+        AlreadyDonated = alreadyDonated;
+    }
+
+
+   @Override
+    public void setId(int id) {
+
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(Donor_id, FullName, DateOfBirth, Gender, Adress, PhoneNumber, fk_BloodType_id, Password);
+    public int getId() {
+        return 0;
     }
-
 }
