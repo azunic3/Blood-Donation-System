@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane hgap="5.0" prefHeight="192.0" prefWidth="479.0" vgap="5.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.ControllerRegister">
+   <stylesheets><URL value="@/css/properties.css" /></stylesheets>
+
+    <children>
+      <Label fx:id="fldName" prefHeight="18.0" prefWidth="105.0" text="First Name" />
+      <TextField GridPane.columnIndex="3" />
+      <TextField fx:id="fieldUsername2" GridPane.columnIndex="1" />
+      <Label fx:id="fldLastname" text="Last Name" GridPane.columnIndex="2" />
+      <Separator GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1" />
+      <Label text="DonateDate" GridPane.rowIndex="4" />
+      <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Label text="Gender" GridPane.rowIndex="8" />
+      <HBox spacing="30.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+         <children>
+            <RadioButton mnemonicParsing="false" text="Male">
+               <toggleGroup>
+                  <ToggleGroup fx:id="groupGender" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Female" toggleGroup="$groupGender" />
+         </children>
+      </HBox>
+      <Label text="Adress" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+      <Label text="First time donating?" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+      <TextField GridPane.columnIndex="3" GridPane.rowIndex="8" />
+      <ComboBox prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
+      <items>
+          <FXCollections fx:factory="observableArrayList">
+              <String fx:value="Sarajevo" />
+              <String fx:value="Konjic" />
+          </FXCollections>
+      </items>
+      </ComboBox>
+      <CheckBox mnemonicParsing="false" text="Yes" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+      <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="10">
+        <buttons>
+          <Button mnemonicParsing="false" onAction="#akcijaSubmit" text="OK" />
+        </buttons>
+      </ButtonBar>
+      <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="10">
+        <buttons>
+          <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#akcijaZatvori" text="Close" />
+        </buttons>
+      </ButtonBar>
+   </children>
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</GridPane>
