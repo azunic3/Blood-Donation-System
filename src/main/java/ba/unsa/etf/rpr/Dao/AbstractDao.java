@@ -3,6 +3,8 @@ package ba.unsa.etf.rpr.Dao;
 import ba.unsa.etf.rpr.Domain.Blood;
 import ba.unsa.etf.rpr.Domain.Idable;
 import ba.unsa.etf.rpr.exceptions.BloodException;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 import java.sql.*;
 import java.util.*;
@@ -19,10 +21,15 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
         try{
             this.tableName = tableName;
             Properties p = new Properties();
-            p.load(ClassLoader.getSystemResource("application.properties").openStream());
-            this.connection = DriverManager.getConnection(p.getProperty("db.connection_string"), p.getProperty("db.username"), p.getProperty("db.password"));
+            p.load(ClassLoader.getSystemResource("database.properties").openStream());
+            String url = p.getProperty("db.connection_string");
+            String username = p.getProperty("db.username");
+            String password = p.getProperty("db.password");
+            this.connection = DriverManager.getConnection(url, username, password);
         }catch (Exception e){
+            System.out.println("Connection to database forbidden");
             e.printStackTrace();
+
         }
     }
     public Connection getConnection(){
@@ -121,7 +128,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
                 stmt.setObject(counter, entry.getValue());
                 counter++;
             }
-            stmt.setObject(counter+1, item.getId());
+            stmt.setObject(counter, item.getId());
             stmt.executeUpdate();
             return item;
         }catch (SQLException e){
