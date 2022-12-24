@@ -1,12 +1,15 @@
 #loginBtn {
-   -fx-background-color: lightskyblue;
+   -fx-background-color: lightcoral;
 }
 .poljeNijeIspravno {
-   -fx-background-color: lightpink;
+   -fx-background-color: lightcoral;
 }
 .poljeJeIspravno {
 -fx-background-color: yellowgreen;
 }
 #loginRegister{
-   -fx-background-color: lightskyblue;
+   -fx-background-color: lightcoral;
+}
+#btnCance{
+-fx-background-color: lightcoral;
 }
