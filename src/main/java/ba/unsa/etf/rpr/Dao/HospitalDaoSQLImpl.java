@@ -1,16 +1,45 @@
 package ba.unsa.etf.rpr.Dao;
+import ba.unsa.etf.rpr.Domain.Blood;
 import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Domain.Patient;
+import ba.unsa.etf.rpr.exceptions.BloodException;
 
 import java.io.FileReader;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
-public abstract class HospitalDaoSQLImpl implements HospitalDao{
-    private Connection connection;
+public class HospitalDaoSQLImpl extends AbstractDao<Hospital> implements HospitalDao {
+
+    public HospitalDaoSQLImpl() {
+        super("Hospital");
+    }
+
+    @Override
+    public Hospital row2object(ResultSet rs) throws BloodException {
+        try {
+            Hospital h = new Hospital();
+            h.setHospital_id(rs.getInt("id"));
+            h.setName(rs.getString("Name"));
+            return h;
+        } catch (SQLException e) {
+            throw new BloodException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public Map<String, Object> object2row(Hospital object) {
+        Map<String, Object> item = new TreeMap<String, Object>();
+        item.put("id", object.getId());
+        item.put("Adresa", object.getAdress());
+        item.put("Name", object.getName());
+        return item;
+    }
+
+}
+
+    /*private Connection connection;
+
     public HospitalDaoSQLImpl(){
         try {
             FileReader reader = new FileReader("src/main/resources/database.properties");
@@ -112,4 +141,4 @@ public abstract class HospitalDaoSQLImpl implements HospitalDao{
         }
     }
 
-}
+}*/

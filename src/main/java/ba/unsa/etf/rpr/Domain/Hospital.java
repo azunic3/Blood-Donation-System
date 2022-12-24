@@ -7,13 +7,13 @@ import java.util.Objects;
  * @author Azra Žunić
  * version 1.0
  */
-public class Hospital extends HospitalDaoSQLImpl {
-    private int Hospital_id;
+public class Hospital extends HospitalDaoSQLImpl implements Idable{
+    private static int Hospital_id;
     private String Name;
+    private int QuantityOnHand;
     private String Adress;
     private int ContactNumber;
     private String description;
-    private int QuantityOnHand;
 
     public Hospital() {
     }
@@ -21,13 +21,15 @@ public class Hospital extends HospitalDaoSQLImpl {
     public Hospital(int hospital_id, String name, String adress, int contactNumber, String description, int quantityOnHand) {
         Hospital_id = hospital_id;
         Name = name;
+        QuantityOnHand = quantityOnHand;
         Adress = adress;
         ContactNumber = contactNumber;
         this.description = description;
-        QuantityOnHand = quantityOnHand;
     }
 
-    public int getHospital_id() {
+
+
+    public static int getHospital_id() {
         return Hospital_id;
     }
 
@@ -71,10 +73,10 @@ public class Hospital extends HospitalDaoSQLImpl {
         return "Hospital{" +
                 "Hospital_id=" + Hospital_id +
                 ", Name='" + Name + '\'' +
+                ", QuantityOnHand" + QuantityOnHand + '\'' +
                 ", Adress='" + Adress + '\'' +
                 ", ContactNumber=" + ContactNumber +
-                ", QuantityOnHand" + QuantityOnHand +
-                ", description='" + description + '\'' +
+                ", description='" + description +
                 '}';
     }
 
@@ -87,6 +89,17 @@ public class Hospital extends HospitalDaoSQLImpl {
     }
     @Override
     public int hashCode() {
-        return Objects.hash(Hospital_id, Name, Adress, ContactNumber, QuantityOnHand, description);
+        return Objects.hash(Hospital_id, Name, QuantityOnHand, Adress, ContactNumber, description);
+    }
+
+
+    @Override
+    public void setId(int id) {
+
+    }
+
+    @Override
+    public int getId() {
+        return Hospital_id;
     }
 }
