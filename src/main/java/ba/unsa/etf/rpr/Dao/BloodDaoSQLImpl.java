@@ -1,16 +1,83 @@
 package ba.unsa.etf.rpr.Dao;
 import ba.unsa.etf.rpr.Domain.Blood;
-import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Domain.Hospital;
+import ba.unsa.etf.rpr.exceptions.BloodException;
 
-import java.io.FileReader;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
-public class BloodDaoSQLImpl implements BloodDao{
-    private Connection connection;
+public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao{
+    public BloodDaoSQLImpl() {
+        super("Blood");
+    }
+
+    @Override
+    public Blood row2object(ResultSet rs) throws BloodException {
+        try {
+            Blood b = new Blood();
+            b.setBloodType(rs.getString("BloodType"));
+            b.setBloodBagNumber(rs.getString("BloodBagNumber"));
+            b.setDonateDate(rs.getDate("DonateDate"));
+            //b.setFk_Hospital_id(DaoFactory.HospitalDao().getById(rs.getInt("hospital_id")));
+            return b;
+        } catch (Exception e) {
+            throw new BloodException(e.getMessage(), e);
+        }
+    }
+    /**
+     * @param object
+     * @return
+     */
+    @Override
+    public Map<String, Object> object2row(Blood object) {
+        Map<String, Object> item = new TreeMap<String, Object>();
+        item.put("BloodType", object.getId());
+        item.put("BloodBagNumber", object.getBloodBagNumber());
+        item.put("Donated", object.getDonateDate());
+        //item.put("hospital_id", object.getHospital().getId());
+        return item;
+    }
+
+    public List<Blood> searchByBagNumber(int BloodBagNumber) throws BloodException{
+        //mora sa concat jer inace nece raditi jer radi sa key chars
+        String query = "SELECT * FROM quotes WHERE quote LIKE concat('%', ?, '%')";
+        try {
+            PreparedStatement stmt = getConnection().prepareStatement(query);
+            stmt.setInt(1, BloodBagNumber);
+            ResultSet rs = stmt.executeQuery();
+            ArrayList<Blood> bloodLista = new ArrayList<>();
+            while (rs.next()) {
+                bloodLista.add(row2object(rs));
+            }
+            return bloodLista;
+        } catch (SQLException e) {
+            throw new BloodException(e.getMessage(), e);
+        }
+    }
+
+
+
+    @Override
+    public List<Blood> searchByHospital(Hospital hospital_id) throws BloodException{
+        String query = "SELECT * FROM Hospital WHERE Hospital_id = ?";
+        try {
+            PreparedStatement stmt = getConnection().prepareStatement(query);
+            stmt.setInt(1, Hospital.getHospital_id());
+            ResultSet rs = stmt.executeQuery();
+            ArrayList<Blood> bloodLista = new ArrayList<>();
+            while (rs.next()) {
+                bloodLista.add(row2object(rs));
+            }
+            return bloodLista;
+        } catch (SQLException e) {
+            throw new BloodException(e.getMessage(), e);
+        }
+    }
+}
+
+
+    /*private Connection connection;
+
     public BloodDaoSQLImpl(){
         try {
             FileReader reader = new FileReader("src/main/resources/database.properties");
@@ -99,7 +166,7 @@ public class BloodDaoSQLImpl implements BloodDao{
             }
             return Blood;
         }
-    @Override
+   /* @Override
     public Blood update(Blood item) {
         String insert = "UPDATE categories SET BloodAmount = ? WHERE BloodType = ?";
         try{
@@ -159,8 +226,8 @@ public class BloodDaoSQLImpl implements BloodDao{
             e.printStackTrace();
         }
         return null;
-    }
+    }*/
 
-}
+
 
 

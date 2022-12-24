@@ -1,6 +1,8 @@
 package ba.unsa.etf.rpr.Domain;
 import ba.unsa.etf.rpr.Dao.BloodDaoSQLImpl;
+import ba.unsa.etf.rpr.exceptions.BloodException;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Date;
 /**
@@ -8,22 +10,20 @@ import java.util.Date;
  * @author Azra Žunić
  * version 1.0
  */
-public class Blood extends BloodDaoSQLImpl {
+public class Blood extends BloodDaoSQLImpl implements Idable {
     private String BloodType;
-    private int BloodBagNumber;
+    private String BloodBagNumber;
     private Date DonateDate;
-    private String Status;
     private int BloodAmount;
     private Hospital fk_Hospital_id;
 
     public Blood() {
     }
 
-    public Blood(String bloodType, int bloodBagNumber, Date donateDate, String status, int bloodAmount, Hospital fk_Hospital_id) {
+    public Blood(String bloodType, String bloodBagNumber, Date donateDate, String status, int bloodAmount, Hospital fk_Hospital_id) {
         BloodType = bloodType;
         BloodBagNumber = bloodBagNumber;
         DonateDate = donateDate;
-        Status = status;
         BloodAmount = bloodAmount;
         this.fk_Hospital_id = fk_Hospital_id;
     }
@@ -34,11 +34,11 @@ public class Blood extends BloodDaoSQLImpl {
 
     public void setBloodType(String bloodType) {
         BloodType = bloodType;}
-    public int getBloodBagNumber() {
+    public String getBloodBagNumber() {
         return BloodBagNumber;
     }
 
-    public void setBloodBagNumber(int bloodBagNumber) {
+    public void setBloodBagNumber(String bloodBagNumber) {
         BloodBagNumber = bloodBagNumber;
     }
 
@@ -48,14 +48,6 @@ public class Blood extends BloodDaoSQLImpl {
 
     public void setDonateDate(Date donateDate) {
         DonateDate = donateDate;
-    }
-
-    public String getStatus() {
-        return Status;
-    }
-
-    public void setStatus(String status) {
-        Status = status;
     }
 
     public int getBloodAmount() {
@@ -80,7 +72,6 @@ public class Blood extends BloodDaoSQLImpl {
                 ", BloodBagNumber=" + BloodBagNumber +
                 ", Code="  +
                 ", DonateDate=" + DonateDate +
-                ", Status='" + Status + '\'' +
                 ", BloodAmount=" + BloodAmount +
                 ", fk_Hospital_id=" + fk_Hospital_id +
                 '}';
@@ -90,10 +81,25 @@ public class Blood extends BloodDaoSQLImpl {
         if (this == o) return true;
         if (!(o instanceof Blood)) return false;
         Blood blood = (Blood) o;
-        return BloodType == blood.BloodType && BloodBagNumber == blood.BloodBagNumber && BloodAmount == blood.BloodAmount && Objects.equals(DonateDate, blood.DonateDate) && Objects.equals(Status, blood.Status) && Objects.equals(fk_Hospital_id, blood.fk_Hospital_id);
+        return BloodType == blood.BloodType && BloodBagNumber == blood.BloodBagNumber && BloodAmount == blood.BloodAmount && Objects.equals(DonateDate, blood.DonateDate) &&  Objects.equals(fk_Hospital_id, blood.fk_Hospital_id);
     }
     @Override
     public int hashCode() {
-        return Objects.hash(BloodType, BloodBagNumber, DonateDate, Status, BloodAmount, fk_Hospital_id);
+        return Objects.hash(BloodType, BloodBagNumber, DonateDate, BloodAmount, fk_Hospital_id);
+    }
+
+    @Override
+    public void setId(int id) {
+
+    }
+
+    @Override
+    public int getId() {
+        return 0;
+    }
+
+    @Override
+    public List<Blood> searchByBagNumber(int BloodBagNumber) throws BloodException {
+        return null;
     }
 }
