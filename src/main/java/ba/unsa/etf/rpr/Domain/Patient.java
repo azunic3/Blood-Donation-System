@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.Domain;
 import ba.unsa.etf.rpr.Dao.PatientDaoSQLImpl;
 
 import java.util.Date;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -9,25 +10,25 @@ import java.util.Objects;
  * @author Azra Žunić
  * version 1.0
  */
-public class Patient extends PatientDaoSQLImpl {
+public class Patient extends PatientDaoSQLImpl implements Idable {
     private int Patient_id;
     private String FullName;
     private Date DateOfBirth;
     private String Gender;
+    private String Adress;
     private int PhoneNumber;
     private Blood fk_BloodType;
     private Hospital fk_Hospital_id;
-    private String Adress;
 
     public Patient(int patient_id, String fullName, Date dateOfBirth, String gender, int phoneNumber, Blood fk_BloodType, Hospital fk_Hospital_id, String adress) {
         Patient_id = patient_id;
         FullName = fullName;
         DateOfBirth = dateOfBirth;
         Gender = gender;
+        Adress = adress;
         PhoneNumber = phoneNumber;
         this.fk_BloodType = fk_BloodType;
         this.fk_Hospital_id = fk_Hospital_id;
-        Adress = adress;
     }
 
     public Patient() {
@@ -108,6 +109,21 @@ public class Patient extends PatientDaoSQLImpl {
         if (this == o) return true;
         if (!(o instanceof Patient)) return false;
         Patient patient = (Patient) o;
-        return Patient_id == patient.Patient_id && PhoneNumber == patient.PhoneNumber && Objects.equals(FullName, patient.FullName) && Objects.equals(DateOfBirth, patient.DateOfBirth) && Objects.equals(Gender, patient.Gender) && Objects.equals(fk_BloodType, patient.fk_BloodType) && Objects.equals(fk_Hospital_id, patient.fk_Hospital_id) && Objects.equals(Adress, patient.Adress);
+        return Patient_id == patient.Patient_id && PhoneNumber == patient.PhoneNumber && Objects.equals(Adress, patient.Adress) && Objects.equals(FullName, patient.FullName) && Objects.equals(DateOfBirth, patient.DateOfBirth) && Objects.equals(Gender, patient.Gender) && Objects.equals(fk_BloodType, patient.fk_BloodType) && Objects.equals(fk_Hospital_id, patient.fk_Hospital_id);
+    }
+
+    @Override
+    public void setId(int id) {
+
+    }
+
+    @Override
+    public int getId() {
+        return Patient_id;
+    }
+
+    @Override
+    public Map<String, Object> object2row(Patient object) {
+        return null;
     }
 }

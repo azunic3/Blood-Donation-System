@@ -1,17 +1,61 @@
 package ba.unsa.etf.rpr.Dao;
-import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Domain.Patient;
-import ba.unsa.etf.rpr.Domain.Hospital;
-import ba.unsa.etf.rpr.Domain.Blood;
+import ba.unsa.etf.rpr.exceptions.BloodException;
 
-import java.io.FileReader;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
-public abstract class PatientDaoSQLImpl implements PatientDao {
-    private Connection connection;
+public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDao {
+
+    public PatientDaoSQLImpl(){
+    super("Patient");
+    }
+
+    @Override
+    public Patient row2object(ResultSet rs) throws BloodException {
+        try{
+            Patient history = new Patient();
+            history.setPatient_id(rs.getInt("patient_id"));
+            history.setFullName(rs.getString("Full name"));
+            history.setFk_Hospital_id(DaoFactory.hospitalDao().getById(rs.getInt("BloodType")));
+            return history;
+        }catch (SQLException e){
+            throw new BloodException(e.getMessage(), e);
+        }
+
+    }
+
+    @Override
+    public Map<String, Object> object2row(Patient object) {
+        Map<String, Object> item = new TreeMap<String, Object>();
+        item.put("id", object.getPatient_id());
+        item.put("", object.getId());
+        item.put("Full Name", object.getFullName());
+        return item;
+    }
+
+
+    public List<Patient> searchByFullName(String user) {
+        String query = "SELECT * FROM Patient WHERE FullName = ?";
+        try {
+            PreparedStatement stmt = getConnection().prepareStatement(query);
+            stmt.setString(1, user);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) { // result set is iterator.
+                return (List<Patient>) row2object(rs);
+            } else {
+                return null; // if there is no elements in the result set return null
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // poor error handling
+        } catch (BloodException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+}
+
+    /*private Connection connection;
     public PatientDaoSQLImpl(){
         try {
             FileReader reader = new FileReader("src/main/resources/database.properties");
@@ -112,4 +156,4 @@ public abstract class PatientDaoSQLImpl implements PatientDao {
         }
         return null;
     }
-}
+}*/
