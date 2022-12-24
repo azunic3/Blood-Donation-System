@@ -1,0 +1,41 @@
+#mniNew > .label{
+    -fx-graphic: url("/img/icons8-new-document-30.png");
+}
+#mniNew .accelerator-text{
+    -fx-graphic: none;
+}
+
+#mniOpen > .label{
+    -fx-graphic: url("/img/icons8-opened-folder-24.png");
+}
+#mniOpen .accelerator-text{
+    -fx-graphic: none;
+}
+
+#mniSave > .label{
+    -fx-graphic: url("/img/icons8-save-30.png");
+}
+#mniSave .accelerator-text{
+    -fx-graphic: none;
+}
+
+#mniClose > .label{
+    -fx-graphic: url("/img/icons8-close-window-24.png");
+}
+#mniClose .accelerator-text{
+    -fx-graphic: none;
+}
+#tbClose {
+-fx-graphic: url("/img/icons8-close-window-24.png");
+}
+
+.tbButton {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+.tbButton:pressed {
+-fx-background-color: gray;
+}
+.tbButton:hover {
+-fx-background-color: lightgray;
+}
