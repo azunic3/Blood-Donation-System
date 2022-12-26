@@ -46,12 +46,15 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Full Name:" textFill="#131313">
+                  <Label text="Full Name:">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label text="Blood Type:" GridPane.rowIndex="1" />
+                  <Label text="Password:" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font></Label>
                   <TextField fx:id="fieldUsername" GridPane.columnIndex="1" />
                   <Button fx:id="loginBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#buttonClick" text="Sign in" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
                      <font>
