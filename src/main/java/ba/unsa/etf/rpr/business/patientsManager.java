@@ -12,21 +12,14 @@ public class patientsManager {
     public static List<Object> searchByFullName(String text) {
         return searchByFullName(text);
     }
-
     public List<Patient> getAll() throws BloodException {
             return DaoFactory.patientDao().getAll();
         }
-
-        public List<Patient> searchQuotes(String text) throws BloodException {
-            return DaoFactory.patientDao().searchByFullName(text);
-        }
-
         public void delete(int id) throws BloodException{
             DaoFactory.patientDao().delete(id);
         }
-
-        public Patient getById(int quoteId) throws BloodException{
-            return DaoFactory.patientDao().getById(quoteId);
+        public Patient getById(int Patient_id) throws BloodException{
+            return DaoFactory.patientDao().getById(Patient_id);
         }
 
         public void update(Patient q) throws BloodException{
