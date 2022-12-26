@@ -6,12 +6,12 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * bean for patient
+ * java bean for table Patient
  * @author Azra Žunić
- * version 1.0
+ * version 1.2
  */
 public class Patient extends PatientDaoSQLImpl implements Idable {
-    private int Patient_id;
+    private int Id;
     private String FullName;
     private Date DateOfBirth;
     private String Gender;
@@ -19,19 +19,18 @@ public class Patient extends PatientDaoSQLImpl implements Idable {
     private int PhoneNumber;
     private Blood fk_BloodType;
     private Hospital fk_Hospital_id;
-
-    public Patient(int patient_id, String fullName, Date dateOfBirth, String gender, int phoneNumber, Blood fk_BloodType, Hospital fk_Hospital_id, String adress) {
-        Patient_id = patient_id;
-        FullName = fullName;
-        DateOfBirth = dateOfBirth;
-        Gender = gender;
-        Adress = adress;
-        PhoneNumber = phoneNumber;
-        this.fk_BloodType = fk_BloodType;
-        this.fk_Hospital_id = fk_Hospital_id;
+    /**
+     *getters and setter for each private atribute
+     * Patient_id renamed to Id because of the Idable interface
+     */
+    @Override
+    public int getId() {
+        return Id;
     }
 
-    public Patient() {
+    @Override
+    public void setId(int id) {
+        Id = id;
     }
 
     public void setAdress(String adress) {
@@ -42,13 +41,6 @@ public class Patient extends PatientDaoSQLImpl implements Idable {
         return Adress;
     }
 
-    public int getPatient_id() {
-        return Patient_id;
-    }
-
-    public void setPatient_id(int patient_id) {
-        Patient_id = patient_id;
-    }
 
     public String getFullName() {
         return FullName;
@@ -87,39 +79,45 @@ public class Patient extends PatientDaoSQLImpl implements Idable {
         this.fk_Hospital_id = fk_Hospital_id;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(Patient_id, FullName, DateOfBirth, Gender, Adress, PhoneNumber, fk_BloodType, fk_Hospital_id);
+    public Patient() {
     }
-    @Override
-    public String toString() {
-        return "Patient{" +
-                "Patient_id=" + Patient_id +
-                ", FullName='" + FullName + '\'' +
-                ", DateOfBirth=" + DateOfBirth +
-                ", Gender='" + Gender + '\'' +
-                ", Adress= " + Adress+
-                ", PhoneNumber=" + PhoneNumber +
-                ", fk_BloodType=" + fk_BloodType +
-                ", fk_Hospital_id=" + fk_Hospital_id +
-                '}';
+
+    public Patient(int id, String fullName, Date dateOfBirth, String gender, String adress, int phoneNumber, Blood fk_BloodType, Hospital fk_Hospital_id) {
+        Id = id;
+        FullName = fullName;
+        DateOfBirth = dateOfBirth;
+        Gender = gender;
+        Adress = adress;
+        PhoneNumber = phoneNumber;
+        this.fk_BloodType = fk_BloodType;
+        this.fk_Hospital_id = fk_Hospital_id;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Patient)) return false;
         Patient patient = (Patient) o;
-        return Patient_id == patient.Patient_id && PhoneNumber == patient.PhoneNumber && Objects.equals(Adress, patient.Adress) && Objects.equals(FullName, patient.FullName) && Objects.equals(DateOfBirth, patient.DateOfBirth) && Objects.equals(Gender, patient.Gender) && Objects.equals(fk_BloodType, patient.fk_BloodType) && Objects.equals(fk_Hospital_id, patient.fk_Hospital_id);
+        return Id == patient.Id && PhoneNumber == patient.PhoneNumber && Objects.equals(FullName, patient.FullName) && Objects.equals(DateOfBirth, patient.DateOfBirth) && Objects.equals(Gender, patient.Gender) && Objects.equals(Adress, patient.Adress) && Objects.equals(fk_BloodType, patient.fk_BloodType) && Objects.equals(fk_Hospital_id, patient.fk_Hospital_id);
     }
 
     @Override
-    public void setId(int id) {
-
+    public int hashCode() {
+        return Objects.hash(Id, FullName, DateOfBirth, Gender, Adress, PhoneNumber, fk_BloodType, fk_Hospital_id);
     }
 
     @Override
-    public int getId() {
-        return Patient_id;
+    public String toString() {
+        return "Patient{" +
+                "Id=" + Id +
+                ", FullName='" + FullName + '\'' +
+                ", DateOfBirth=" + DateOfBirth +
+                ", Gender='" + Gender + '\'' +
+                ", Adress='" + Adress + '\'' +
+                ", PhoneNumber=" + PhoneNumber +
+                ", fk_BloodType=" + fk_BloodType +
+                ", fk_Hospital_id=" + fk_Hospital_id +
+                '}';
     }
 
     @Override
