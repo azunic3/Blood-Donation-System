@@ -14,23 +14,32 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
     @Override
     public Patient row2object(ResultSet rs) throws BloodException {
         try{
-            Patient history = new Patient();
-            history.setPatient_id(rs.getInt("patient_id"));
-            history.setFullName(rs.getString("Full name"));
-            history.setFk_Hospital_id(DaoFactory.hospitalDao().getById(rs.getInt("BloodType")));
-            return history;
+            Patient pat = new Patient();
+            pat.setId(rs.getInt("Patient_id"));
+            pat.setFull_Name(rs.getString("Full_Name"));
+            pat.setAdress(rs.getString("Adress"));
+            pat.setGender(rs.getString("Gender"));
+            pat.setDateOfBirth(rs.getDate("DateOfBirth"));
+            pat.setPhoneNumber(rs.getInt("PhoneNumber"));
+            pat.setFk_Hospital_id(DaoFactory.hospitalDao().getById(rs.getInt("fk_Hospital_id")));
+            pat.setFk_BloodType(DaoFactory.bloodDao().getById(rs.getInt("fk_BloodType")));
+            return pat;
         }catch (SQLException e){
             throw new BloodException(e.getMessage(), e);
         }
-
     }
 
     @Override
     public Map<String, Object> object2row(Patient object) {
         Map<String, Object> item = new TreeMap<String, Object>();
-        item.put("id", object.getPatient_id());
-        item.put("", object.getId());
-        item.put("Full Name", object.getFullName());
+        item.put("Patient_id", object.getId());
+        item.put("Full_Name", object.getFull_Name());
+        item.put("Gender", object.getGender());
+        item.put("PhoneNumber", object.getPhoneNumber());
+        item.put("DateOfBirth", object.getDateOfBirth());
+        item.put("Adress", object.getAdress());
+        item.put("fk_Hospital_id", object.getFk_Hospital_id());
+        item.put("fk_BloodType", object.getFk_BloodType());
         return item;
     }
 
@@ -53,6 +62,16 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
         }
         return null;
     }
+    @Override
+    public Patient searchById(int Id) throws BloodException{
+        return getById(Id);
+    }
+    @Override
+    public Patient searchByPatientsName(String name) throws BloodException {
+        return executeQueryUnique("SELECT * FROM Patient WHERE FullName = ?",new Object[]{name});
+    }
+
+
 }
 
     /*private Connection connection;

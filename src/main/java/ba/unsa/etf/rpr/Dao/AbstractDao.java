@@ -46,7 +46,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
      * @return a Bean object for specific table
      * @throws BloodException in case of error with db
      */
-    public abstract T row2object(ResultSet rs) throws BloodException;
+    public abstract T row2object(ResultSet rs) throws Exception;
 
     /**
      * Method for mapping Object into Map
@@ -54,17 +54,14 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
      * @return key, value sorted map of object
      */
     public abstract Map<String, Object> object2row(T object);
-
     public T getById(int id) throws BloodException {
-        return executeQueryUnique("SELECT * FROM "+this.tableName+" WHERE id = ?", new Object[]{id});
+        return executeQueryUnique("SELECT * FROM "+this.tableName+" WHERE " +this.tableName.substring(0,tableName.length())+ "_id = ?", new Object[]{id});
     }
-
     public List<T> getAll() throws BloodException {
         return executeQuery("SELECT * FROM "+ tableName, null);
     }
-
     public void delete(int id) throws BloodException {
-        String sql = "DELETE FROM "+tableName+" WHERE id = ?";
+        String sql = "DELETE FROM "+tableName+" WHERE "+this.tableName.substring(0,tableName.length())+"_id = ?";
         try{
             PreparedStatement stmt = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             stmt.setObject(1, id);
@@ -73,7 +70,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
             throw new BloodException(e.getMessage(), e);
         }
     }
-
+@Override
     public T add(T item) throws BloodException{
         Map<String, Object> row = object2row(item);
         Map.Entry<String, String> columns = prepareInsertParts(row);
@@ -88,7 +85,8 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
             // bind params. IMPORTANT treeMap is used to keep columns sorted so params are bind correctly
             int counter = 1;
             for (Map.Entry<String, Object> entry: row.entrySet()) {
-                if (entry.getKey().equals("id")) continue; // skip ID
+                //if (entry.getKey().equals("id")) continue; // skip ID
+                if (entry.getKey().equals(this.tableName.substring(0,tableName.length())+ "_id")) continue; // skip ID
                 stmt.setObject(counter, entry.getValue());
                 counter++;
             }
@@ -112,13 +110,14 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
                 .append(tableName)
                 .append(" SET ")
                 .append(updateColumns)
-                .append(" WHERE id = ?");
+                .append(" WHERE "+this.tableName.substring(0,tableName.length())+ "_id = ?");
 
         try{
             PreparedStatement stmt = getConnection().prepareStatement(builder.toString());
             int counter = 1;
             for (Map.Entry<String, Object> entry: row.entrySet()) {
-                if (entry.getKey().equals("id")) continue; // skip ID
+                if (entry.getKey().equals(this.tableName.substring(0,tableName.length())+ "_id"))
+                    continue; // skip ID
                 stmt.setObject(counter, entry.getValue());
                 counter++;
             }
@@ -137,7 +136,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
      * @return List of objects from database
      * @throws BloodException in case of error with db
      */
-    public List<T> executeQuery(String query, Object[] params) throws BloodException{
+    public List<T> executeQuery(String query, Object[] params) throws  BloodException {
         try {
             PreparedStatement stmt = getConnection().prepareStatement(query);
             if (params != null){
@@ -151,7 +150,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
                 resultList.add(row2object(rs));
             }
             return resultList;
-        } catch (SQLException e) {
+        } catch (Exception e) {
             throw new BloodException(e.getMessage(), e);
         }
     }
@@ -183,7 +182,8 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
         int counter = 0;
         for (Map.Entry<String, Object> entry: row.entrySet()) {
             counter++;
-            if (entry.getKey().equals("id")) continue; //skip insertion of id due autoincrement
+            if (entry.getKey().equals(this.tableName.substring(0,tableName.length())+ "_id"))
+                continue; //skip insertion of id due autoincrement
             columns.append(entry.getKey());
             questions.append("?");
             if (row.size() != counter) {
@@ -191,7 +191,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
                 questions.append(",");
             }
         }
-        return new AbstractMap.SimpleEntry<>(columns.toString(), questions.toString());
+        return new AbstractMap.SimpleEntry<String,String>(columns.toString(), questions.toString());
     }
 
     /**
@@ -205,7 +205,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
         int counter = 0;
         for (Map.Entry<String, Object> entry: row.entrySet()) {
             counter++;
-            if (entry.getKey().equals("id")) continue; //skip update of id due where clause
+            if (entry.getKey().equals(this.tableName.substring(0,tableName.length())+ "_id")) continue; //skip update of id due where clause
             columns.append(entry.getKey()).append("= ?");
             if (row.size() != counter) {
                 columns.append(",");

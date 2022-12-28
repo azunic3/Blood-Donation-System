@@ -19,8 +19,12 @@ public class HospitalDaoSQLImpl extends AbstractDao<Hospital> implements Hospita
     public Hospital row2object(ResultSet rs) throws BloodException {
         try {
             Hospital h = new Hospital();
-            h.setHospital_id(rs.getInt("id"));
+            h.setId(rs.getInt("Hospital_id"));
             h.setName(rs.getString("Name"));
+            h.setAdress(rs.getString("Adress"));
+            h.setContactNumber(rs.getInt("ContactNumber"));
+            h.setQuantityOnHand(rs.getInt("QuantityOnHand"));
+            h.setDescription(rs.getString("Description"));
             return h;
         } catch (SQLException e) {
             throw new BloodException(e.getMessage(), e);
@@ -30,9 +34,12 @@ public class HospitalDaoSQLImpl extends AbstractDao<Hospital> implements Hospita
     @Override
     public Map<String, Object> object2row(Hospital object) {
         Map<String, Object> item = new TreeMap<String, Object>();
-        item.put("id", object.getId());
-        item.put("Adresa", object.getAdress());
+        item.put("Hospital_id", object.getId());
+        item.put("Adress", object.getAdress());
         item.put("Name", object.getName());
+        item.put("ContactNumber", object.getContactNumber());
+        item.put("Description", object.getDescription());
+        item.put("QuantityOnHand", object.getQuantityOnHand());
         return item;
     }
 

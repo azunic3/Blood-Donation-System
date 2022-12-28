@@ -6,7 +6,7 @@ import ba.unsa.etf.rpr.exceptions.BloodException;
 import java.sql.*;
 import java.util.*;
 
-public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao{
+public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao {
     public BloodDaoSQLImpl() {
         super("Blood");
     }
@@ -15,15 +15,18 @@ public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao{
     public Blood row2object(ResultSet rs) throws BloodException {
         try {
             Blood b = new Blood();
-            b.setBloodType(rs.getString("BloodType"));
+            b.setId(rs.getInt("Blood_id"));
+            b.setBloodGroup(rs.getString("BloodGroup"));
             b.setBloodBagNumber(rs.getString("BloodBagNumber"));
             b.setDonateDate(rs.getDate("DonateDate"));
-            //b.setFk_Hospital_id(DaoFactory.HospitalDao().getById(rs.getInt("hospital_id")));
+            b.setBloodAmount(rs.getInt("BloodAmount"));
+            b.setFk_hospital_id (DaoFactory.hospitalDao().getById(rs.getInt("fk_hospital_id")));
             return b;
         } catch (Exception e) {
             throw new BloodException(e.getMessage(), e);
         }
     }
+
     /**
      * @param object
      * @return
@@ -31,16 +34,18 @@ public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao{
     @Override
     public Map<String, Object> object2row(Blood object) {
         Map<String, Object> item = new TreeMap<String, Object>();
-        item.put("BloodType", object.getId());
+        item.put("Blood_id", object.getId());
+        item.put("BloodGroup", object.getBloodGroup());
         item.put("BloodBagNumber", object.getBloodBagNumber());
-        item.put("Donated", object.getDonateDate());
-        //item.put("hospital_id", object.getHospital().getId());
+        item.put("DonateDate", object.getDonateDate());
+        item.put("BloodAmount", object.getBloodAmount());
+        item.put("fk_hospital_id", object.getFk_hospital_id().getId());
         return item;
     }
 
-    public List<Blood> searchByBagNumber(int BloodBagNumber) throws BloodException{
+    public List<Blood> searchByBagNumber(int BloodBagNumber) throws BloodException {
         //mora sa concat jer inace nece raditi jer radi sa key chars
-        String query = "SELECT * FROM quotes WHERE quote LIKE concat('%', ?, '%')";
+        String query = "SELECT * FROM Blood WHERE BloodBagNumber LIKE concat('%', ?, '%')";
         try {
             PreparedStatement stmt = getConnection().prepareStatement(query);
             stmt.setInt(1, BloodBagNumber);
@@ -53,16 +58,16 @@ public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao{
         } catch (SQLException e) {
             throw new BloodException(e.getMessage(), e);
         }
-    }
-
-
-
-    @Override
+    }   @Override
     public List<Blood> searchByHospital(Hospital hospital_id) throws BloodException{
-        String query = "SELECT * FROM Hospital WHERE Hospital_id = ?";
+        return null;
+    }
+}
+
+        /*String query = "SELECT * FROM Hospital WHERE Hospital_id = ?";
         try {
             PreparedStatement stmt = getConnection().prepareStatement(query);
-            stmt.setInt(1, Hospital.getHospital_id());
+            stmt.setInt(1, Hospital.getId());
             ResultSet rs = stmt.executeQuery();
             ArrayList<Blood> bloodLista = new ArrayList<>();
             while (rs.next()) {
@@ -73,7 +78,7 @@ public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao{
             throw new BloodException(e.getMessage(), e);
         }
     }
-}
+}*/
 
 
     /*private Connection connection;
