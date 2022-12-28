@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="554.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.Controllers.MedstaffController">
+   <center>
+      <TableView fx:id="patientsTable" prefHeight="365.0" prefWidth="485.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="Idcol" prefWidth="41.20001143217087" text="ID" />
+          <TableColumn fx:id="namecol" prefWidth="136.79998016357422" text="Full Name" />
+            <TableColumn fx:id="gendercol" prefWidth="51.20001220703125" text="Gender" />
+            <TableColumn fx:id="datecol" prefWidth="115.60003662109375" text="Date of birth" />
+            <TableColumn fx:id="hospcol" prefWidth="75.0" text="HospitalName" />
+        </columns>
+      </TableView>
+   </center>
+   <bottom>
+      <HBox prefHeight="32.0" prefWidth="554.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="search" onAction="#searchPatient" text="Find the patient">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+               </HBox.margin></TextField>
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="23.0" prefWidth="79.0" text="Search">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="10.0" top="5.0" />
+               </HBox.margin></Button>
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="70.0" text="Save">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </HBox.margin></Button>
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <Button fx:id="tbClose" mnemonicParsing="false" onAction="#akcijaZatvori" prefHeight="23.0" prefWidth="61.0" text="Close">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="180.0" right="10.0" top="5.0" />
+               </HBox.margin></Button>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
