@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="249.0" prefWidth="406.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <Label prefHeight="36.0" prefWidth="213.0" text="Blood Donation System application" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <Label text="Version 1.1" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>
