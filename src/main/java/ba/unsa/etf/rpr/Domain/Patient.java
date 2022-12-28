@@ -12,7 +12,7 @@ import java.util.Objects;
  */
 public class Patient extends PatientDaoSQLImpl implements Idable {
     private int Id;
-    private String FullName;
+    private String Full_Name;
     private Date DateOfBirth;
     private String Gender;
     private String Adress;
@@ -42,11 +42,11 @@ public class Patient extends PatientDaoSQLImpl implements Idable {
     }
 
 
-    public String getFullName() {
-        return FullName;
+    public String getFull_Name() {
+        return Full_Name;
     }
-    public void setFullName(String fullName) {
-        FullName = fullName;
+    public void setFull_Name(String full_Name) {
+        Full_Name = full_Name;
     }
     public Date getDateOfBirth() {
         return DateOfBirth;
@@ -84,7 +84,7 @@ public class Patient extends PatientDaoSQLImpl implements Idable {
 
     public Patient(int id, String fullName, Date dateOfBirth, String gender, String adress, int phoneNumber, Blood fk_BloodType, Hospital fk_Hospital_id) {
         Id = id;
-        FullName = fullName;
+        Full_Name = fullName;
         DateOfBirth = dateOfBirth;
         Gender = gender;
         Adress = adress;
@@ -98,19 +98,19 @@ public class Patient extends PatientDaoSQLImpl implements Idable {
         if (this == o) return true;
         if (!(o instanceof Patient)) return false;
         Patient patient = (Patient) o;
-        return Id == patient.Id && PhoneNumber == patient.PhoneNumber && Objects.equals(FullName, patient.FullName) && Objects.equals(DateOfBirth, patient.DateOfBirth) && Objects.equals(Gender, patient.Gender) && Objects.equals(Adress, patient.Adress) && Objects.equals(fk_BloodType, patient.fk_BloodType) && Objects.equals(fk_Hospital_id, patient.fk_Hospital_id);
+        return Id == patient.Id && PhoneNumber == patient.PhoneNumber && Objects.equals(Full_Name, patient.Full_Name) && Objects.equals(DateOfBirth, patient.DateOfBirth) && Objects.equals(Gender, patient.Gender) && Objects.equals(Adress, patient.Adress) && Objects.equals(fk_BloodType, patient.fk_BloodType) && Objects.equals(fk_Hospital_id, patient.fk_Hospital_id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, FullName, DateOfBirth, Gender, Adress, PhoneNumber, fk_BloodType, fk_Hospital_id);
+        return Objects.hash(Id, Full_Name, DateOfBirth, Gender, Adress, PhoneNumber, fk_BloodType, fk_Hospital_id);
     }
 
     @Override
     public String toString() {
         return "Patient{" +
                 "Id=" + Id +
-                ", FullName='" + FullName + '\'' +
+                ", FullName='" + Full_Name + '\'' +
                 ", DateOfBirth=" + DateOfBirth +
                 ", Gender='" + Gender + '\'' +
                 ", Adress='" + Adress + '\'' +

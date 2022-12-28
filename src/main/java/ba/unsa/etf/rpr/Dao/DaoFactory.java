@@ -1,6 +1,4 @@
 package ba.unsa.etf.rpr.Dao;
-
-
 import ba.unsa.etf.rpr.Domain.Hospital;
 
 /**
@@ -14,22 +12,18 @@ public class DaoFactory {
     private static final PatientDao patientDao = new PatientDaoSQLImpl();
     private static final HospitalDao hospitalDao = new HospitalDaoSQLImpl();
 
-    private DaoFactory(){
+    public DaoFactory(){
     }
-
     public static BloodDao bloodDao(){
         return bloodDao;
     }
 
     public static DonorDao donorDao(){ return donorDao;
     }
-
     public static PatientDao patientDao(){
         return patientDao;
     }
     public static HospitalDao hospitalDao(){
         return hospitalDao;
     }
-
-
 }

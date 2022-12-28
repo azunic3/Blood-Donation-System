@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.Dao;
 import ba.unsa.etf.rpr.Domain.Blood;
+import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.exceptions.BloodException;
 
 import java.util.List;
@@ -42,5 +43,7 @@ public interface Dao<T> {
      * @return List of entities from database
      */
     List<T> getAll() throws BloodException;
+
+    
 }
 

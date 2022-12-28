@@ -1,10 +1,14 @@
 package ba.unsa.etf.rpr.Dao;
 
+import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Domain.Patient;
+import ba.unsa.etf.rpr.exceptions.BloodException;
 
 import java.util.List;
 
 public interface PatientDao extends Dao<Patient>{
 
     List<Patient> searchByFullName(String text);
+    public Patient searchById(int Id) throws BloodException;
+    public Patient searchByPatientsName(String name) throws BloodException;
 }

@@ -17,7 +17,7 @@ public class Blood extends BloodDaoSQLImpl implements Idable {
     private String BloodGroup;
     private Date DonateDate;
     private int BloodAmount;
-    private Hospital fk_Hospital_id;
+    private Hospital fk_hospital_id;
 
     /**
      *getters and setter for each private atribute
@@ -34,7 +34,7 @@ public class Blood extends BloodDaoSQLImpl implements Idable {
         BloodGroup = bloodGroup;
         DonateDate = donateDate;
         BloodAmount = bloodAmount;
-        this.fk_Hospital_id = fk_Hospital_id;
+        this.fk_hospital_id = fk_Hospital_id;
     }
 
     @Override
@@ -77,12 +77,12 @@ public class Blood extends BloodDaoSQLImpl implements Idable {
         BloodAmount = bloodAmount;
     }
 
-    public Hospital getFk_Hospital_id() {
-        return fk_Hospital_id;
+    public Hospital getFk_hospital_id() {
+        return fk_hospital_id;
     }
 
-    public void setFk_Hospital_id(Hospital fk_Hospital_id) {
-        this.fk_Hospital_id = fk_Hospital_id;
+    public void setFk_hospital_id(Hospital fk_hospital_id) {
+        this.fk_hospital_id = fk_hospital_id;
     }
 
     @Override
@@ -93,7 +93,7 @@ public class Blood extends BloodDaoSQLImpl implements Idable {
                 ", BloodGroup='" + BloodGroup + '\'' +
                 ", DonateDate=" + DonateDate +
                 ", BloodAmount=" + BloodAmount +
-                ", fk_Hospital_id=" + fk_Hospital_id +
+                ", fk_Hospital_id=" + fk_hospital_id +
                 '}';
     }
 
@@ -102,12 +102,12 @@ public class Blood extends BloodDaoSQLImpl implements Idable {
         if (this == o) return true;
         if (!(o instanceof Blood)) return false;
         Blood blood = (Blood) o;
-        return Id == blood.Id && BloodAmount == blood.BloodAmount && Objects.equals(BloodBagNumber, blood.BloodBagNumber) && Objects.equals(BloodGroup, blood.BloodGroup) && Objects.equals(DonateDate, blood.DonateDate) && Objects.equals(fk_Hospital_id, blood.fk_Hospital_id);
+        return Id == blood.Id && BloodAmount == blood.BloodAmount && Objects.equals(BloodBagNumber, blood.BloodBagNumber) && Objects.equals(BloodGroup, blood.BloodGroup) && Objects.equals(DonateDate, blood.DonateDate) && Objects.equals(fk_hospital_id, blood.fk_hospital_id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, BloodBagNumber, BloodGroup, DonateDate, BloodAmount, fk_Hospital_id);
+        return Objects.hash(Id, BloodBagNumber, BloodGroup, DonateDate, BloodAmount, fk_hospital_id);
     }
 
     @Override

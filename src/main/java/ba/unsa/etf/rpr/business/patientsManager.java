@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.Dao.DaoFactory;
+import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Domain.Patient;
 import ba.unsa.etf.rpr.exceptions.BloodException;
 
@@ -12,12 +13,15 @@ public class patientsManager {
     public static List<Object> searchByFullName(String text) {
         return searchByFullName(text);
     }
+    public Patient searchByPatientsName(String name) throws BloodException {
+        return DaoFactory.patientDao().searchByPatientsName(name);
+    }
     public List<Patient> getAll() throws BloodException {
             return DaoFactory.patientDao().getAll();
         }
-        public void delete(int id) throws BloodException{
-            DaoFactory.patientDao().delete(id);
-        }
+    public static void delete(int id) throws BloodException{
+        DaoFactory.patientDao().delete(id);
+    }
         public Patient getById(int Patient_id) throws BloodException{
             return DaoFactory.patientDao().getById(Patient_id);
         }
