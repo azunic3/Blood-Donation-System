@@ -14,11 +14,11 @@ import java.util.*;
  */
 public abstract class AbstractDao<T extends Idable> implements Dao<T>{
 
-    private Connection connection;
+    private static Connection connection = null;
     private String tableName;
 
     public AbstractDao(String tableName) {
-        try{
+        /*try{
             this.tableName = tableName;
             Properties p = new Properties();
             p.load(ClassLoader.getSystemResource("database.properties").openStream());
@@ -28,16 +28,55 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
             this.connection = DriverManager.getConnection(url, username, password);
         }catch (Exception e){
             e.printStackTrace();
-            System.exit(0);
+            System.exit(0);*/
+        this.tableName = tableName;
+        if(connection==null) createConnection();
+    }
+    private static void createConnection(){
+        if(AbstractDao.connection==null) {
+            try {
+                Properties p = new Properties();
+                p.load(ClassLoader.getSystemResource("database.properties").openStream());
+                String url = p.getProperty("db.connection_string");
+                String username = p.getProperty("db.username");
+                String password = p.getProperty("db.password");
+                AbstractDao.connection = DriverManager.getConnection(url, username, password);
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.exit(0);
+            }
         }
     }
 
-    public Connection getConnection(){
+    /*public Connection getConnection(){
         return this.connection;
+    }*/
+    public static Connection getConnection(){
+        return AbstractDao.connection;
     }
 
     public void setConnection(Connection connection){
-        this.connection = connection;
+        if(AbstractDao.connection!=null) {
+            try{
+                AbstractDao.connection.close();
+            }catch(SQLException e){
+                throw new RuntimeException(e);
+            }
+        }
+        //this.connection = connection;
+        AbstractDao.connection = connection;
+    }
+
+    public void removeConnection(){
+        if(this.connection!=null) {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                //throw new RuntimeException(e);
+                e.printStackTrace();
+                System.out.println("REMOVE CONNECTION METHOD ERROR: Unable to close connection on database");
+            }
+        }
     }
 
     /**

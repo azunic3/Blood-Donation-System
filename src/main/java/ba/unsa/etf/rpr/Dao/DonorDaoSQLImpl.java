@@ -41,9 +41,7 @@ public class DonorDaoSQLImpl extends AbstractDao<Donor> implements DonorDao{
         row.put("fk_BloodType", object.getBloodType_id_fk());
         return row;
     }
-    public Connection getConnection() {
-        return super.getConnection();
-    }
+
     @Override
     public Donor searchByDonorsName(String name) throws BloodException {
         return executeQueryUnique("SELECT * FROM Donor WHERE FullName = ?",new Object[]{name});
