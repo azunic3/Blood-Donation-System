@@ -1,12 +1,17 @@
 package ba.unsa.etf.rpr.Dao;
 
-import ba.unsa.etf.rpr.Domain.Blood;
 import ba.unsa.etf.rpr.Domain.Donor;
-import ba.unsa.etf.rpr.exceptions.BloodException;
+import ba.unsa.etf.rpr.Exceptions.BloodException;
 
-import java.sql.*;
-import java.util.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Map;
+import java.util.TreeMap;
 
+/**
+ * MySQL Implementation of DAO
+ * @author Azra Žunić
+ */
 public class DonorDaoSQLImpl extends AbstractDao<Donor> implements DonorDao{
     public DonorDaoSQLImpl() {
         super("donors");
@@ -29,6 +34,10 @@ public class DonorDaoSQLImpl extends AbstractDao<Donor> implements DonorDao{
             throw new BloodException(e.getMessage(), e);
         }
     }
+    /**
+     * @param object - object to be mapped
+     * @return map representation of object
+     */
     @Override
     public Map<String, Object> object2row(Donor object) {
         Map<String, Object> row = new TreeMap<String, Object>();
@@ -41,11 +50,21 @@ public class DonorDaoSQLImpl extends AbstractDao<Donor> implements DonorDao{
         row.put("fk_BloodType", object.getBloodType_id_fk());
         return row;
     }
-
+    /**
+     * searching donors by name
+     * @param name - string that we search by
+     * @return donor by column fullname
+     */
     @Override
     public Donor searchByDonorsName(String name) throws BloodException {
         return executeQueryUnique("SELECT * FROM Donor WHERE FullName = ?",new Object[]{name});
     }
+    /**
+     * searching by id
+     * @param Id
+     * @return donors id
+     * @throws BloodException
+     */
     @Override
     public Donor searchById(int Id) throws BloodException{
         return getById(Id);

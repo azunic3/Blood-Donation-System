@@ -14,29 +14,28 @@ public class Donor extends DonorDaoSQLImpl implements Idable {
     private String Password;
     private Date DateOfBirth;
     private String Gender;
-    private String Adress;
     private int PhoneNumber;
     private Blood BloodType_id_fk;
     private String AlreadyDonated;
-
+    private Hospital fk_Hospital;
 
     /**
      *getters and setter for each private atribute
-     * Donor_id renamed to Id because of the Idable interface
+     * constructor, hashcode, toString, equals method
      */
     public Donor() {
     }
 
-    public Donor(int id, String fullName, String password, Date dateOfBirth, String gender, String adress, int phoneNumber, Blood bloodType_id_fk, String alreadyDonated) {
+    public Donor(int id, String fullName, String password, Date dateOfBirth, String gender, String adress, int phoneNumber, Blood bloodType_id_fk, String alreadyDonated, Hospital fk_Hospital) {
         Id = id;
         FullName = fullName;
         Password = password;
         DateOfBirth = dateOfBirth;
         Gender = gender;
-        Adress = adress;
         PhoneNumber = phoneNumber;
         BloodType_id_fk = bloodType_id_fk;
         AlreadyDonated = alreadyDonated;
+        this.fk_Hospital = fk_Hospital;
     }
 
     @Override
@@ -73,12 +72,6 @@ public class Donor extends DonorDaoSQLImpl implements Idable {
     public void setGender(String gender) {
         Gender = gender;
     }
-    public String getAdress() {
-        return Adress;
-    }
-    public void setAdress(String adress) {
-        Adress = adress;
-    }
     public int getPhoneNumber() {
         return PhoneNumber;
     }
@@ -102,6 +95,14 @@ public class Donor extends DonorDaoSQLImpl implements Idable {
         AlreadyDonated = alreadyDonated;
     }
 
+    public Hospital getFk_Hospital() {
+        return fk_Hospital;
+    }
+
+    public void setFk_Hospital(Hospital fk_Hospital) {
+        this.fk_Hospital = fk_Hospital;
+    }
+
     @Override
     public String toString() {
         return "Donor{" +
@@ -110,10 +111,10 @@ public class Donor extends DonorDaoSQLImpl implements Idable {
                 ", Password='" + Password + '\'' +
                 ", DateOfBirth=" + DateOfBirth +
                 ", Gender='" + Gender + '\'' +
-                ", Adress='" + Adress + '\'' +
                 ", PhoneNumber=" + PhoneNumber +
                 ", BloodType_id_fk=" + BloodType_id_fk +
                 ", AlreadyDonated='" + AlreadyDonated + '\'' +
+                ", fk_Hospital=" + fk_Hospital +
                 '}';
     }
 
@@ -122,11 +123,12 @@ public class Donor extends DonorDaoSQLImpl implements Idable {
         if (this == o) return true;
         if (!(o instanceof Donor)) return false;
         Donor donor = (Donor) o;
-        return Id == donor.Id && PhoneNumber == donor.PhoneNumber && Objects.equals(FullName, donor.FullName) && Objects.equals(Password, donor.Password) && Objects.equals(DateOfBirth, donor.DateOfBirth) && Objects.equals(Gender, donor.Gender) && Objects.equals(Adress, donor.Adress) && Objects.equals(BloodType_id_fk, donor.BloodType_id_fk) && Objects.equals(AlreadyDonated, donor.AlreadyDonated);
+        return Id == donor.Id && PhoneNumber == donor.PhoneNumber && Objects.equals(FullName, donor.FullName) && Objects.equals(Password, donor.Password) && Objects.equals(DateOfBirth, donor.DateOfBirth) && Objects.equals(Gender, donor.Gender) && Objects.equals(BloodType_id_fk, donor.BloodType_id_fk) && Objects.equals(AlreadyDonated, donor.AlreadyDonated) && Objects.equals(fk_Hospital, donor.fk_Hospital);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, FullName, Password, DateOfBirth, Gender, Adress, PhoneNumber, BloodType_id_fk, AlreadyDonated);
+        return Objects.hash(Id, FullName, Password, DateOfBirth, Gender, PhoneNumber, BloodType_id_fk, AlreadyDonated, fk_Hospital);
     }
+
 }

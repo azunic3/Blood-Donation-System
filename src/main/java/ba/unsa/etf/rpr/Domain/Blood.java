@@ -1,6 +1,6 @@
 package ba.unsa.etf.rpr.Domain;
 import ba.unsa.etf.rpr.Dao.BloodDaoSQLImpl;
-import ba.unsa.etf.rpr.exceptions.BloodException;
+import ba.unsa.etf.rpr.Exceptions.BloodException;
 
 import java.util.List;
 import java.util.Objects;
@@ -21,9 +21,8 @@ public class Blood extends BloodDaoSQLImpl implements Idable {
 
     /**
      *getters and setter for each private atribute
-     * BloodType renamed to Id because of the Idable interface
+     * constructor, hashcode, toString, equals method
      */
-
 
     public Blood() {
     }

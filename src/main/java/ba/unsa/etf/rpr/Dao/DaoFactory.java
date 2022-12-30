@@ -1,10 +1,8 @@
 package ba.unsa.etf.rpr.Dao;
-import ba.unsa.etf.rpr.Domain.Hospital;
-import java.sql.Connection;
 
 /**
  * Factory method for singleton implementation of DAOs
- *
+ *copied form GitHub and adjusted
  * @author Azra Žunić
  */
 public class DaoFactory {

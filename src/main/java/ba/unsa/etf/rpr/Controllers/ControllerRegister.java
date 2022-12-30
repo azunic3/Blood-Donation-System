@@ -2,31 +2,41 @@ package ba.unsa.etf.rpr.Controllers;
 
 import ba.unsa.etf.rpr.Dao.DonorDaoSQLImpl;
 import ba.unsa.etf.rpr.Domain.Donor;
-import ba.unsa.etf.rpr.exceptions.BloodException;
+import ba.unsa.etf.rpr.Exceptions.BloodException;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
+/**
+ * JavaFX Controller for Registration window
+ * @author Azra Žunić
+ * version 1.3
+ */
 public class ControllerRegister {
+    //attributes
     public Button btnCancel;
     public TextField fieldUsername2;
     public PasswordField fieldPassword;
     public TextField fieldPhoneNumber;
-    public TextField fieldAdress;
     public DatePicker fieldDateofBirth;
-    public CheckBox fieldGender;
+    public TextField fieldGender;
     public CheckBox fldAlready;
     public Button btnOK;
+    private Donor d;
+    private DonorDaoSQLImpl dao = new DonorDaoSQLImpl();
 
-    @FXML
-    public void initialize() {
-        fieldUsername2.getStyleClass().add("poljeNijeIsoravno");
+    /**
+     * action od submit button that saves new donor into db table
+     * @param actionEvent
+     * @throws BloodException
+     */
+    public void akcijaSubmit(ActionEvent actionEvent) throws BloodException {
+        d=new Donor();
+        fieldUsername2.getStyleClass().add("poljeNijeIspravno");
         fieldUsername2.textProperty().addListener(new ChangeListener<String>() {
-
+            @Override
             public void changed(ObservableValue<? extends String> observableValue, String o, String n) {
                 if (fieldUsername2.getText().trim().isEmpty()) {
                     fieldUsername2.getStyleClass().removeAll("poljeJeIspravno");
@@ -37,60 +47,33 @@ public class ControllerRegister {
                 }
             }
         });
-    }
+        if (fieldUsername2.getText().isEmpty()  || fieldPassword.getText().isEmpty() || fldAlready.getText().isEmpty())
+            return;
+        Donor  k=new Donor();
+        k=k.searchByDonorsName(fieldUsername2.getText());
+        if (k!=null)
+            return;
+        d.setFullName (fieldUsername2.getText());
+        d.setPassword(fieldPassword.getText());
+        d.setGender(fieldGender.getText());
+        d.setAlreadyDonated(fldAlready.getText());
 
-
-
-    private DonorDaoSQLImpl dao=new DonorDaoSQLImpl();
-
-    public void akcijaZatvori(ActionEvent actionEvent) {
-        Stage stage = (Stage) btnCancel.getScene().getWindow();
+        try {
+            dao.add(d);
+        } catch (Exception e) {
+            System.out.println("Problem with adding a new donor in the database");
+            throw new RuntimeException(e);
+        }
+        Stage stage = (Stage) btnOK.getScene().getWindow();
         stage.close();
     }
 
-    public void akcijaSubmit(ActionEvent actionEvent) {
-        if (fieldUsername2.getText().isEmpty()) {
-            fieldUsername2.requestFocus();
-            fieldUsername2.getStyleClass().removeAll("poljeJeIspravno");
-            fieldUsername2.getStyleClass().add("poljeNijeIspravno");
-        }
-        if(fieldPassword.getText().isEmpty()){
-            fieldPassword.requestFocus();
-            fieldPassword.getStyleClass().removeAll("poljeJeIspravno");
-            fieldPassword.getStyleClass().add("poljeNijeIspravno");
-        }
-        if(fldAlready.getText().isEmpty()){
-            fldAlready.requestFocus();
-            fldAlready.getStyleClass().removeAll("poljeJeIspravno");
-            fldAlready.getStyleClass().add("poljeNijeIspravno");
-        }
-
-       Donor p=new Donor();
-        p=p.searchByFullName(fieldUsername2.getText());
-        //bilo razlicito
-        if(p==null)
-            return;
-        p.setFullName(fieldUsername2.getText());
-        p.setPassword(fieldPassword.getText());
-        try{
-            dao.add(p);
-        } catch (BloodException e) {
-            System.out.println("Problem with adding a new donor");
-            throw new RuntimeException(e);
-        }
-    }
-
-    private boolean validiraj() {
-        boolean SveIspravno = true;
-        if (fieldUsername2.getText().isEmpty()) {
-            Alert upozorenje = new Alert(Alert.AlertType.ERROR);
-            upozorenje.setTitle("Field cannot be empty");
-            //upozorenje.showAndWait();
-            fieldUsername2.requestFocus();
-            fieldUsername2.getStyleClass().removeAll("poljeJeIspravno");
-            fieldUsername2.getStyleClass().add("poljeNijeIspravno");
-            SveIspravno = false;
-        }
-        return SveIspravno;
+    /**
+     * action on close button
+     * @param actionEvent
+     */
+    public void akcijaZatvori(ActionEvent actionEvent) {
+        Stage stage = (Stage) btnCancel.getScene().getWindow();
+        stage.close();
     }
 }

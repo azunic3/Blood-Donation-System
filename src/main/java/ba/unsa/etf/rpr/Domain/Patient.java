@@ -21,7 +21,7 @@ public class Patient extends PatientDaoSQLImpl implements Idable {
     private Hospital fk_Hospital_id;
     /**
      *getters and setter for each private atribute
-     * Patient_id renamed to Id because of the Idable interface
+     * constructor, hashcode, toString, equals method
      */
     @Override
     public int getId() {

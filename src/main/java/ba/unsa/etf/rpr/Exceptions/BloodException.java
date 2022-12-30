@@ -1,5 +1,9 @@
-package ba.unsa.etf.rpr.exceptions;
+package ba.unsa.etf.rpr.Exceptions;
 
+/**
+ * user defined exception
+ * @author Azra Žunić
+ */
 public class BloodException extends Exception{
     public BloodException(String msg, Exception reason){
         super(msg, reason);

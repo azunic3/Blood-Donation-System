@@ -1,11 +1,14 @@
 package ba.unsa.etf.rpr.Dao;
 
-import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Domain.Patient;
-import ba.unsa.etf.rpr.exceptions.BloodException;
+import ba.unsa.etf.rpr.Exceptions.BloodException;
 
 import java.util.List;
 
+/**
+ * Dao interface for Patient domain bean
+ * methods:searchByPatientsName,searchById,searchByFullName
+ */
 public interface PatientDao extends Dao<Patient>{
 
     List<Patient> searchByFullName(String text);

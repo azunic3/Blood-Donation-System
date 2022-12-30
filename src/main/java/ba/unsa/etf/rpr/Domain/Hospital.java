@@ -18,7 +18,7 @@ public class Hospital extends HospitalDaoSQLImpl implements Idable {
 
     /**
      * getters and setter for each private atribute
-     * Hospital renamed to Id because of the Idable interface
+     * constructor, hashcode, toString, equals method
      */
     public Hospital() {
     }

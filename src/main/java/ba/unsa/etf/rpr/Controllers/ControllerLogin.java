@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.Controllers;
 
 import ba.unsa.etf.rpr.Domain.Donor;
+import ba.unsa.etf.rpr.Exceptions.BloodException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -18,7 +19,12 @@ import java.util.Objects;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
-public class ControllerDonor {
+/**
+ * JavaFX Controller for login popup window
+ *
+ * @author Azra Žunić
+ */
+public class ControllerLogin {
     public TextField fieldUsername;
     public PasswordField Password;
     public Button loginBtn;
@@ -26,6 +32,9 @@ public class ControllerDonor {
     public TextField fieldUsername2;
     //private Object actionEvent;
 
+    /**
+     * special class that specifies actions on text fields
+     */
     @FXML
     public void initialize() {
         fieldUsername.getStyleClass().add("poljeNijeIsoravno");
@@ -43,32 +52,32 @@ public class ControllerDonor {
         });
     }
 
-    public void buttonClick(ActionEvent actionEvent) throws IOException {
+    /**
+     * checking if donor exists in a table already, so he can sign in
+     * @param actionEvent
+     * @throws IOException
+     * @throws BloodException
+     */
+    public void buttonClick(ActionEvent actionEvent) throws IOException, BloodException {
+        Donor d = new Donor();
         if (fieldUsername.getText().isEmpty()) {
             fieldUsername.getStyleClass().add("poljeNijeIspravno");
             return;
         }
-        Donor d = new Donor();
-        d = d.searchByFullName(fieldUsername.getText());
-        if (d != null) {
-            if (!Objects.equals(d.getPassword(), Password.getText()))
+        d= (Donor) d.searchByDonorsName(fieldUsername.getText());
+        if (d!=null) {
+            if(!Objects.equals(d.getPassword(), Password.getText()))
                 return;
-            Stage s = (Stage) loginBtn.getScene().getWindow();
-            s.close();
-
-        } else return;
+            Stage s=(Stage) loginBtn.getScene().getWindow();
+            s.close();}
+        else return;
     }
 
-       /* Stage secondstage = new Stage();
-        FXMLLoader fl = new FXMLLoader(getClass().getResource("/fxml/medstaffClick.fxml"));
-        Parent root = fl.load();
-        Noviprozor noviprozor = fl.getController();
-        noviprozor.labels.setText(noviprozor.labels.getText() + fieldUsername.getText());
-        secondstage.setTitle("Sign in");
-        secondstage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-        secondstage.show();*/
-
-
+    /**
+     * opening new window for registration
+     * @param actionEvent
+     * @throws IOException
+     */
     public void buttonClick1(ActionEvent actionEvent) throws IOException {
      /*   if (fieldUsername.getText().isEmpty()) {
             fieldUsername.getStyleClass().add("poljeNijeIspravno");
@@ -81,9 +90,14 @@ public class ControllerDonor {
         noviprozor.fieldUsername2.setText(noviprozor.fieldUsername2.getText());
         secondstage3.setTitle("Register form");
         secondstage3.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        secondstage3.setResizable(false);
         secondstage3.show();
     }
 
+    /**
+     * action on close button
+     * @param actionEvent
+     */
     public void akcijaZatvori(ActionEvent actionEvent) {
         Stage stage = (Stage) btnCancel.getScene().getWindow();
         stage.close();
@@ -91,8 +105,3 @@ public class ControllerDonor {
 }
 
 
- /*Alert alert=new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Pozdrav");
-        alert.setHeaderText("Zdravo");
-        alert.setContentText("Vaše korisničko ime je: "+fieldUsername.getText());
-        alert.show();*/

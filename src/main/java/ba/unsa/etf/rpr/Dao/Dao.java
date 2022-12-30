@@ -1,11 +1,10 @@
 package ba.unsa.etf.rpr.Dao;
-import ba.unsa.etf.rpr.Domain.Blood;
-import ba.unsa.etf.rpr.Domain.Donor;
-import ba.unsa.etf.rpr.exceptions.BloodException;
+import ba.unsa.etf.rpr.Exceptions.BloodException;
 
 import java.util.List;
 /**
  * Root interface for all DAO classes
+ * copied from GitHub and adjusted for my classes
  * @author Azra Žunić
  * version 1.0
  */
