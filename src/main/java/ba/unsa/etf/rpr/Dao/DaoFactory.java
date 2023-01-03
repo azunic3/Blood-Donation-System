@@ -2,14 +2,14 @@ package ba.unsa.etf.rpr.Dao;
 
 /**
  * Factory method for singleton implementation of DAOs
- *copied form GitHub and adjusted
+ * copied form GitHub and adjusted
  * @author Azra Žunić
  */
 public class DaoFactory {
-    private static final BloodDao bloodDao = new BloodDaoSQLImpl();
-    private static final DonorDao donorDao = new DonorDaoSQLImpl();
-    private static final PatientDao patientDao = new PatientDaoSQLImpl();
-    private static final HospitalDao hospitalDao = new HospitalDaoSQLImpl();
+    private static final BloodDao bloodDao =  BloodDaoSQLImpl.getInstance();
+    private static final DonorDao donorDao = DonorDaoSQLImpl.getInstance();
+    private static final PatientDao patientDao = PatientDaoSQLImpl.getInstance();
+    private static final HospitalDao hospitalDao = HospitalDaoSQLImpl.getInstance();
 
     public DaoFactory(){
     }

@@ -39,21 +39,14 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
     public static Connection getConnection(){
         return AbstractDao.connection;
     }
+    /**
+     * For singleton pattern, we have only one connection on the database which will be closed automatically when our program ends
+     * But if we want to close connection manually, then we will call this method which should be called from finally block
+     */
 
-    public void setConnection(Connection connection){
-        if(AbstractDao.connection!=null) {
-            try{
-                AbstractDao.connection.close();
-            }catch(SQLException e){
-                throw new RuntimeException(e);
-            }
-        }
-
-        AbstractDao.connection = connection;
-    }
-
-    public void removeConnection(){
-        if(this.connection!=null) {
+    public static void closeConnection() {
+        System.out.println("Method for closing connection");
+        if(connection!=null) {
             try {
                 connection.close();
             } catch (SQLException e) {
@@ -63,6 +56,18 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
             }
         }
     }
+    /*public void setConnection(Connection connection){
+        if(AbstractDao.connection!=null) {
+            try{
+                AbstractDao.connection.close();
+            }catch(SQLException e){
+                throw new RuntimeException(e);
+            }
+        }
+
+        AbstractDao.connection = connection;
+    }*/
+
 
     /**
      * Method for mapping ResultSet into Object
