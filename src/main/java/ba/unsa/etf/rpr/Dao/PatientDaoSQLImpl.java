@@ -4,6 +4,10 @@ import ba.unsa.etf.rpr.Exceptions.BloodException;
 
 import java.sql.*;
 import java.util.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * MySQL Implementation of DAO
@@ -11,10 +15,21 @@ import java.util.*;
  */
 public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDao {
 
+    private static  PatientDaoSQLImpl instance = null;
     public PatientDaoSQLImpl(){
     super("Patient");
     }
 
+    public static PatientDaoSQLImpl getInstance(){
+        if(instance==null)
+            instance = new PatientDaoSQLImpl();
+        return instance;
+    }
+
+    public static void removeInstance(){
+        if(instance!=null)
+            instance=null;
+    }
     @Override
     public Patient row2object(ResultSet rs) throws BloodException {
         try{

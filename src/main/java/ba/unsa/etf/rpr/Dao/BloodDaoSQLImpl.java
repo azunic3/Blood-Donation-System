@@ -5,15 +5,31 @@ import ba.unsa.etf.rpr.Exceptions.BloodException;
 
 import java.sql.*;
 import java.util.*;
-
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Map;
+import java.util.TreeMap;
 /**
  * MySQL Implementation of DAO
  * @author Azra Žunić
  */
 public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao {
-    public BloodDaoSQLImpl() {
+    private static  BloodDaoSQLImpl instance = null;
+    private BloodDaoSQLImpl() {
         super("Blood");
     }
+
+    public static BloodDaoSQLImpl getInstance(){
+        if(instance==null)
+            instance = new BloodDaoSQLImpl();
+        return instance;
+    }
+
+    public static void removeInstance(){
+        if(instance!=null)
+            instance=null;
+    }
+
 
     @Override
     public Blood row2object(ResultSet rs) throws BloodException {

@@ -12,11 +12,22 @@ import java.util.TreeMap;
  * @author Azra Žunić
  */
 public class HospitalDaoSQLImpl extends AbstractDao<Hospital> implements HospitalDao {
+    private static  HospitalDaoSQLImpl instance = null;
 
     public HospitalDaoSQLImpl() {
         super("Hospital");
     }
 
+    public static HospitalDaoSQLImpl getInstance(){
+        if(instance==null)
+            instance = new HospitalDaoSQLImpl();
+        return instance;
+    }
+
+    public static void removeInstance(){
+        if(instance!=null)
+            instance=null;
+    }
     @Override
     public Hospital row2object(ResultSet rs) throws BloodException {
         try {

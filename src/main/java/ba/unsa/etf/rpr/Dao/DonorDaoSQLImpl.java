@@ -13,9 +13,22 @@ import java.util.TreeMap;
  * @author Azra Žunić
  */
 public class DonorDaoSQLImpl extends AbstractDao<Donor> implements DonorDao{
+    private static  DonorDaoSQLImpl instance = null;
     public DonorDaoSQLImpl() {
-        super("donors");
+        super("Donors");
     }
+
+    public static DonorDaoSQLImpl getInstance(){
+        if(instance==null)
+            instance = new DonorDaoSQLImpl();
+        return instance;
+    }
+
+    public static void removeInstance(){
+        if(instance!=null)
+            instance=null;
+    }
+
     @Override
     public Donor row2object(ResultSet rs) throws BloodException {
         try {
@@ -46,8 +59,8 @@ public class DonorDaoSQLImpl extends AbstractDao<Donor> implements DonorDao{
         row.put("Gender", object.getGender());
         row.put("PhoneNumber", object.getPhoneNumber());
         row.put("DateOfBirth", object.getDateOfBirth());
-        row.put("fk_Hospital_id", object.getFk_Hospital());
-        row.put("fk_BloodType", object.getBloodType_id_fk());
+        row.put("Fk_Hospital", object.getFk_Hospital());
+        row.put("BloodType_id_fk", object.getBloodType_id_fk());
         return row;
     }
     /**
