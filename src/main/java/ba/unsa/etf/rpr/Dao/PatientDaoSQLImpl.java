@@ -102,7 +102,7 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
     }
     @Override
     public Patient searchByPatientsName(String name) throws BloodException {
-        return executeQueryUnique("SELECT * FROM Patient WHERE FullName = ?",new Object[]{name});
+        return executeQueryUnique("SELECT * FROM Patient WHERE Full_Name = ?", new Object[]{name});
     }
 
 

@@ -10,7 +10,7 @@ import java.util.Objects;
  * @author Azra Žunić
  * version 1.2
  */
-public class Patient implements Idable {
+public class Patient extends PatientDaoSQLImpl implements Idable {
     private int Id;
     private String Full_Name;
     private Date DateOfBirth;
