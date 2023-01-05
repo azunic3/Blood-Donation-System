@@ -70,7 +70,7 @@ public class DonorDaoSQLImpl extends AbstractDao<Donor> implements DonorDao{
      */
     @Override
     public Donor searchByDonorsName(String name) throws BloodException {
-        return executeQueryUnique("SELECT * FROM Donor WHERE FullName = ?",new Object[]{name});
+        return executeQueryUnique("SELECT * FROM Donor WHERE FullName = ?", new Object[]{name});
     }
     /**
      * searching by id

@@ -48,7 +48,7 @@ public class ControllerRegister {
             }
         });
         if (fieldUsername2.getText().isEmpty()  || fieldPassword.getText().isEmpty() || fldAlready.getText().isEmpty())
-            return;
+        return;
         Donor  k=new Donor();
         k=k.searchByDonorsName(fieldUsername2.getText());
         if (k!=null)

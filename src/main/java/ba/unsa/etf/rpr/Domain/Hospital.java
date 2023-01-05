@@ -7,7 +7,7 @@ import java.util.Objects;
  * @author Azra Žunić
  * version 1.0
  */
-public class Hospital implements Idable {
+public class Hospital extends HospitalDaoSQLImpl implements Idable {
 
     private int Id;
     private String Name;

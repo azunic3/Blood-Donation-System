@@ -2,12 +2,11 @@ package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Domain.Hospital;
-import ba.unsa.etf.rpr.Domain.Patient;
-import ba.unsa.etf.rpr.exceptions.BloodException;
+import ba.unsa.etf.rpr.Exceptions.BloodException;
 
 import java.util.List;
 
-public class hospitalsManager {
+public class HospitalManager {
     public List<Hospital> getAll() throws BloodException {
         return DaoFactory.hospitalDao().getAll();
     }
