@@ -1,6 +1,11 @@
 package ba.unsa.etf.rpr.Dao;
 
+import ba.unsa.etf.rpr.Domain.Blood;
+import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Domain.Hospital;
+import ba.unsa.etf.rpr.Exceptions.BloodException;
+
+import java.util.List;
 
 /**
  * Dao interface for Hospital domain bean
@@ -8,5 +13,6 @@ import ba.unsa.etf.rpr.Domain.Hospital;
  * @author Azra Žunić
  */
 public interface HospitalDao extends Dao<Hospital>{
-
+    public Hospital searchByName(String name) throws BloodException;
+    List<Hospital> searchByQuantityOnHand(int q) throws BloodException;
 }

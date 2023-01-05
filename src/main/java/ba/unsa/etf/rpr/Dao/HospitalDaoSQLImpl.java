@@ -1,10 +1,13 @@
 package ba.unsa.etf.rpr.Dao;
 
+import ba.unsa.etf.rpr.Domain.Blood;
+import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 /**
@@ -59,5 +62,27 @@ public class HospitalDaoSQLImpl extends AbstractDao<Hospital> implements Hospita
         return item;
     }
 
+    /**
+     * @author Azra Žunić
+     * searching for a hospital by its name
+     * @param name
+     * @return
+     * @throws BloodException
+     */
+    @Override
+    public Hospital searchByName(String name) throws BloodException {
+        return executeQueryUnique("SELECT * FROM Hospital WHERE Name = ?", new Object[]{name});
+    }
+
+    /**
+     * method used for searching by quantity of certain blood group that is available at the moment
+     * @param q
+     * @return
+     * @throws BloodException
+     */
+    @Override
+    public List<Hospital> searchByQuantityOnHand(int q) throws BloodException {
+        return executeQuery("SELECT * FROM Hospital WHERE QuantityOnHand LIKE concat('%', ?, '%')",new Object[]{q});
+    }
 }
 
