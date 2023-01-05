@@ -10,7 +10,7 @@ import java.util.Date;
  * @author Azra Žunić
  * version 1.2
  */
-public class Blood extends BloodDaoSQLImpl implements Idable {
+public class Blood implements Idable {
 
     private int Id;
     private String BloodBagNumber;
@@ -19,22 +19,22 @@ public class Blood extends BloodDaoSQLImpl implements Idable {
     private int BloodAmount;
     private Hospital fk_hospital_id;
 
+//    public Blood() {
+//    }
+//
+//    public Blood(int id, String bloodBagNumber, String bloodGroup, Date donateDate, int bloodAmount, Hospital fk_hospital_id) {
+//        Id = id;
+//        BloodBagNumber = bloodBagNumber;
+//        BloodGroup = bloodGroup;
+//        DonateDate = donateDate;
+//        BloodAmount = bloodAmount;
+//        this.fk_hospital_id = fk_hospital_id;
+//    }
+
     /**
      *getters and setter for each private atribute
      * constructor, hashcode, toString, equals method
      */
-
-    public Blood() {
-    }
-
-    public Blood(int id, String bloodBagNumber, String bloodGroup, Date donateDate, int bloodAmount, Hospital fk_Hospital_id) {
-        Id = id;
-        BloodBagNumber = bloodBagNumber;
-        BloodGroup = bloodGroup;
-        DonateDate = donateDate;
-        BloodAmount = bloodAmount;
-        this.fk_hospital_id = fk_Hospital_id;
-    }
 
     @Override
     public int getId() {
@@ -109,8 +109,8 @@ public class Blood extends BloodDaoSQLImpl implements Idable {
         return Objects.hash(Id, BloodBagNumber, BloodGroup, DonateDate, BloodAmount, fk_hospital_id);
     }
 
-    @Override
-    public List<Blood> searchByBagNumber(int BloodBagNumber) throws BloodException {
-        return null;
-    }
+
+//    public List<Blood> searchByBagNumber(int BloodBagNumber) throws BloodException {
+//        return null;
+//    }
 }

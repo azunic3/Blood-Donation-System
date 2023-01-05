@@ -10,7 +10,7 @@ import java.util.Objects;
  * @author Azra Žunić
  * version 1.2
  */
-public class Patient extends PatientDaoSQLImpl implements Idable {
+public class Patient implements Idable {
     private int Id;
     private String Full_Name;
     private Date DateOfBirth;
@@ -79,19 +79,19 @@ public class Patient extends PatientDaoSQLImpl implements Idable {
         this.fk_Hospital_id = fk_Hospital_id;
     }
 
-    public Patient() {
-    }
-
-    public Patient(int id, String fullName, Date dateOfBirth, String gender, String adress, int phoneNumber, Blood fk_BloodType, Hospital fk_Hospital_id) {
-        Id = id;
-        Full_Name = fullName;
-        DateOfBirth = dateOfBirth;
-        Gender = gender;
-        Adress = adress;
-        PhoneNumber = phoneNumber;
-        this.fk_BloodType = fk_BloodType;
-        this.fk_Hospital_id = fk_Hospital_id;
-    }
+//    public Patient() {
+//    }
+//
+//    public Patient(int id, String fullName, Date dateOfBirth, String gender, String adress, int phoneNumber, Blood fk_BloodType, Hospital fk_Hospital_id) {
+//        Id = id;
+//        Full_Name = fullName;
+//        DateOfBirth = dateOfBirth;
+//        Gender = gender;
+//        Adress = adress;
+//        PhoneNumber = phoneNumber;
+//        this.fk_BloodType = fk_BloodType;
+//        this.fk_Hospital_id = fk_Hospital_id;
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -120,8 +120,8 @@ public class Patient extends PatientDaoSQLImpl implements Idable {
                 '}';
     }
 
-    @Override
-    public Map<String, Object> object2row(Patient object) {
-        return null;
-    }
+
+//    public Map<String, Object> object2row(Patient object) {
+//        return null;
+//    }
 }
