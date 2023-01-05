@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.input.*?>
@@ -25,7 +26,7 @@
                            <accelerator>
                               <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                            </accelerator></MenuItem>
-                    <MenuItem fx:id="mniClose" onAction="#akcijaKraj" text="_Close">
+                    <MenuItem fx:id="mniClose" onAction="#closeApp" text="_Close">
                            <accelerator>
                               <KeyCodeCombination alt="UP" code="C" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                            </accelerator></MenuItem>
@@ -36,7 +37,7 @@
                 </Menu>
                 <Menu text="_Edit">
                   <items>
-                    <MenuItem text="_Delete">
+                    <MenuItem text="De_lete">
                            <accelerator>
                               <KeyCodeCombination alt="UP" code="D" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                            </accelerator></MenuItem>
@@ -47,19 +48,16 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="_Help">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
+                    <MenuItem mnemonicParsing="false" onAction="#openAbout" text="About" />
                   </items>
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="H" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
                 </Menu>
-                  <Menu mnemonicParsing="false" text="_View">
+                  <Menu text="_View">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="S_how">
-                           <accelerator>
-                              <KeyCodeCombination alt="UP" code="H" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                           </accelerator>
-                        </MenuItem>
+                      <MenuItem text="_Donor" />
+                        <MenuItem mnemonicParsing="false" text="_MedicalStaff" />
                     </items>
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="V" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
@@ -69,7 +67,7 @@
             </MenuBar>
             <ToolBar prefHeight="40.0" prefWidth="200.0">
               <items>
-                <Button fx:id="btnDonor" lineSpacing="5.0" mnemonicParsing="false" onAction="#btnDonorakcija" styleClass="tbButton" text="Donor?" underline="true">
+                <Button fx:id="btnDonor" alignment="CENTER" lineSpacing="5.0" mnemonicParsing="false" onAction="#btnDonorakcija" styleClass="tbButton" text="Donor?" underline="true">
                      <font>
                         <Font name="SimSun" size="12.0" />
                      </font></Button>
@@ -79,7 +77,17 @@
                         <Font name="SimSun" size="12.0" />
                      </font></Button>
                   <Separator orientation="VERTICAL" />
-                  <Button fx:id="tbClose" mnemonicParsing="false" onAction="#akcijaZatvori" />
+                  <Button mnemonicParsing="false" onAction="#btnheroesakcija" styleClass="tbButton" text="Heroes" underline="true">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="SimSun" size="12.0" />
+                     </font>
+                  </Button>
+                  <Separator orientation="VERTICAL" />
+                  <Button fx:id="tbClose" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#akcijaZatvori" prefHeight="26.0" prefWidth="27.0" styleClass="tbButton" />
+
               </items>
             </ToolBar>
          </children>
@@ -146,11 +154,11 @@
                   <Image url="https://img.icons8.com/external-smashingstocks-outline-color-smashing-stocks/2x/external-blood-bag-medical-smashingstocks-outline-color-smashing-stocks.png" />
                </image>
             </ImageView>
-            <Label layoutX="92.0" layoutY="182.0" text="Group O is the">
+            <Label layoutX="92.0" layoutY="190.0" text="Group O is the">
                <font>
                   <Font name="SimSun" size="12.0" />
                </font></Label>
-            <Label layoutX="89.0" layoutY="196.0" text="universal donor">
+            <Label layoutX="89.0" layoutY="205.0" text="universal donor">
                <font>
                   <Font name="SimSun" size="12.0" />
                </font></Label>
