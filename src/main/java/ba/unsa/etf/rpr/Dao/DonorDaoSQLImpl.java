@@ -1,10 +1,12 @@
 package ba.unsa.etf.rpr.Dao;
 
+import ba.unsa.etf.rpr.Domain.Blood;
 import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -64,24 +66,38 @@ public class DonorDaoSQLImpl extends AbstractDao<Donor> implements DonorDao{
         return row;
     }
     /**
-     * searching donors by name
-     * @param name - string that we search by
-     * @return donor by column fullname
+     * @author Azra Žunić
+     * method that searches donors by full name
+     * @param name
+     * @return
+     * @throws BloodException
      */
     @Override
     public Donor searchByDonorsName(String name) throws BloodException {
         return executeQueryUnique("SELECT * FROM Donor WHERE FullName = ?", new Object[]{name});
     }
     /**
-     * searching by id
+     * searching donors by donor_id
      * @param Id
      * @return donors id
      * @throws BloodException
      */
     @Override
     public Donor searchById(int Id) throws BloodException{
-        return getById(Id);
+        return executeQueryUnique("SELECT * FROM Donor WHERE Donor_id = ?", new Object[]{Id});
     }
+
+    /**
+     * checking if the donor has donated blood before
+     * @param don
+     * @return
+     * @throws BloodException
+     */
+    @Override
+    public List<Donor> searchByDonated(String don) throws BloodException {
+        return executeQuery("SELECT * FROM Donor WHERE AlreadyDonated LIKE concat('%', ?, '%')",new Object[]{don});
+    }
+
 }
 
 
