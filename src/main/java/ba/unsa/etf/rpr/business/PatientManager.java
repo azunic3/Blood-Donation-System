@@ -1,6 +1,8 @@
 package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.Dao.DaoFactory;
+import ba.unsa.etf.rpr.Domain.Blood;
+import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Domain.Patient;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 
@@ -8,9 +10,9 @@ import java.util.List;
 
 public class PatientManager {
 
-    public static List<Object> searchByFullName(String text) {
-        return searchByFullName(text);
-    }
+//    public static List<Object> searchByFullName(String text) {
+//        return searchByFullName(text);
+//    }
     public Patient searchByPatientsName(String name) throws BloodException {
         return DaoFactory.patientDao().searchByPatientsName(name);
     }
@@ -31,6 +33,8 @@ public class PatientManager {
         public Patient add(Patient q) throws BloodException{
             return DaoFactory.patientDao().add(q);
         }
-
+    public List<Patient> searchByBloodGroup(Blood group) throws BloodException{
+        return DaoFactory.patientDao().searchByBloodGroup(group);
+    }
 
 }

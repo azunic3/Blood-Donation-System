@@ -1,8 +1,8 @@
 package ba.unsa.etf.rpr.Dao;
+import ba.unsa.etf.rpr.Domain.Blood;
 import ba.unsa.etf.rpr.Domain.Patient;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 
-import java.sql.*;
 import java.util.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -65,32 +65,9 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
         return item;
     }
 
-    /**
-     * searching patients by name
-     * @param user - string that we search by
-     * @return donor by column fullname
-     */
-
-    public List<Patient> searchByFullName(String user) {
-        String query = "SELECT * FROM Patient WHERE FullName = ?";
-        try {
-            PreparedStatement stmt = getConnection().prepareStatement(query);
-            stmt.setString(1, user);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) { // result set is iterator.
-                return (List<Patient>) row2object(rs);
-            } else {
-                return null; // if there is no elements in the result set return null
-            }
-        } catch (SQLException e) {
-            e.printStackTrace(); // poor error handling
-        } catch (BloodException e) {
-            throw new RuntimeException(e);
-        }
-        return null;
-    }
 
     /**
+     * @author Azra Žunić
      * searching by id
      * @param Id
      * @return patients id
@@ -100,11 +77,27 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
     public Patient searchById(int Id) throws BloodException{
         return getById(Id);
     }
+
+    /**
+     * method is used for searching patients by their name
+     * @param name
+     * @return
+     * @throws BloodException
+     */
     @Override
     public Patient searchByPatientsName(String name) throws BloodException {
         return executeQueryUnique("SELECT * FROM Patient WHERE Full_Name = ?", new Object[]{name});
     }
 
-
+    /**
+     * checking blood type for patients
+     * @param group
+     * @return
+     * @throws BloodException
+     */
+    @Override
+    public List<Patient> searchByBloodGroup(Blood group) throws BloodException{
+        return executeQuery("SELECT * FROM Patient WHERE fk_BloodType LIKE concat('%', ?, '%')",new Object[]{group.getId()});
+    }
 }
 

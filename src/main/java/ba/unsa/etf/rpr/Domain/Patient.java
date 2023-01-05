@@ -120,8 +120,4 @@ public class Patient extends PatientDaoSQLImpl implements Idable {
                 '}';
     }
 
-
-//    public Map<String, Object> object2row(Patient object) {
-//        return null;
-//    }
 }
