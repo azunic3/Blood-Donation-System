@@ -30,7 +30,7 @@ public class Patient extends PatientDaoSQLImpl implements Idable {
 
     @Override
     public void setId(int id) {
-        Id = id;
+        this.Id = id;
     }
 
     public void setAdress(String adress) {

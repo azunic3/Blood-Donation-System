@@ -42,7 +42,7 @@ public class Blood implements Idable {
     }
 
     public void setId(int id) {
-        Id = id;
+        this.Id = id;
     }
 
     public String getBloodGroup() {

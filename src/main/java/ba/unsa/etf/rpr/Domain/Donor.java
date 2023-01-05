@@ -45,7 +45,7 @@ public class Donor extends DonorDaoSQLImpl implements Idable {
 
     @Override
     public void setId(int id) {
-        Id = id;
+        this.Id = id;
     }
     public String getFullName() {
         return FullName;

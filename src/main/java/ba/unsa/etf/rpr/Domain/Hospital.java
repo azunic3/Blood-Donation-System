@@ -39,7 +39,7 @@ public class Hospital extends HospitalDaoSQLImpl implements Idable {
 
     @Override
     public void setId(int id) {
-        Id = id;
+        this.Id = id;
     }
 
     public String getName() {
