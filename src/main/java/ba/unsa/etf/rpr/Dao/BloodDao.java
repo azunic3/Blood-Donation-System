@@ -4,6 +4,7 @@ import ba.unsa.etf.rpr.Domain.Blood;
 import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,8 +18,12 @@ public interface BloodDao extends Dao<Blood> {
      * methods: getAll, searchByBagNumber, searchByHospital
      * @return lists
      */
-public  List<Blood> searchByBagNumber(int BloodBagNumber) throws BloodException;
-    public List<Blood> getAll() throws BloodException;
+    List<Blood> getAll() throws BloodException;
 
-    public List<Blood> searchByHospital(Hospital hospital_id) throws BloodException;
+    List<Blood> searchByHospital(Hospital hospital) throws BloodException;
+    List<Blood> searchByBloodGroup(String group) throws BloodException;
+    List<Blood> searchByDonateDate(Date date) throws BloodException;
+    List<Blood> searchByBagNumber(String bagnum) throws BloodException;
+    List<Blood> searchByBloodAmount(int am) throws BloodException;
+
 }

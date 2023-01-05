@@ -2,8 +2,10 @@ package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Domain.Blood;
+import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 
+import java.util.Date;
 import java.util.List;
 
 public class BloodManager {
@@ -44,6 +46,21 @@ public class BloodManager {
             throw e;
         }
 
+    }
+    public List<Blood> searchByDonateDate(Date date) throws BloodException {
+        return DaoFactory.bloodDao().searchByDonateDate(date);
+    }
+    public List<Blood> searchByBagNumber(String bagnum) throws BloodException {
+        return DaoFactory.bloodDao().searchByBagNumber(bagnum);
+    }
+    public List<Blood> searchByBloodAmount(int am) throws BloodException {
+        return DaoFactory.bloodDao().searchByBloodAmount(am);
+    }
+    public List<Blood> searchByBloodGroup(String group) throws BloodException{
+        return DaoFactory.bloodDao().searchByBloodGroup(group);
+    }
+    public List<Blood> searchByHospital(Hospital hospital) throws BloodException{
+        return DaoFactory.bloodDao().searchByHospital(hospital);
     }
 
 //    public Blood add(Blood item) throws BloodException{

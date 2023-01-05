@@ -7,6 +7,7 @@ import java.sql.*;
 import java.util.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.Map;
 import java.util.TreeMap;
 /**
@@ -85,9 +86,62 @@ public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao {
         } catch (SQLException e) {
             throw new BloodException(e.getMessage(), e);
         }
-    }   @Override
-    public List<Blood> searchByHospital(Hospital hospital_id) throws BloodException{
-        return null;
+    }
+
+    /**
+     * @author Azra Žunić
+     * method that is used for searching infos by hospital id
+     * @param hospital
+     * @return
+     * @throws BloodException
+     */
+    @Override
+    public List<Blood> searchByHospital(Hospital hospital) throws BloodException{
+        return executeQuery("SELECT * FROM Blood WHERE fk_hospital_id LIKE concat('%', ?, '%')",new Object[]{hospital.getId()});
+    }
+
+    /**
+     * used to search by blood type
+     * @param group
+     * @return
+     * @throws BloodException
+     */
+    @Override
+    public List<Blood> searchByBloodGroup(String group) throws BloodException {
+        return executeQuery("SELECT * FROM Blood WHERE BloodGroup LIKE concat('%', ?, '%')",new Object[]{group});
+    }
+
+    /**
+     * searching by a certain date of blood donation
+     * @param date
+     * @return
+     * @throws BloodException
+     */
+    @Override
+    public List<Blood> searchByDonateDate(Date date) throws BloodException {
+        return executeQuery("SELECT * FROM Blood WHERE DonateDate LIKE concat('%', ?, '%')",new Object[]{date});
+    }
+
+    /**
+     * searching by blood bag number
+     * @param bagnum
+     * @return
+     * @throws BloodException
+     */
+    @Override
+    public List<Blood> searchByBagNumber(String bagnum) throws BloodException {
+        return executeQuery("SELECT * FROM Blood WHERE BloodBagNumber LIKE concat('%', ?, '%')",new Object[]{bagnum});
+    }
+
+    /**
+     * searching by amount of blood bag
+     * @param am
+     * @return
+     * @throws BloodException
+     */
+    @Override
+    public List<Blood> searchByBloodAmount(int am) throws BloodException {
+        return executeQuery("SELECT * FROM Blood WHERE BloodAmount LIKE concat('%', ?, '%')",new Object[]{am});
     }
 }
 
