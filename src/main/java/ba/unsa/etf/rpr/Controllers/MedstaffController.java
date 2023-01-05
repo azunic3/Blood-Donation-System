@@ -3,7 +3,7 @@ package ba.unsa.etf.rpr.Controllers;
 import ba.unsa.etf.rpr.Dao.PatientDaoSQLImpl;
 import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Domain.Patient;
-import ba.unsa.etf.rpr.business.patientsManager;
+import ba.unsa.etf.rpr.business.PatientManager;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,7 +22,7 @@ import java.sql.Date;
  */
 public class MedstaffController {
     //managers
-    private final patientsManager pManager = new patientsManager();
+    private final PatientManager pManager = new PatientManager();
     private PatientDaoSQLImpl patientDaoSQL=new PatientDaoSQLImpl();
     public Button btnCancel;
     public TextField search;

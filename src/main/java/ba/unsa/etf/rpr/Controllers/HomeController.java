@@ -67,6 +67,7 @@ public class HomeController {
             MedstaffController drugi = fl.getController();
             stage.setTitle("Medical staff help");
             stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+           stage.setResizable(false);
             stage.show();
         } catch (Exception e) {
             System.out.println(e);
@@ -86,6 +87,7 @@ public class HomeController {
             donorsController treci = fl.getController();
             stage.setTitle("Registrated donors");
             stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setResizable(false);
             stage.show();
         } catch (Exception e) {
             System.out.println(e);
