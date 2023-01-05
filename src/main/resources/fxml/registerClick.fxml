@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import java.net.*?>
+<?import javafx.collections.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
 <BorderPane xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.Controllers.ControllerRegister">
    <center>
       <AnchorPane prefHeight="235.0" prefWidth="514.0" style="-fx-background-color: lightcoral;">
@@ -26,11 +26,6 @@
                   </Label>
                   <DatePicker fx:id="fieldDateofBirth" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                   <Label alignment="CENTER" prefHeight="18.0" prefWidth="97.0" text="Gender" GridPane.columnIndex="2" GridPane.rowIndex="8">
-                     <font>
-                        <Font name="Arial" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="fldAdress" alignment="CENTER" prefHeight="18.0" prefWidth="102.0" text="Adress" GridPane.columnIndex="2" GridPane.rowIndex="11">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -58,7 +53,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                <Button fx:id="btnCancel" contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="Close" GridPane.columnIndex="3" GridPane.rowIndex="16">
+                <Button fx:id="btnCancel" contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#akcijaZatvori" text="Close" GridPane.columnIndex="3" GridPane.rowIndex="16">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -69,7 +64,6 @@
                      </font>
                   </Button>
                   <PasswordField fx:id="fieldPassword" GridPane.columnIndex="3" />
-                  <TextField fx:id="fieldAdress" GridPane.columnIndex="3" GridPane.rowIndex="11" />
                   <Label fx:id="fldName" alignment="CENTER" prefHeight="18.0" prefWidth="118.0" text="FullName">
                      <font>
                         <Font name="Arial" size="12.0" />
@@ -85,14 +79,14 @@
                   <ChoiceBox fx:id="fieldBloodGroup" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
                           <items>
                               <FXCollections fx:factory="observableArrayList">
-                                  <String fx:value="0+"/>
-                                  <String fx:value="0-"/>
-                                  <String fx:value="A+"/>
-                                  <String fx:value="A-"/>
-                                  <String fx:value="B+"/>
-                                  <String fx:value="B-"/>
-                                  <String fx:value="AB+"/>
-                                  <String fx:value="AB-"/>
+                                  <String fx:value="0+" />
+                                  <String fx:value="0-" />
+                                  <String fx:value="A+" />
+                                  <String fx:value="A-" />
+                                  <String fx:value="B+" />
+                                  <String fx:value="B-" />
+                                  <String fx:value="AB+" />
+                                  <String fx:value="AB-" />
                               </FXCollections>
                           </items>
                           </ChoiceBox>
