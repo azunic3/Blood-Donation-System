@@ -2,7 +2,9 @@ package ba.unsa.etf.rpr.Domain;
 import ba.unsa.etf.rpr.Dao.BloodDaoSQLImpl;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Date;
 /**

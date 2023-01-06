@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import javafx.beans.value.ObservableValue;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  * JavaFX Controller for Registration window

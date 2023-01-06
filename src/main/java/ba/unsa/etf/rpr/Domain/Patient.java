@@ -1,8 +1,7 @@
 package ba.unsa.etf.rpr.Domain;
-import ba.unsa.etf.rpr.Dao.PatientDaoSQLImpl;
 
+import java.time.LocalDate;
 import java.util.Date;
-import java.util.Map;
 import java.util.Objects;
 
 /**

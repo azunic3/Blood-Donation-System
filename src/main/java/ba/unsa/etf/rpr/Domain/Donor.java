@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.Domain;
 import ba.unsa.etf.rpr.Dao.DonorDaoSQLImpl;
 
+import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Date;
 /**
@@ -8,7 +9,7 @@ import java.util.Date;
  * @author Azra Žunić
  * version 1.2
  */
-public class Donor implements Idable {
+public class Donor extends DonorDaoSQLImpl implements Idable {
     private int Id;
     private String FullName;
     private String Password;
@@ -60,12 +61,15 @@ public class Donor implements Idable {
     public void setPassword(String password) {
         Password = password;
     }
+
     public Date getDateOfBirth() {
         return DateOfBirth;
     }
+
     public void setDateOfBirth(Date dateOfBirth) {
         DateOfBirth = dateOfBirth;
     }
+
     public String getGender() {
         return Gender;
     }

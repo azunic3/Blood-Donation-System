@@ -7,13 +7,14 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="554.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.Controllers.MedstaffController">
    <center>
-      <TableView fx:id="patientsTable" prefHeight="365.0" prefWidth="485.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="patientsTable" prefHeight="365.0" prefWidth="341.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="Idcol" prefWidth="41.20001143217087" text="ID" />
-          <TableColumn fx:id="namecol" prefWidth="136.79998016357422" text="Full Name" />
-            <TableColumn fx:id="gendercol" prefWidth="51.20001220703125" text="Gender" />
-            <TableColumn fx:id="datecol" prefWidth="115.60003662109375" text="Date of birth" />
-            <TableColumn fx:id="hospcol" prefWidth="75.0" text="HospitalName" />
+          <TableColumn fx:id="Idcol" prefWidth="34.600005745887756" text="ID" />
+          <TableColumn fx:id="namecol" prefWidth="94.99999237060547" text="Full name" />
+            <TableColumn fx:id="gendercol" prefWidth="47.79998779296875" text="Gender" />
+            <TableColumn fx:id="datecol" prefWidth="78.20001220703125" text="Date of birth" />
+            <TableColumn fx:id="hospcol" prefWidth="65.79998779296875" text="Hospital" />
+            <TableColumn prefWidth="75.0" text="Blood type" />
         </columns>
       </TableView>
    </center>
@@ -25,23 +26,18 @@
                   <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                </HBox.margin></TextField>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="23.0" prefWidth="79.0" styleClass="tbButton" text="Search">
+            <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" prefHeight="23.0" prefWidth="79.0" styleClass="tbButton" text="Search">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
                <HBox.margin>
                   <Insets right="10.0" top="5.0" />
                </HBox.margin></Button>
-            <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="70.0" styleClass="tbButton" text="Add" textOverrun="WORD_ELLIPSIS">
-               <font>
-                  <Font name="Arial" size="12.0" />
-               </font>
+            <Separator orientation="VERTICAL" prefHeight="200.0">
                <HBox.margin>
-                  <Insets left="5.0" right="5.0" top="5.0" />
-               </HBox.margin></Button>
-            <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <Button alignment="CENTER" mnemonicParsing="false" styleClass="tbButton" text="Delete" textOverrun="WORD_ELLIPSIS">
+                  <Insets right="5.0" />
+               </HBox.margin></Separator>
+            <Button fx:id="DeletePat" alignment="CENTER" mnemonicParsing="false" onAction="#DeletePat" prefHeight="23.0" prefWidth="70.0" styleClass="tbButton" text="Delete" textAlignment="JUSTIFY" textOverrun="WORD_ELLIPSIS">
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin>
@@ -49,6 +45,17 @@
                   <Font name="Arial" size="12.0" />
                </font>
             </Button>
+            <Separator orientation="VERTICAL" prefHeight="200.0">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin></Separator>
+            <Button fx:id="addNew" alignment="CENTER" mnemonicParsing="false" onAction="#addNew" prefHeight="23.0" prefWidth="70.0" styleClass="tbButton" text="Add" textOverrun="WORD_ELLIPSIS">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </HBox.margin></Button>
             <Button fx:id="tbClose" mnemonicParsing="false" onAction="#akcijaZatvori" prefHeight="23.0" prefWidth="61.0" text="Close">
                <font>
                   <Font name="Arial" size="12.0" />
@@ -59,4 +66,63 @@
          </children>
       </HBox>
    </bottom>
+   <right>
+      <VBox alignment="CENTER" focusTraversable="true" prefHeight="365.0" prefWidth="156.0" style="-fx-background-color: lightgray;" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane prefHeight="149.0" prefWidth="230.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="67.4" minHeight="10.0" prefHeight="47.4" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="66.39999809265137" minHeight="10.0" prefHeight="53.79999999999999" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="48.39999999999999" minHeight="10.0" prefHeight="48.39999999999999" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="ID:" />
+                  <Label text="Full Name:" GridPane.rowIndex="1" />
+                  <Label text="Gender:" GridPane.rowIndex="2" />
+                  <TextField fx:id="fieldID" GridPane.columnIndex="1" />
+                  <TextField fx:id="fieldName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <CheckBox fx:id="F" mnemonicParsing="false" text="Female" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+            <GridPane prefHeight="30.0" prefWidth="186.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <CheckBox fx:id="M" mnemonicParsing="false" text="Male" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+            <GridPane prefHeight="151.0" prefWidth="186.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="90.8" minHeight="10.0" prefHeight="40.4" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="50.4" minHeight="0.0" prefHeight="50.4" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Date of birth:" />
+                  <Label text="Hospital:" GridPane.rowIndex="1" />
+                  <Label text="Blood group:" GridPane.rowIndex="2" />
+                  <TextField fx:id="fieldHosp" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="fieldBlood" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <DatePicker fx:id="DatePick" GridPane.columnIndex="1" />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </GridPane>
+         </children>
+      </VBox>
+   </right>
 </BorderPane>
