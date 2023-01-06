@@ -14,55 +14,65 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  * JavaFX Controller for Medical staff action
  * shows list of all patient's information
  */
 public class MedstaffController {
-    //managers
-    private final PatientManager pManager = new PatientManager();
-    private PatientDaoSQLImpl patientDaoSQL=new PatientDaoSQLImpl();
+    public CheckBox F;
+    public CheckBox M;
+    public TextField fieldHosp;
+    public TextField fieldBlood;
+    public TextField fieldID;
+    public TextField fieldName;
+    public DatePicker DatePick;
+    private PatientDaoSQLImpl patientDaoSQL = new PatientDaoSQLImpl();
     public Button btnCancel;
+    public Button DeletePat;
     public TextField search;
     public TableView patientsTable;
 
     public BorderPane patientsScreen;
     //components
     public TableColumn<Patient, Integer> Idcol;
-    public TableColumn<Patient,String> namecol;
+    public TableColumn<Patient, String> namecol;
     public TableColumn<Patient, String> gendercol;
-    public TableColumn<Patient, Date> datecol;
-    public TableColumn<Hospital,String> hospcol;
+    public TableColumn<Patient, LocalDate> datecol;
+    public TableColumn<Patient, Integer> hospcol;
+    PatientManager manager = new PatientManager();
 
     /**
      * special class that specifies actions on TableColumns
+     *
      * @throws BloodException
      */
     @FXML
     public void initialize() throws BloodException {
-        Idcol.setCellValueFactory(new PropertyValueFactory<Patient,Integer>("Id"));
-        namecol.setCellValueFactory(new PropertyValueFactory<Patient,String>("Full_Name"));
-        gendercol.setCellValueFactory(new PropertyValueFactory<Patient, String>("Gender") );
-        datecol.setCellValueFactory(new PropertyValueFactory<Patient,Date>("DateOfBirth"));
+        Idcol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("Id"));
+        namecol.setCellValueFactory(new PropertyValueFactory<Patient, String>("Full_Name"));
+        gendercol.setCellValueFactory(new PropertyValueFactory<Patient, String>("Gender"));
+        datecol.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("DateOfBirth"));
+        hospcol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("fk_Hospital_id"));
         try {
             patientsTable.setItems(FXCollections.observableList(patientDaoSQL.getAll()));
             patientsTable.refresh();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     /**
      * search patients event handler
+     *
      * @param actionEvent
      * @throws BloodException
      */
     @FXML
     public void searchPatient(ActionEvent actionEvent) throws BloodException {
-        Patient e=patientDaoSQL.getById(Integer.parseInt(search.getText()));
-        ObservableList<Patient> emp=FXCollections.observableArrayList();
+        Patient e = patientDaoSQL.getById(Integer.parseInt(search.getText()));
+        ObservableList<Patient> emp = FXCollections.observableArrayList();
         emp.add(e);
         patientsTable.setItems(emp);
     }
@@ -71,26 +81,58 @@ public class MedstaffController {
      * closing window
      */
     public void akcijaZatvori(ActionEvent actionEvent) {
-        Stage stage=(Stage)btnCancel.getScene().getWindow();
+        Stage stage = (Stage) btnCancel.getScene().getWindow();
         stage.close();
     }
 
-//    @FXML
-//    public void DeleteEmp(ActionEvent actionEvent) throws BloodException{
-//        try {
-//            Patient ee= (Patient) emptab.getSelectionModel().getSelectedItem();
-//            manager.delete(ee.getId());
-//            //refreshCategories();
-//            emptab.getItems().remove(ee); // perf optimization
-//        }catch (EmployeeException e){
-//            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
-//        }
-//    }
+    /**
+     * method used for deleting a patient from the table
+     * @param actionEvent
+     * @throws BloodException
+     */
+    @FXML
+    public void DeletePat(ActionEvent actionEvent) throws BloodException {
+        try {
+            Patient ee = (Patient) patientsTable.getSelectionModel().getSelectedItem();
+            manager.delete(ee.getId());
+            patientsTable.getItems().remove(ee);
+        } catch (BloodException e) {
+            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
+        }
+    }
 
-//    public void searchPatients(ActionEvent actionEvent) {
-//        patientsTable.setItems(FXCollections.observableList(patientsManager.searchByFullName(search.getText())));
-//        patientsTable.refresh();
-//    }
-    
+    /**
+     * adding a new patient to the table
+     * @param actionEvent
+     */
 
+    public void addNew(ActionEvent actionEvent) {
+        try {
+            Patient p = new Patient();
+            p.setFull_Name(fieldName.getText());
+            p.setId(Integer.parseInt(fieldID.getText()));
+
+            if(F.isSelected())
+                p.setGender("F");
+            else if(M.isSelected())
+                p.setGender("M");
+
+            //p.setFk_Hospital_id(Integer.parseInt(fieldHosp.getText()));
+            //p.setFk_BloodType(Integer.parseInt(fieldBlood.getText()));
+
+            //p.setDateOfBirth(DatePick.getValue());
+
+
+            patientsTable.getItems().add(p);
+            p=manager.add(p);
+            fieldName.setText("");
+            fieldID.setText("");
+            fieldHosp.setText("");
+            fieldBlood.setText("");
+            DatePick= null;
+            //za gender choice box set
+        } catch(BloodException e){
+            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
+        }
+    }
 }
