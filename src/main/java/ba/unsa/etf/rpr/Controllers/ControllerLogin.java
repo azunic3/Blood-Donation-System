@@ -9,9 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -58,19 +56,32 @@ public class ControllerLogin {
      * @throws IOException
      * @throws BloodException
      */
-    public void buttonClick(ActionEvent actionEvent) throws IOException, BloodException {
+    public void buttonClick(ActionEvent actionEvent) {
         Donor d = new Donor();
-        if (fieldUsername.getText().isEmpty()) {
-            fieldUsername.getStyleClass().add("poljeNijeIspravno");
-            return;
-        }
-        d= (Donor) d.searchByDonorsName(fieldUsername.getText());
-        if (d!=null) {
-            if(!Objects.equals(d.getPassword(), Password.getText()))
+        try {
+            if (fieldUsername.getText().isEmpty()) {
+                fieldUsername.getStyleClass().add("poljeNijeIspravno");
                 return;
-            Stage s=(Stage) loginBtn.getScene().getWindow();
-            s.close();}
-        else return;
+            }
+            d = (Donor) d.searchByDonorsName(fieldUsername.getText());
+            if (d != null) {
+                if (!Objects.equals(d.getPassword(), Password.getText()))
+                    new Alert(Alert.AlertType.NONE,"incorrect password", ButtonType.OK).show();
+                Stage s = (Stage) loginBtn.getScene().getWindow();
+                s.close();
+            }
+            Stage stage = new Stage();
+            FXMLLoader fl = new FXMLLoader(getClass().getResource("/fxml/otvoriDonor.fxml"));
+            Parent root = fl.load();
+            otvoriDonor prvi = fl.getController();
+            stage.setTitle("Blood donation");
+            stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setResizable(false);
+            stage.show();
+        }
+        catch(Exception e){
+            new Alert(Alert.AlertType.NONE,"Please create an account", ButtonType.OK).show();
+        }
     }
 
     /**

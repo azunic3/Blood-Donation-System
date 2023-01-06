@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.Controllers;
 
+import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Dao.DonorDaoSQLImpl;
 import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
@@ -8,6 +9,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.beans.value.ObservableValue;
+
+import java.sql.Date;
 
 /**
  * JavaFX Controller for Registration window
@@ -21,9 +24,11 @@ public class ControllerRegister {
     public PasswordField fieldPassword;
     public TextField fieldPhoneNumber;
     public DatePicker fieldDateofBirth;
-    public TextField fieldGender;
+   public CheckBox F;
+   public CheckBox M;
     public CheckBox fldAlready;
     public Button btnOK;
+
     private Donor d;
     private DonorDaoSQLImpl dao = new DonorDaoSQLImpl();
 
@@ -32,41 +37,39 @@ public class ControllerRegister {
      * @param actionEvent
      * @throws BloodException
      */
-    public void akcijaSubmit(ActionEvent actionEvent) throws BloodException {
+    public void akcijaSubmit(ActionEvent actionEvent)  {
         d=new Donor();
-        fieldUsername2.getStyleClass().add("poljeNijeIspravno");
-        fieldUsername2.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String o, String n) {
-                if (fieldUsername2.getText().trim().isEmpty()) {
-                    fieldUsername2.getStyleClass().removeAll("poljeJeIspravno");
-                    fieldUsername2.getStyleClass().add("poljeNijeIspravno");
-                } else {
-                    fieldUsername2.getStyleClass().removeAll("poljeNijeIspravno");
-                    fieldUsername2.getStyleClass().add("poljeJeIspravno");
-                }
-            }
-        });
-        if (fieldUsername2.getText().isEmpty()  || fieldPassword.getText().isEmpty() || fldAlready.getText().isEmpty())
-        return;
-        Donor  k=new Donor();
-        k=k.searchByDonorsName(fieldUsername2.getText());
-        if (k!=null)
-            return;
-        d.setFullName (fieldUsername2.getText());
-        d.setPassword(fieldPassword.getText());
-        d.setGender(fieldGender.getText());
-        d.setAlreadyDonated(fldAlready.getText());
 
-        try {
-            dao.add(d);
-        } catch (Exception e) {
-            System.out.println("Problem with adding a new donor in the database");
-            throw new RuntimeException(e);
+        if (fieldUsername2.getText().isEmpty()  || fieldPassword.getText().isEmpty() || fldAlready.getText().isEmpty() ) {
+            HomeController m=new HomeController();
+            m.setNoviprozor2(null);
+            new Alert(Alert.AlertType.NONE,"Invalid registration",ButtonType.OK).show();
         }
-        Stage stage = (Stage) btnOK.getScene().getWindow();
-        stage.close();
-    }
+
+            if(M.isSelected() && F.isSelected())
+                new Alert(Alert.AlertType.NONE,"You can only choose one",ButtonType.OK).show();
+            d.setFullName(fieldUsername2.getText());
+            d.setPassword(fieldPassword.getText());
+            d.setDateOfBirth(Date.valueOf(fieldDateofBirth.getValue()));
+            d.setAlreadyDonated(fldAlready.getText());
+            d.setPhoneNumber(Integer.parseInt(fieldPhoneNumber.getText()));
+
+            if(F.isSelected())
+                d.setGender("F");
+            else if(M.isSelected())
+                d.setGender("M");
+
+            try {
+                DaoFactory.donorDao().add(d);
+            } catch (Exception e1) {
+                System.out.println("Problem with adding a new user in the database");
+                throw new RuntimeException(e1);
+            }
+            Stage stage = (Stage) btnOK.getScene().getWindow();
+            stage.close();
+        }
+
+
 
     /**
      * action on close button
