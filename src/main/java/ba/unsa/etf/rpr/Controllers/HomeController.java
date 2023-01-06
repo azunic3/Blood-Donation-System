@@ -29,9 +29,17 @@ public class HomeController {
     public Label StatusBarLabel;
     public MenuItem mniClose;
     public Button tbClose;
+    ControllerRegister noviprozor2;
     @FXML
     public void initialize() {
 
+    }
+    public ControllerRegister getNoviprozor2() {
+        return noviprozor2;
+    }
+
+    public void setNoviprozor2(ControllerRegister noviprozor2) {
+        this.noviprozor2 = noviprozor2;
     }
 
     /**
@@ -156,6 +164,14 @@ public class HomeController {
         }catch (Exception e){
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
+    }
+
+    public void openEditDonor(ActionEvent event){
+        openDialog("Manage Categories", "/fxml/category.fxml", new ControllerLogin());
+    }
+
+    public void openEditMedstaff(ActionEvent event){
+        openDialog("Manage Quotes", "/fxml/quote.fxml", new MedstaffController());
     }
 
 }

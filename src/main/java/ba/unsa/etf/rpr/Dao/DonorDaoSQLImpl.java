@@ -17,7 +17,7 @@ import java.util.TreeMap;
 public class DonorDaoSQLImpl extends AbstractDao<Donor> implements DonorDao{
     private static  DonorDaoSQLImpl instance = null;
     public DonorDaoSQLImpl() {
-        super("Donors");
+        super("Donor");
     }
 
     public static DonorDaoSQLImpl getInstance(){
@@ -45,7 +45,8 @@ public class DonorDaoSQLImpl extends AbstractDao<Donor> implements DonorDao{
             d.setFk_Hospital(DaoFactory.hospitalDao().getById(rs.getInt("fk_Hospital")));
             d.setBloodType_id_fk(DaoFactory.bloodDao().getById(rs.getInt("BloodType_id_fk")));
             return d;
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) {
             throw new BloodException(e.getMessage(), e);
         }
     }

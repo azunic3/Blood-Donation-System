@@ -8,7 +8,7 @@ import java.util.Date;
  * @author Azra Žunić
  * version 1.2
  */
-public class Donor extends DonorDaoSQLImpl implements Idable {
+public class Donor implements Idable {
     private int Id;
     private String FullName;
     private String Password;

@@ -56,8 +56,8 @@
                 </Menu>
                   <Menu text="_View">
                     <items>
-                      <MenuItem text="_Donor" />
-                        <MenuItem mnemonicParsing="false" text="_MedicalStaff" />
+                      <MenuItem fx:id="openEditDonor" text="_Donor" />
+                        <MenuItem fx:id="openEditMedstaff" mnemonicParsing="false" text="_MedicalStaff" />
                     </items>
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="V" control="DOWN" meta="UP" shift="UP" shortcut="UP" />

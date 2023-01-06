@@ -75,6 +75,18 @@ public class MedstaffController {
         stage.close();
     }
 
+//    @FXML
+//    public void DeleteEmp(ActionEvent actionEvent) throws BloodException{
+//        try {
+//            Patient ee= (Patient) emptab.getSelectionModel().getSelectedItem();
+//            manager.delete(ee.getId());
+//            //refreshCategories();
+//            emptab.getItems().remove(ee); // perf optimization
+//        }catch (EmployeeException e){
+//            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
+//        }
+//    }
+
 //    public void searchPatients(ActionEvent actionEvent) {
 //        patientsTable.setItems(FXCollections.observableList(patientsManager.searchByFullName(search.getText())));
 //        patientsTable.refresh();

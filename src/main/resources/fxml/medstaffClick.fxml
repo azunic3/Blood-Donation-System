@@ -25,7 +25,7 @@
                   <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                </HBox.margin></TextField>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="23.0" prefWidth="79.0" text="Search">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="23.0" prefWidth="79.0" styleClass="tbButton" text="Search">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
@@ -33,7 +33,7 @@
                   <Insets right="10.0" top="5.0" />
                </HBox.margin></Button>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="70.0" text="Save">
+            <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="70.0" styleClass="tbButton" text="Add" textOverrun="WORD_ELLIPSIS">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
@@ -41,12 +41,20 @@
                   <Insets left="5.0" right="5.0" top="5.0" />
                </HBox.margin></Button>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <Button alignment="CENTER" mnemonicParsing="false" styleClass="tbButton" text="Delete" textOverrun="WORD_ELLIPSIS">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Button>
             <Button fx:id="tbClose" mnemonicParsing="false" onAction="#akcijaZatvori" prefHeight="23.0" prefWidth="61.0" text="Close">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
                <HBox.margin>
-                  <Insets left="180.0" right="10.0" top="5.0" />
+                  <Insets left="70.0" right="10.0" top="5.0" />
                </HBox.margin></Button>
          </children>
       </HBox>
