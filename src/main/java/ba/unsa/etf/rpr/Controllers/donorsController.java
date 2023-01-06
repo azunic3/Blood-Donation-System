@@ -34,7 +34,6 @@ public class donorsController {
         IDcol.setCellValueFactory(new PropertyValueFactory<Donor,Integer>("Id"));
         NAMEcol.setCellValueFactory(new PropertyValueFactory<Donor,String>("FullName"));
         typecol.setCellValueFactory(new PropertyValueFactory<Donor,Integer>("BloodType_id_fk"));
-        //NEDOSTAJE ZA BLOODTYPE, za sad je samo id
         try {
             DonorTable.setItems(FXCollections.observableList(donorDaoSQL.getAll()));
             DonorTable.refresh();

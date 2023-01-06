@@ -41,6 +41,7 @@ public class MedstaffController {
     public TableColumn<Patient, String> gendercol;
     public TableColumn<Patient, LocalDate> datecol;
     public TableColumn<Patient, Integer> hospcol;
+    public TableColumn<Patient, Integer> bloodcol;
     PatientManager manager = new PatientManager();
 
     /**
@@ -55,6 +56,7 @@ public class MedstaffController {
         gendercol.setCellValueFactory(new PropertyValueFactory<Patient, String>("Gender"));
         datecol.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("DateOfBirth"));
         hospcol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("fk_Hospital_id"));
+        bloodcol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("Fk_BloodType"));
         try {
             patientsTable.setItems(FXCollections.observableList(patientDaoSQL.getAll()));
             patientsTable.refresh();
@@ -117,10 +119,10 @@ public class MedstaffController {
             else if(M.isSelected())
                 p.setGender("M");
 
-            //p.setFk_Hospital_id(Integer.parseInt(fieldHosp.getText()));
-            //p.setFk_BloodType(Integer.parseInt(fieldBlood.getText()));
-
-            //p.setDateOfBirth(DatePick.getValue());
+//            p.setFk_Hospital_id(Integer.parseInt(fieldHosp.getText()));
+//            p.setFk_BloodType(Integer.parseInt(fieldBlood.getText()));
+//
+//            p.setDateOfBirth(DatePick.getValue());
 
 
             patientsTable.getItems().add(p);

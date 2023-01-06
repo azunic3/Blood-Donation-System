@@ -14,7 +14,7 @@
             <TableColumn fx:id="gendercol" prefWidth="47.79998779296875" text="Gender" />
             <TableColumn fx:id="datecol" prefWidth="78.20001220703125" text="Date of birth" />
             <TableColumn fx:id="hospcol" prefWidth="65.79998779296875" text="Hospital" />
-            <TableColumn prefWidth="75.0" text="Blood type" />
+            <TableColumn fx:id="bloodcol" prefWidth="75.0" text="Blood type" />
         </columns>
       </TableView>
    </center>
