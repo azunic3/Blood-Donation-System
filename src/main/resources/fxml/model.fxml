@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <GridPane prefHeight="122.0" prefWidth="366.0" style="-fx-background-color: lightgrey;">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="178.0" minWidth="10.0" prefWidth="117.6" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="273.00000762939453" minWidth="10.0" prefWidth="227.60000000000002" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Blood group:">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <Label text="Donate date:" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="fgroup" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="fdate" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                     <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets right="10.0" top="100.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </GridPane>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <HBox prefHeight="43.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Blood donor screening: Medical history" textFill="#400404">
+               <font>
+                  <Font name="SimSun" size="23.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="70.0" top="10.0" />
+               </HBox.margin>
+            </Label>
+         </children></HBox>
+   </top>
+   <left>
+      <VBox prefHeight="333.0" prefWidth="234.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Important information!" textFill="#400404">
+               <VBox.margin>
+                  <Insets left="50.0" top="25.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Label>
+            <TextArea prefHeight="251.0" prefWidth="216.0" promptText="Men can donate blood every 3 months and women every 4 months. A medical examination determines your health status and the possibility of donating blood. A light meal is recommended two hours before donating, and smoking should be avoided for two hours after donating. Alcohol should not be consumed on the day of donating blood.">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+            </TextArea>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>
