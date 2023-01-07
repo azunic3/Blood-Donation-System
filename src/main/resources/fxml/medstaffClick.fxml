@@ -10,18 +10,21 @@
       <TableView fx:id="patientsTable" prefHeight="365.0" prefWidth="341.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="Idcol" prefWidth="34.600005745887756" text="ID" />
-          <TableColumn fx:id="namecol" prefWidth="94.99999237060547" text="Full name" />
-            <TableColumn fx:id="gendercol" prefWidth="47.79998779296875" text="Gender" />
-            <TableColumn fx:id="datecol" prefWidth="78.20001220703125" text="Date of birth" />
-            <TableColumn fx:id="hospcol" prefWidth="65.79998779296875" text="Hospital" />
-            <TableColumn fx:id="bloodcol" prefWidth="75.0" text="Blood type" />
+          <TableColumn fx:id="namecol" prefWidth="79.99999618530273" text="Full name" />
+            <TableColumn fx:id="gendercol" prefWidth="48.0" text="Gender" />
+            <TableColumn fx:id="datecol" prefWidth="78.4000244140625" text="Date of birth" />
+            <TableColumn fx:id="hospcol" prefWidth="60.80000305175781" text="Hospital" />
+            <TableColumn fx:id="bloodcol" prefWidth="100.79998779296875" text="Blood type" />
         </columns>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin>
       </TableView>
    </center>
    <bottom>
       <HBox prefHeight="32.0" prefWidth="554.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="search" onAction="#searchPatient" text="Find the patient">
+            <TextField fx:id="search" alignment="CENTER" mouseTransparent="true" onAction="#searchPatient" style="-fx-background-color: lightgray;" text="Find the patient">
                <HBox.margin>
                   <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                </HBox.margin></TextField>
@@ -56,6 +59,7 @@
                <HBox.margin>
                   <Insets left="5.0" right="5.0" top="5.0" />
                </HBox.margin></Button>
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
             <Button fx:id="tbClose" mnemonicParsing="false" onAction="#akcijaZatvori" prefHeight="23.0" prefWidth="61.0" text="Close">
                <font>
                   <Font name="Arial" size="12.0" />
@@ -80,9 +84,18 @@
                 <RowConstraints maxHeight="48.39999999999999" minHeight="10.0" prefHeight="48.39999999999999" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="ID:" />
-                  <Label text="Full Name:" GridPane.rowIndex="1" />
-                  <Label text="Gender:" GridPane.rowIndex="2" />
+                  <Label text="ID:">
+                     <padding>
+                        <Insets left="2.0" />
+                     </padding></Label>
+                  <Label text="Full Name:" GridPane.rowIndex="1">
+                     <padding>
+                        <Insets left="2.0" />
+                     </padding></Label>
+                  <Label text="Gender:" GridPane.rowIndex="2">
+                     <padding>
+                        <Insets left="2.0" />
+                     </padding></Label>
                   <TextField fx:id="fieldID" GridPane.columnIndex="1" />
                   <TextField fx:id="fieldName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <CheckBox fx:id="F" mnemonicParsing="false" text="Female" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -111,9 +124,18 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Date of birth:" />
-                  <Label text="Hospital:" GridPane.rowIndex="1" />
-                  <Label text="Blood group:" GridPane.rowIndex="2" />
+                  <Label text="Date of birth:">
+                     <padding>
+                        <Insets left="2.0" />
+                     </padding></Label>
+                  <Label text="Hospital:" GridPane.rowIndex="1">
+                     <padding>
+                        <Insets left="2.0" />
+                     </padding></Label>
+                  <Label text="Blood group:" GridPane.rowIndex="2">
+                     <padding>
+                        <Insets left="2.0" />
+                     </padding></Label>
                   <TextField fx:id="fieldHosp" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="fieldBlood" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <DatePicker fx:id="DatePick" GridPane.columnIndex="1" />
