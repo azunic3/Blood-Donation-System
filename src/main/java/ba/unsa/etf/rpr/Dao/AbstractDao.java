@@ -2,7 +2,8 @@ package ba.unsa.etf.rpr.Dao;
 
 import ba.unsa.etf.rpr.Domain.Idable;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
-
+import java.io.Closeable;
+import java.io.IOException;
 import java.sql.*;
 import java.util.*;
 
@@ -18,7 +19,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
 
     public AbstractDao(String tableName) {
         this.tableName = tableName;
-        if(connection==null) createConnection();
+        createConnection();
     }
     private static void createConnection(){
         if(AbstractDao.connection==null) {
@@ -31,7 +32,17 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
                 AbstractDao.connection = DriverManager.getConnection(url, username, password);
             } catch (Exception e) {
                 e.printStackTrace();
-                System.exit(0);
+            }finally {
+                Runtime.getRuntime().addShutdownHook(new Thread(){
+                    @Override
+                    public void run(){
+                        try {
+                            connection.close();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
             }
         }
     }
@@ -39,34 +50,6 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
     public static Connection getConnection(){
         return AbstractDao.connection;
     }
-    /**
-     * For singleton pattern, we have only one connection on the database which will be closed automatically when our program ends
-     * But if we want to close connection manually, then we will call this method which should be called from finally block
-     */
-
-    public static void closeConnection() {
-        System.out.println("Method for closing connection");
-        if(connection!=null) {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                //throw new RuntimeException(e);
-                e.printStackTrace();
-                System.out.println("REMOVE CONNECTION METHOD ERROR: Unable to close connection on database");
-            }
-        }
-    }
-    /*public void setConnection(Connection connection){
-        if(AbstractDao.connection!=null) {
-            try{
-                AbstractDao.connection.close();
-            }catch(SQLException e){
-                throw new RuntimeException(e);
-            }
-        }
-
-        AbstractDao.connection = connection;
-    }*/
 
 
     /**
@@ -99,7 +82,14 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
             throw new BloodException(e.getMessage(), e);
         }
     }
-@Override
+
+    /**
+     * add method
+     * @param item bean for saving to database
+     * @return
+     * @throws BloodException
+     */
+    @Override
     public T add(T item) throws BloodException{
         Map<String, Object> row = object2row(item);
         Map.Entry<String, String> columns = prepareInsertParts(row);
@@ -131,6 +121,12 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
         }
     }
 
+    /**
+     * update method
+     * @param item - bean to be updated. id must be populated
+     * @return
+     * @throws BloodException
+     */
     public T update(T item) throws BloodException{
         Map<String, Object> row = object2row(item);
         String updateColumns = prepareUpdateParts(row);
