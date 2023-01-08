@@ -17,26 +17,26 @@ public class Blood implements Idable {
     private int Id;
     private String BloodBagNumber;
     private String BloodGroup;
-    private Date DonateDate;
+    private LocalDate DonateDate;
     private int BloodAmount;
     private Hospital fk_hospital_id;
 
-//    public Blood() {
-//    }
-//
-//    public Blood(int id, String bloodBagNumber, String bloodGroup, Date donateDate, int bloodAmount, Hospital fk_hospital_id) {
-//        Id = id;
-//        BloodBagNumber = bloodBagNumber;
-//        BloodGroup = bloodGroup;
-//        DonateDate = donateDate;
-//        BloodAmount = bloodAmount;
-//        this.fk_hospital_id = fk_hospital_id;
-//    }
 
     /**
      *getters and setter for each private atribute
      * constructor, hashcode, toString, equals method
      */
+    public Blood() {
+    }
+
+    public Blood(int id, String bloodBagNumber, String bloodGroup, LocalDate donateDate, int bloodAmount, Hospital fk_hospital_id) {
+        Id = id;
+        BloodBagNumber = bloodBagNumber;
+        BloodGroup = bloodGroup;
+        DonateDate = donateDate;
+        BloodAmount = bloodAmount;
+        this.fk_hospital_id = fk_hospital_id;
+    }
 
     @Override
     public int getId() {
@@ -62,11 +62,11 @@ public class Blood implements Idable {
         BloodBagNumber = bloodBagNumber;
     }
 
-    public Date getDonateDate() {
+    public LocalDate getDonateDate() {
         return DonateDate;
     }
 
-    public void setDonateDate(Date donateDate) {
+    public void setDonateDate(LocalDate donateDate) {
         DonateDate = donateDate;
     }
 
@@ -111,8 +111,4 @@ public class Blood implements Idable {
         return Objects.hash(Id, BloodBagNumber, BloodGroup, DonateDate, BloodAmount, fk_hospital_id);
     }
 
-
-//    public List<Blood> searchByBagNumber(int BloodBagNumber) throws BloodException {
-//        return null;
-//    }
 }

@@ -22,6 +22,19 @@ public class Patient implements Idable {
      *getters and setter for each private atribute
      * constructor, hashcode, toString, equals method
      */
+    public Patient() {
+    }
+
+    public Patient(int id, String fullName, Date dateOfBirth, String gender, String adress, int phoneNumber, Blood fk_BloodType, Hospital fk_Hospital_id) {
+        Id = id;
+        Full_Name = fullName;
+        DateOfBirth = dateOfBirth;
+        Gender = gender;
+        Adress = adress;
+        PhoneNumber = phoneNumber;
+        this.fk_BloodType = fk_BloodType;
+        this.fk_Hospital_id = fk_Hospital_id;
+    }
     @Override
     public int getId() {
         return Id;
@@ -77,20 +90,6 @@ public class Patient implements Idable {
     public void setFk_Hospital_id(Hospital fk_Hospital_id) {
         this.fk_Hospital_id = fk_Hospital_id;
     }
-
-//    public Patient() {
-//    }
-//
-//    public Patient(int id, String fullName, Date dateOfBirth, String gender, String adress, int phoneNumber, Blood fk_BloodType, Hospital fk_Hospital_id) {
-//        Id = id;
-//        Full_Name = fullName;
-//        DateOfBirth = dateOfBirth;
-//        Gender = gender;
-//        Adress = adress;
-//        PhoneNumber = phoneNumber;
-//        this.fk_BloodType = fk_BloodType;
-//        this.fk_Hospital_id = fk_Hospital_id;
-//    }
 
     @Override
     public boolean equals(Object o) {

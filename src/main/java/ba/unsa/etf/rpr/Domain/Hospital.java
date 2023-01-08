@@ -20,17 +20,17 @@ public class Hospital implements Idable {
      * getters and setter for each private atribute
      * constructor, hashcode, toString, equals method
      */
-//    public Hospital() {
-//    }
-//
-//    public Hospital(int id, String name, int quantityOnHand, String adress, int contactNumber, String description) {
-//        Id = id;
-//        Name = name;
-//        QuantityOnHand = quantityOnHand;
-//        Adress = adress;
-//        ContactNumber = contactNumber;
-//        Description = description;
-//    }
+    public Hospital() {
+    }
+
+    public Hospital(int id, String name, int quantityOnHand, String adress, int contactNumber, String description) {
+        Id = id;
+        Name = name;
+        QuantityOnHand = quantityOnHand;
+        Adress = adress;
+        ContactNumber = contactNumber;
+        Description = description;
+    }
 
     @Override
     public int getId() {

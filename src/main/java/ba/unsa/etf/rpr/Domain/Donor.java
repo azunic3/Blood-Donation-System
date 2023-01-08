@@ -24,20 +24,20 @@ public class Donor extends DonorDaoSQLImpl implements Idable {
      *getters and setter for each private atribute
      * constructor, hashcode, toString, equals method
      */
-//    public Donor() {
-//    }
-//
-//    public Donor(int id, String fullName, String password, Date dateOfBirth, String gender, String adress, int phoneNumber, Blood bloodType_id_fk, String alreadyDonated, Hospital fk_Hospital) {
-//        Id = id;
-//        FullName = fullName;
-//        Password = password;
-//        DateOfBirth = dateOfBirth;
-//        Gender = gender;
-//        PhoneNumber = phoneNumber;
-//        BloodType_id_fk = bloodType_id_fk;
-//        AlreadyDonated = alreadyDonated;
-//        this.fk_Hospital = fk_Hospital;
-//    }
+    public Donor() {
+    }
+
+    public Donor(int id, String fullName, String password, Date dateOfBirth, String gender, String adress, int phoneNumber, Blood bloodType_id_fk, String alreadyDonated, Hospital fk_Hospital) {
+        Id = id;
+        FullName = fullName;
+        Password = password;
+        DateOfBirth = dateOfBirth;
+        Gender = gender;
+        PhoneNumber = phoneNumber;
+        BloodType_id_fk = bloodType_id_fk;
+        AlreadyDonated = alreadyDonated;
+        this.fk_Hospital = fk_Hospital;
+    }
 
     @Override
     public int getId() {

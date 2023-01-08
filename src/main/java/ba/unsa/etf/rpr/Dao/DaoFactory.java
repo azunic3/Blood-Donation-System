@@ -14,15 +14,19 @@ public class DaoFactory {
     public DaoFactory(){
     }
     public static BloodDao bloodDao(){
+
         return bloodDao;
     }
 
-    public static DonorDao donorDao(){ return donorDao;
+    public static DonorDao donorDao(){
+        return donorDao;
     }
     public static PatientDao patientDao(){
+
         return patientDao;
     }
     public static HospitalDao hospitalDao(){
+
         return hospitalDao;
     }
 }
