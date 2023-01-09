@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.Controllers.ControllerModel">
    <top>
       <HBox prefHeight="43.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -22,11 +22,6 @@
    <right>
       <VBox prefHeight="357.0" prefWidth="252.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField alignment="CENTER" style="-fx-background-color: lightgray;" text="Find your information">
-               <VBox.margin>
-                  <Insets left="10.0" right="10.0" top="30.0" />
-               </VBox.margin>
-            </TextField>
             <GridPane prefHeight="122.0" prefWidth="363.0" style="-fx-background-color: lightgrey;">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="178.0" minWidth="10.0" prefWidth="94.6" />
@@ -58,17 +53,14 @@
                         <Insets left="10.0" right="10.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="fdate" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <opaqueInsets>
-                        <Insets left="10.0" />
-                     </opaqueInsets>
+                  <DatePicker fx:id="datefield" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="10.0" right="10.0" />
                      </GridPane.margin>
-                  </TextField>
+                  </DatePicker>
                </children>
                <VBox.margin>
-                  <Insets right="10.0" top="30.0" />
+                  <Insets right="10.0" top="50.0" />
                </VBox.margin>
                <padding>
                   <Insets left="10.0" />
