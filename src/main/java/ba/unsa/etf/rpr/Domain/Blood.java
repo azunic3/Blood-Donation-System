@@ -26,6 +26,10 @@ public class Blood implements Idable {
      *getters and setter for each private atribute
      * constructor, hashcode, toString, equals method
      */
+    public Blood(String BloodGroup) {
+        this.BloodGroup=BloodGroup;
+    }
+
     public Blood() {
     }
 

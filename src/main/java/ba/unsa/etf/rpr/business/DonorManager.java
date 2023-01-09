@@ -16,6 +16,9 @@ public class DonorManager {
     public List<Donor> searchByDonated(String don) throws BloodException{
         return DaoFactory.donorDao().searchByDonated(don);
     }
+    public Donor searchByBloodId(int Id) throws BloodException{
+        return DaoFactory.donorDao().getById(Id);
+    }
     public List<Donor> getAll() throws BloodException{
         return DaoFactory.donorDao().getAll();
     }

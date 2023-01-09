@@ -98,6 +98,10 @@ public class DonorDaoSQLImpl extends AbstractDao<Donor> implements DonorDao{
     public List<Donor> searchByDonated(String don) throws BloodException {
         return executeQuery("SELECT * FROM Donor WHERE AlreadyDonated LIKE concat('%', ?, '%')",new Object[]{don});
     }
+    @Override
+    public Donor searchByBloodId(int Id) throws BloodException{
+        return executeQueryUnique("SELECT * FROM Donor WHERE Donor_id = ?", new Object[]{Id});
+    }
 
 }
 

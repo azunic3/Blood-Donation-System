@@ -71,9 +71,9 @@ public class ControllerLogin {
                 s.close();
             }
             Stage stage = new Stage();
-            FXMLLoader fl = new FXMLLoader(getClass().getResource("/fxml/Signin.fxml"));
+            FXMLLoader fl = new FXMLLoader(getClass().getResource("/fxml/model.fxml"));
             Parent root = fl.load();
-            ControllerSignin prvi = fl.getController();
+            ControllerModel prvi = fl.getController();
             stage.setTitle("Blood donation");
             stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.setResizable(false);

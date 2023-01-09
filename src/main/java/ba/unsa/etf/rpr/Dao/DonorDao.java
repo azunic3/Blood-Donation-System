@@ -15,5 +15,5 @@ public interface DonorDao extends Dao<Donor>{
 
     public Donor searchByDonorsName(String name) throws BloodException;
     List<Donor> searchByDonated(String don) throws BloodException;
-
+public Donor searchByBloodId(int id) throws BloodException;
 }

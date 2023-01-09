@@ -73,10 +73,10 @@ public class MedstaffController {
      */
     @FXML
     public void searchPatient(ActionEvent actionEvent) throws BloodException {
-        Patient e = patientDaoSQL.getById(Integer.parseInt(search.getText()));
-        ObservableList<Patient> emp = FXCollections.observableArrayList();
-        emp.add(e);
-        patientsTable.setItems(emp);
+        Patient p = patientDaoSQL.getById(Integer.parseInt(search.getText()));
+        ObservableList<Patient> pat = FXCollections.observableArrayList();
+        pat.add(p);
+        patientsTable.setItems(pat);
     }
 
     /**

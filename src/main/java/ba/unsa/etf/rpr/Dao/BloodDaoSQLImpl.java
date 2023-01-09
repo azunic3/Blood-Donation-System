@@ -4,6 +4,7 @@ import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +17,7 @@ import java.util.TreeMap;
  */
 public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao {
     private static  BloodDaoSQLImpl instance = null;
-    private BloodDaoSQLImpl() {
+    public BloodDaoSQLImpl() {
         super("Blood");
     }
 
@@ -39,7 +40,7 @@ public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao {
             b.setId(rs.getInt("Blood_id"));
             b.setBloodGroup(rs.getString("BloodGroup"));
             b.setBloodBagNumber(rs.getString("BloodBagNumber"));
-            b.setDonateDate(rs.getDate("DonateDate"));
+            //b.setDonateDate((rs.getObject("DonateDate"));
             b.setBloodAmount(rs.getInt("BloodAmount"));
             b.setFk_hospital_id (DaoFactory.hospitalDao().getById(rs.getInt("fk_hospital_id")));
             return b;
