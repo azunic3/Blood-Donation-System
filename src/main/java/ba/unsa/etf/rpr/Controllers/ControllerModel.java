@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.Controllers;
 
 import ba.unsa.etf.rpr.Dao.BloodDaoSQLImpl;
 import ba.unsa.etf.rpr.Domain.Blood;
+import ba.unsa.etf.rpr.Domain.Patient;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 import ba.unsa.etf.rpr.business.BloodManager;
 import ba.unsa.etf.rpr.business.DonorManager;
@@ -14,30 +15,28 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
 public class ControllerModel {
     public TableColumn<Blood, Integer> IDcol;
     public TableColumn<Blood, String> bloodCol;
-    public TableColumn<Blood, Date> DateCol;
+    public TableColumn<Blood, LocalDate> DateCol;
 
     public DatePicker fdate;
     public TextField fgroup;
     private final DonorManager donorManager = new DonorManager();
 
     BloodManager bmanager=new BloodManager();
-   public TableView bloodTable;
+   public TableView bloodTable ;
     public TextField search;
     private BloodDaoSQLImpl bloodDaoSQL = new BloodDaoSQLImpl();
 
     @FXML
     public void initialize() throws BloodException {
-        IDcol.setCellValueFactory(new PropertyValueFactory<Blood, Integer>("Id"));
+       IDcol.setCellValueFactory(new PropertyValueFactory<Blood, Integer>("Id"));
         bloodCol.setCellValueFactory(new PropertyValueFactory<Blood, String>("BloodGroup"));
-        DateCol.setCellValueFactory(new PropertyValueFactory<Blood, Date>("DonateDate"));
-
-        bloodTable.getSelectionModel().selectedItemProperty().addListener((obs, oldBlood, newBlood) -> {
+        DateCol.setCellValueFactory(new PropertyValueFactory<Blood, LocalDate>("DonateDate"));
+            bloodTable.getSelectionModel().selectedItemProperty().addListener((obs, oldBlood, newBlood) -> {
             BloodModel bloodModel = new BloodModel();
             bloodModel.fromBlood((Blood) newBlood);
         fdate.valueProperty().bindBidirectional(bloodModel.fdate);
@@ -56,18 +55,16 @@ public class ControllerModel {
     }
 
     public ControllerModel(){}
-//    private void refresh() throws BloodException{
-//        try{
-//            bloodTable.setItems(FXCollections.observableList(bmanager.getAll()));
-//
-//           DateCol.setValue(null);
-//            bloodCol.setText("");
-//
-//
-//        }catch (BloodException e){
-//            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
-//        }
-//    }
+    private void refresh() throws BloodException{
+        try{
+            bloodTable.setItems(FXCollections.observableList(bmanager.getAll()));
+
+bloodTable.refresh();
+
+        }catch (BloodException e){
+            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
+        }
+    }
 
     public class BloodModel {
     public SimpleStringProperty fgroup = new SimpleStringProperty("");

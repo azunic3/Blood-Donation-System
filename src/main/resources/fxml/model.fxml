@@ -95,7 +95,7 @@
       </HBox>
    </bottom>
    <center>
-      <TableView prefHeight="257.0" prefWidth="301.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="bloodTable" prefHeight="257.0" prefWidth="301.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="IDcol" prefWidth="51.599974036216736" text="ID" />
           <TableColumn fx:id="bloodCol" prefWidth="144.40003204345703" text="Blood type" />
