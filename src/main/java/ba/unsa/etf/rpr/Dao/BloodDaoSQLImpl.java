@@ -145,8 +145,3 @@ public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao {
         return executeQuery("SELECT * FROM Blood WHERE BloodAmount LIKE concat('%', ?, '%')",new Object[]{am});
     }
 }
-
-
-
-
-

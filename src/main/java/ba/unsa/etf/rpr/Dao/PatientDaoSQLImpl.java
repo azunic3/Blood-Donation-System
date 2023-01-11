@@ -17,7 +17,7 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
 
     private static  PatientDaoSQLImpl instance = null;
     public PatientDaoSQLImpl(){
-    super("Patient");
+        super("Patient");
     }
 
     public static PatientDaoSQLImpl getInstance(){
@@ -60,8 +60,8 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
         item.put("PhoneNumber", object.getPhoneNumber());
         item.put("DateOfBirth", object.getDateOfBirth());
         item.put("Adress", object.getAdress());
-        item.put("fk_Hospital_id", object.getFk_Hospital_id());
-        item.put("fk_BloodType", object.getFk_BloodType());
+        item.put("fk_Hospital_id", object.getFk_Hospital_id().getId());
+        item.put("fk_BloodType", object.getFk_BloodType().getId());
         return item;
     }
 
@@ -100,4 +100,3 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
         return executeQuery("SELECT * FROM Patient WHERE fk_BloodType LIKE concat('%', ?, '%')",new Object[]{group.getId()});
     }
 }
-

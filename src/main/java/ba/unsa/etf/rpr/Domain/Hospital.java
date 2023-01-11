@@ -85,14 +85,7 @@ public class Hospital implements Idable {
 
     @Override
     public String toString() {
-        return "Hospital{" +
-                "Id=" + Id +
-                ", Name='" + Name + '\'' +
-                ", QuantityOnHand=" + QuantityOnHand +
-                ", Adress='" + Adress + '\'' +
-                ", ContactNumber=" + ContactNumber +
-                ", Description='" + Description + '\'' +
-                '}';
+        return Name ;
     }
 
     @Override

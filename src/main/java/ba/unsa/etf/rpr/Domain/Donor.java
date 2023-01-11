@@ -116,9 +116,9 @@ public class Donor extends DonorDaoSQLImpl implements Idable {
                 ", DateOfBirth=" + DateOfBirth +
                 ", Gender='" + Gender + '\'' +
                 ", PhoneNumber=" + PhoneNumber +
-                ", BloodType_id_fk=" + BloodType_id_fk +
+                ", BloodType_id_fk=" + BloodType_id_fk.getId() +
                 ", AlreadyDonated='" + AlreadyDonated + '\'' +
-                ", fk_Hospital=" + fk_Hospital +
+                ", fk_Hospital=" + fk_Hospital.getId() +
                 '}';
     }
 

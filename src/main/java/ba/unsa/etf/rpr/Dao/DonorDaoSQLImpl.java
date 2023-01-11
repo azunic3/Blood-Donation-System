@@ -104,7 +104,3 @@ public class DonorDaoSQLImpl extends AbstractDao<Donor> implements DonorDao{
     }
 
 }
-
-
-
-

@@ -15,22 +15,23 @@ import java.util.TreeMap;
  * @author Azra Žunić
  */
 public class HospitalDaoSQLImpl extends AbstractDao<Hospital> implements HospitalDao {
-    private static  HospitalDaoSQLImpl instance = null;
+    private static HospitalDaoSQLImpl instance = null;
 
     public HospitalDaoSQLImpl() {
         super("Hospital");
     }
 
-    public static HospitalDaoSQLImpl getInstance(){
-        if(instance==null)
+    public static HospitalDaoSQLImpl getInstance() {
+        if (instance == null)
             instance = new HospitalDaoSQLImpl();
         return instance;
     }
 
-    public static void removeInstance(){
-        if(instance!=null)
-            instance=null;
+    public static void removeInstance() {
+        if (instance != null)
+            instance = null;
     }
+
     @Override
     public Hospital row2object(ResultSet rs) throws BloodException {
         try {
@@ -46,6 +47,7 @@ public class HospitalDaoSQLImpl extends AbstractDao<Hospital> implements Hospita
             throw new BloodException(e.getMessage(), e);
         }
     }
+
     /**
      * @param object - object to be mapped
      * @return map representation of object
@@ -63,11 +65,11 @@ public class HospitalDaoSQLImpl extends AbstractDao<Hospital> implements Hospita
     }
 
     /**
-     * @author Azra Žunić
-     * searching for a hospital by its name
      * @param name
      * @return
      * @throws BloodException
+     * @author Azra Žunić
+     * searching for a hospital by its name
      */
     @Override
     public Hospital searchByName(String name) throws BloodException {
@@ -76,13 +78,13 @@ public class HospitalDaoSQLImpl extends AbstractDao<Hospital> implements Hospita
 
     /**
      * method used for searching by quantity of certain blood group that is available at the moment
+     *
      * @param q
      * @return
      * @throws BloodException
      */
     @Override
     public List<Hospital> searchByQuantityOnHand(int q) throws BloodException {
-        return executeQuery("SELECT * FROM Hospital WHERE QuantityOnHand LIKE concat('%', ?, '%')",new Object[]{q});
+        return executeQuery("SELECT * FROM Hospital WHERE QuantityOnHand LIKE concat('%', ?, '%')", new Object[]{q});
     }
 }
-
