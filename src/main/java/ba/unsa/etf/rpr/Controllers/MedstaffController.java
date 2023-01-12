@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 /**
@@ -113,16 +114,14 @@ public class MedstaffController {
             Patient p = new Patient();
             p.setFull_Name(fieldName.getText());
             p.setId(Integer.parseInt(fieldID.getText()));
-
             if(F.isSelected())
                 p.setGender("F");
             else if(M.isSelected())
                 p.setGender("M");
 
-//            p.setFk_Hospital_id(Integer.parseInt(fieldHosp.getText()));
-//            p.setFk_BloodType(Integer.parseInt(fieldBlood.getText()));
-//
-//            p.setDateOfBirth(DatePick.getValue());
+//        p.setDateOfBirth((Date)DatePick.getValue());
+//        p.setFk_Hospital_id(fieldHosp.getText());
+//        p.setFk_BloodType(fieldBlood.getText());
 
 
             patientsTable.getItems().add(p);

@@ -49,18 +49,14 @@ public class ControllerModel {
                e.printStackTrace();
            }
     }
-
     public ControllerModel(BloodDaoSQLImpl bloodDaoSQL) {
         this.bloodDaoSQL=bloodDaoSQL;
     }
-
     public ControllerModel(){}
     private void refresh() throws BloodException{
         try{
             bloodTable.setItems(FXCollections.observableList(bmanager.getAll()));
-
-bloodTable.refresh();
-
+            bloodTable.refresh();
         }catch (BloodException e){
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
@@ -72,10 +68,8 @@ bloodTable.refresh();
 
     public void fromBlood(Blood d) {
         this.fgroup.set(d.getBloodGroup());
-        //opet datum sranje
         this.fdate.set(d.getDonateDate());
     }
-
     public Blood toBlood() {
         Blood d = new Blood();
         d.setBloodGroup(this.fgroup.getName());
@@ -83,11 +77,7 @@ bloodTable.refresh();
         return d;
     }
 }
-
-
-    public void searchD (ActionEvent actionEvent) throws BloodException {
-        //TREBA KORISTIT SEARCHBYBLOODID da iz tabele donor dobijem fk na tabelu Blood
-
+public void searchD (ActionEvent actionEvent) throws BloodException {
         Blood p = bloodDaoSQL.getById(Integer.parseInt(search.getText()));
         ObservableList<Blood> pat = FXCollections.observableArrayList();
         pat.add(p);

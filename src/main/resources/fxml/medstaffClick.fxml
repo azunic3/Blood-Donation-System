@@ -28,14 +28,6 @@
                <HBox.margin>
                   <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                </HBox.margin></TextField>
-            <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" prefHeight="23.0" prefWidth="79.0" styleClass="tbButton" text="Search">
-               <font>
-                  <Font name="Arial" size="12.0" />
-               </font>
-               <HBox.margin>
-                  <Insets right="10.0" top="5.0" />
-               </HBox.margin></Button>
             <Separator orientation="VERTICAL" prefHeight="200.0">
                <HBox.margin>
                   <Insets right="5.0" />
@@ -48,16 +40,12 @@
                   <Font name="Arial" size="12.0" />
                </font>
             </Button>
-            <Separator orientation="VERTICAL" prefHeight="200.0">
-               <HBox.margin>
-                  <Insets left="5.0" />
-               </HBox.margin></Separator>
-            <Button fx:id="addNew" alignment="CENTER" mnemonicParsing="false" onAction="#addNew" prefHeight="23.0" prefWidth="70.0" styleClass="tbButton" text="Add" textOverrun="WORD_ELLIPSIS">
+            <Button fx:id="addNew" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#addNew" prefHeight="23.0" prefWidth="65.0" styleClass="tbButton" text="Add" textOverrun="WORD_ELLIPSIS">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
                <HBox.margin>
-                  <Insets left="5.0" right="5.0" top="5.0" />
+                  <Insets left="140.0" right="7.0" top="5.0" />
                </HBox.margin></Button>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
             <Button fx:id="tbClose" mnemonicParsing="false" onAction="#akcijaZatvori" prefHeight="23.0" prefWidth="61.0" text="Close">
@@ -65,15 +53,20 @@
                   <Font name="Arial" size="12.0" />
                </font>
                <HBox.margin>
-                  <Insets left="70.0" right="10.0" top="5.0" />
+                  <Insets left="10.0" right="7.0" top="5.0" />
                </HBox.margin></Button>
          </children>
       </HBox>
    </bottom>
    <right>
-      <VBox alignment="CENTER" focusTraversable="true" prefHeight="365.0" prefWidth="156.0" style="-fx-background-color: lightgray;" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" focusTraversable="true" prefHeight="320.0" prefWidth="156.0" style="-fx-background-color: lightgray;" BorderPane.alignment="CENTER">
          <children>
-            <GridPane prefHeight="149.0" prefWidth="230.0">
+            <Label text="Add a new patient">
+               <font>
+                  <Font name="Arial Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <GridPane prefHeight="114.0" prefWidth="156.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -100,6 +93,9 @@
                   <TextField fx:id="fieldName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <CheckBox fx:id="F" mnemonicParsing="false" text="Female" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
+               <VBox.margin>
+                  <Insets top="17.0" />
+               </VBox.margin>
             </GridPane>
             <GridPane prefHeight="30.0" prefWidth="186.0">
               <columnConstraints>
@@ -112,16 +108,19 @@
                <children>
                   <CheckBox fx:id="M" mnemonicParsing="false" text="Male" GridPane.columnIndex="1" />
                </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </GridPane>
-            <GridPane prefHeight="151.0" prefWidth="186.0">
+            <GridPane prefHeight="143.0" prefWidth="156.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="90.8" minHeight="10.0" prefHeight="40.4" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="50.4" minHeight="0.0" prefHeight="50.4" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="90.8" minHeight="10.0" prefHeight="49.2" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="58.39999999999999" minHeight="0.0" prefHeight="45.6" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="47.999999999999986" minHeight="10.0" prefHeight="47.999999999999986" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Label text="Date of birth:">
@@ -141,10 +140,13 @@
                   <DatePicker fx:id="DatePick" GridPane.columnIndex="1" />
                </children>
                <VBox.margin>
-                  <Insets />
+                  <Insets top="25.0" />
                </VBox.margin>
             </GridPane>
          </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" />
+         </BorderPane.margin>
       </VBox>
    </right>
 </BorderPane>
