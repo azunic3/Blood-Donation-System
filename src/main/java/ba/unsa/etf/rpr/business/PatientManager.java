@@ -6,16 +6,17 @@ import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Domain.Patient;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 
+import java.util.Collections;
 import java.util.List;
 
 public class PatientManager {
 
-//    public static List<Object> searchByFullName(String text) {
-//        return searchByFullName(text);
-//    }
-    public Patient searchByPatientsName(String name) throws BloodException {
-        return DaoFactory.patientDao().searchByPatientsName(name);
+public static List<Patient> searchPatients(String text) throws BloodException {
+    return (DaoFactory.patientDao().searchByFullName(text));
     }
+//    public Patient searchByPatientsName(String name) throws BloodException {
+//        return DaoFactory.patientDao().searchByPatientsName(name);
+//    }
     public List<Patient> getAll() throws BloodException {
             return DaoFactory.patientDao().getAll();
         }

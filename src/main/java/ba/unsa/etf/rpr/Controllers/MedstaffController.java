@@ -44,7 +44,7 @@ public class MedstaffController {
     public TableColumn<Patient, Integer> hospcol;
     public TableColumn<Patient, Integer> bloodcol;
     PatientManager manager = new PatientManager();
-
+    private final PatientManager patientManager = new PatientManager();
     /**
      * special class that specifies actions on TableColumns
      *
@@ -64,28 +64,6 @@ public class MedstaffController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * search patients event handler
-     *
-     * @param actionEvent
-     * @throws BloodException
-     */
-    @FXML
-    public void searchPatient(ActionEvent actionEvent) throws BloodException {
-        Patient p = patientDaoSQL.getById(Integer.parseInt(search.getText()));
-        ObservableList<Patient> pat = FXCollections.observableArrayList();
-        pat.add(p);
-        patientsTable.setItems(pat);
-    }
-
-    /**
-     * closing window
-     */
-    public void akcijaZatvori(ActionEvent actionEvent) {
-        Stage stage = (Stage) btnCancel.getScene().getWindow();
-        stage.close();
     }
 
     /**
@@ -136,4 +114,39 @@ public class MedstaffController {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
     }
+    /**
+     * search patients event handler
+     *
+     * @param actionEvent
+     * @throws BloodException
+     */
+
+    public void searchPatients(ActionEvent actionEvent) {
+        try {
+            patientsTable.setItems(FXCollections.observableList(patientManager.searchPatients(search.getText())));
+            patientsTable.refresh();
+        } catch (BloodException e) {
+            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
+        }
+    }
+
+    /**
+     * fetch patients from database
+     */
+    private void refreshQuotes(){
+        try {
+            patientsTable.setItems(FXCollections.observableList(patientManager.getAll()));
+            patientsTable.refresh();
+        } catch (BloodException e) {
+            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
+        }
+    }
+    /**
+     * closing window
+     */
+    public void akcijaZatvori(ActionEvent actionEvent) {
+        Stage stage = (Stage) btnCancel.getScene().getWindow();
+        stage.close();
+    }
+
 }

@@ -99,4 +99,8 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
     public List<Patient> searchByBloodGroup(Blood group) throws BloodException{
         return executeQuery("SELECT * FROM Patient WHERE fk_BloodType LIKE concat('%', ?, '%')",new Object[]{group.getId()});
     }
+    @Override
+    public List<Patient> searchByFullName(String text) throws BloodException{
+        return executeQuery("SELECT * FROM Patient WHERE Full_Name LIKE concat('%', ?, '%')",new Object[]{text});
+    }
 }
