@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.Dao;
 
 import ba.unsa.etf.rpr.Domain.Blood;
 import ba.unsa.etf.rpr.Domain.Donor;
+import ba.unsa.etf.rpr.Domain.Patient;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 
 import java.util.List;
@@ -16,4 +17,5 @@ public interface DonorDao extends Dao<Donor>{
     public Donor searchByDonorsName(String name) throws BloodException;
     List<Donor> searchByDonated(String don) throws BloodException;
 public Donor searchByBloodId(int id) throws BloodException;
+    List<Donor> searchByName(String text) throws BloodException;
 }

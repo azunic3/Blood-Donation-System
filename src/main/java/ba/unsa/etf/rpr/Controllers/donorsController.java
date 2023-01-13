@@ -3,15 +3,15 @@ package ba.unsa.etf.rpr.Controllers;
 import ba.unsa.etf.rpr.Dao.DonorDaoSQLImpl;
 import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
+import ba.unsa.etf.rpr.business.DonorManager;
+import ba.unsa.etf.rpr.business.PatientManager;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -28,6 +28,8 @@ public class donorsController {
     public TableColumn<Donor, Integer> IDcol;
     public TableColumn<Donor,String> NAMEcol;
     public TableColumn<Donor, Integer> typecol;
+    public TextField search;
+    private final DonorManager donorManager = new DonorManager();
 
     @FXML
     public void initialize() throws BloodException {
@@ -42,6 +44,10 @@ public class donorsController {
         }
     }
 
+    /**
+     * closing window
+     * @param actionEvent
+     */
     public void akcijaZatvori(ActionEvent actionEvent) {
         Stage stage=(Stage)btnCancel.getScene().getWindow();
         stage.close();
@@ -59,6 +65,31 @@ public class donorsController {
             stage.show();
         } catch (Exception e) {
             System.out.println(e);
+        }
+    }
+
+    /**
+     * searching donors by name
+     * @param actionEvent
+     */
+    public void searchDonors(ActionEvent actionEvent) {
+        try {
+            DonorTable.setItems(FXCollections.observableList(donorManager.searchDonors(search.getText())));
+            DonorTable.refresh();
+        } catch (BloodException e) {
+            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
+        }
+    }
+
+    /**
+     * fetch donors from database
+     */
+    private void refreshDonors(){
+        try {
+            DonorTable.setItems(FXCollections.observableList(donorManager.getAll()));
+            DonorTable.refresh();
+        } catch (BloodException e) {
+            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
     }
 }

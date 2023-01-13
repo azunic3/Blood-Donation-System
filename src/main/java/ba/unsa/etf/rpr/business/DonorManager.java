@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Domain.Donor;
+import ba.unsa.etf.rpr.Domain.Patient;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 
 import java.util.List;
@@ -33,5 +34,8 @@ public class DonorManager {
         if (name == null || name!="YES" || name!="NO"){
             throw new BloodException("Describing field already donated only with values YES or NO");
         }
+    }
+    public static List<Donor> searchDonors(String text) throws BloodException {
+        return (DaoFactory.donorDao().searchByName(text));
     }
 }

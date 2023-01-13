@@ -33,7 +33,19 @@
    <bottom>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <buttons>
-          <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#akcijaZatvori" styleClass="tbButton" text="Close" />
+            <TextField fx:id="search" prefHeight="23.0" prefWidth="140.0" promptText="Find a donor" />
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#searchDonors" prefHeight="23.0" prefWidth="70.0" text="Search">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Button>
+          <Button fx:id="btnCancel" cancelButton="true" mnemonicParsing="false" onAction="#akcijaZatvori" prefHeight="23.0" prefWidth="70.0" styleClass="tbButton" text="Close">
+               <padding>
+                  <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+               </padding>
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font></Button>
         </buttons>
       </ButtonBar>
    </bottom>
