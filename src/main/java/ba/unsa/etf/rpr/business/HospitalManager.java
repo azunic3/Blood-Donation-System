@@ -6,7 +6,10 @@ import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 
 import java.util.List;
-
+/**
+ * Business Logic Layer for Hospitals
+ * @author Azra Žunić
+ */
 public class HospitalManager {
     public List<Hospital> getAll() throws BloodException {
         return DaoFactory.hospitalDao().getAll();

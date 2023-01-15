@@ -8,12 +8,16 @@ import ba.unsa.etf.rpr.Exceptions.BloodException;
 
 import java.util.Collections;
 import java.util.List;
-
+/**
+ * Business Logic Layer for management of Patients
+ * @author Azra Žunić
+ */
 public class PatientManager {
 
 public static List<Patient> searchPatients(String text) throws BloodException {
     return (DaoFactory.patientDao().searchByFullName(text));
     }
+
 //    public Patient searchByPatientsName(String name) throws BloodException {
 //        return DaoFactory.patientDao().searchByPatientsName(name);
 //    }

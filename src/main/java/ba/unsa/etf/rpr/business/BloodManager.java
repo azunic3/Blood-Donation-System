@@ -8,7 +8,10 @@ import ba.unsa.etf.rpr.Exceptions.BloodException;
 
 import java.util.Date;
 import java.util.List;
-
+/**
+ * Business Logic Layer for table Blood
+ * @author Azra Žunić
+ */
 public class BloodManager {
     public void validateBloodType(String name) throws BloodException{
         if (name == null || name.length() > 3 || name.length() < 2){

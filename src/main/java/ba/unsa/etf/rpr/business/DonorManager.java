@@ -6,7 +6,10 @@ import ba.unsa.etf.rpr.Domain.Patient;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 
 import java.util.List;
-
+/**
+ * Business Logic Layer for management of Donors
+ * @author Azra Žunić
+ */
 public class DonorManager {
     public Donor searchByDonorsName(String name) throws BloodException {
         return DaoFactory.donorDao().searchByDonorsName(name);

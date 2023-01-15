@@ -71,7 +71,7 @@ public class DonorDaoSQLImpl extends AbstractDao<Donor> implements DonorDao{
      * @author Azra Žunić
      * method that searches donors by full name
      * @param name
-     * @return
+     * @return name
      * @throws BloodException
      */
     @Override
@@ -92,17 +92,31 @@ public class DonorDaoSQLImpl extends AbstractDao<Donor> implements DonorDao{
     /**
      * checking if the donor has donated blood before
      * @param don
-     * @return
+     * @return date
      * @throws BloodException
      */
     @Override
     public List<Donor> searchByDonated(String don) throws BloodException {
         return executeQuery("SELECT * FROM Donor WHERE AlreadyDonated LIKE concat('%', ?, '%')",new Object[]{don});
     }
+
+    /**
+     * searching donors by blood id
+     * @param Id
+     * @return ID
+     * @throws BloodException
+     */
     @Override
     public Donor searchByBloodId(int Id) throws BloodException{
         return executeQueryUnique("SELECT * FROM Donor WHERE Donor_id = ?", new Object[]{Id});
     }
+
+    /**
+     * returns list searched by name of the donor
+     * @param text
+     * @return list
+     * @throws BloodException
+     */
     @Override
     public List<Donor> searchByName(String text) throws BloodException{
         return executeQuery("SELECT * FROM Donor WHERE FullName LIKE concat('%', ?, '%')",new Object[]{text});
