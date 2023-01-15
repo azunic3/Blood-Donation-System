@@ -144,14 +144,6 @@ public class HomeController {
         }
     }
 
-    /**
-     * ToolBar close button handler
-     * @param actionEvent
-     */
-    public void akcijaZatvori(ActionEvent actionEvent) {
-        Stage stage = (Stage) tbClose.getScene().getWindow();
-        stage.close();
-    }
     private void openDialog(String title, String file, Object controller){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(file));
@@ -167,13 +159,15 @@ public class HomeController {
     }
 
     public void openEditDonor(ActionEvent event){
-        openDialog("Manage Categories", "/fxml/category.fxml", new ControllerLogin());
+        openDialog("Manage Patients", "/fxml/medstaffClick.fxml", new MedstaffController());
     }
 
     public void openEditMedstaff(ActionEvent event){
-        openDialog("Manage Quotes", "/fxml/quote.fxml", new MedstaffController());
+        openDialog("Manage Donors", "/fxml/loginWindow.fxml", new ControllerLogin());
     }
-
+    public void openEditHeroes(ActionEvent event){
+        openDialog("Manage Heroes", "/fxml/donors.fxml", new donorsController());
+    }
 }
 
 

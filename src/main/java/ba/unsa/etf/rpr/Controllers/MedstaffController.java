@@ -109,7 +109,7 @@ public class MedstaffController {
             fieldHosp.setText("");
             fieldBlood.setText("");
             DatePick= null;
-            //za gender choice box set
+
         } catch(BloodException e){
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
@@ -133,7 +133,7 @@ public class MedstaffController {
     /**
      * fetch patients from database
      */
-    private void refreshQuotes(){
+    private void refreshPatients(){
         try {
             patientsTable.setItems(FXCollections.observableList(patientManager.getAll()));
             patientsTable.refresh();

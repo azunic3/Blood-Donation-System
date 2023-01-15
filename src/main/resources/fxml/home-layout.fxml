@@ -35,17 +35,6 @@
                         <KeyCodeCombination alt="UP" code="F" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
                 </Menu>
-                <Menu text="_Edit">
-                  <items>
-                    <MenuItem text="De_lete">
-                           <accelerator>
-                              <KeyCodeCombination alt="UP" code="D" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                           </accelerator></MenuItem>
-                  </items>
-                     <accelerator>
-                        <KeyCodeCombination alt="UP" code="E" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                     </accelerator>
-                </Menu>
                 <Menu mnemonicParsing="false" text="_Help">
                   <items>
                     <MenuItem mnemonicParsing="false" onAction="#openAbout" text="About" />
@@ -56,8 +45,9 @@
                 </Menu>
                   <Menu text="_View">
                     <items>
-                      <MenuItem fx:id="openEditDonor" text="_Donor" />
-                        <MenuItem fx:id="openEditMedstaff" mnemonicParsing="false" text="_MedicalStaff" />
+                      <MenuItem fx:id="openEditDonor" onAction="#openEditDonor" text="_Donor" />
+                        <MenuItem fx:id="openEditMedstaff" onAction="#openEditMedstaff" text="_MedicalStaff" />
+                        <MenuItem fx:id="openEditHeroes" onAction="#openEditHeroes" text="_Heroes" />
                     </items>
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="V" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
@@ -86,7 +76,6 @@
                      </font>
                   </Button>
                   <Separator orientation="VERTICAL" />
-                  <Button fx:id="tbClose" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#akcijaZatvori" prefHeight="26.0" prefWidth="27.0" styleClass="tbButton" />
 
               </items>
             </ToolBar>
@@ -94,82 +83,99 @@
       </VBox>
    </top>
    <right>
-      <AnchorPane prefHeight="262.0" prefWidth="242.0" style="-fx-background-color: #7b3636;" BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" layoutY="79.0" prefHeight="18.0" prefWidth="277.0" text="Blood Donation" textFill="#fcfcfc">
-               <font>
-                  <Font name="SimSun-ExtB" size="20.0" />
-               </font>
-            </Label>
-            <Line endX="100.0" layoutX="153.0" layoutY="131.0" startX="-129.40000915527344" startY="-7.62939453125E-6" stroke="WHITE" />
-            <Label layoutX="49.0" layoutY="99.0" text="System Application" textFill="WHITE">
-               <font>
-                  <Font name="SimSun-ExtB" size="20.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="73.0" fitWidth="101.0" layoutX="95.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
-             <image>
-                 <Image url="https://cdn.dribbble.com/users/2620348/screenshots/10495041/shot-cropped-1582915032757.png" />
-             </image>
-             </ImageView>
-         </children></AnchorPane>
+      <BorderPane BorderPane.alignment="CENTER">
+         <center>
+            <AnchorPane prefHeight="262.0" prefWidth="242.0" style="-fx-background-color: #7b3636;">
+               <children>
+                  <Label alignment="CENTER" layoutY="79.0" prefHeight="18.0" prefWidth="277.0" text="Blood Donation" textFill="#fcfcfc">
+                     <font>
+                        <Font name="SimSun-ExtB" size="20.0" />
+                     </font>
+                  </Label>
+                  <Line endX="100.0" layoutX="153.0" layoutY="131.0" startX="-129.40000915527344" startY="-7.62939453125E-6" stroke="WHITE" />
+                  <Label layoutX="49.0" layoutY="99.0" text="System Application" textFill="WHITE">
+                     <font>
+                        <Font name="SimSun-ExtB" size="20.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="73.0" fitWidth="101.0" layoutX="95.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="https://cdn.dribbble.com/users/2620348/screenshots/10495041/shot-cropped-1582915032757.png" />
+                   </image>
+                   </ImageView>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
    </right>
    <left>
-      <AnchorPane prefHeight="262.0" prefWidth="217.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="5.0" prefHeight="18.0" prefWidth="200.0" text="Few interesting facts:">
-               <font>
-                  <Font name="SimSun" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="73.0" layoutY="39.0" prefHeight="15.0" prefWidth="152.0" text="World Blood Donor Day ">
-               <font>
-                  <Font name="SimSun" size="12.0" />
-               </font></Label>
-            <ImageView fitHeight="66.0" fitWidth="63.0" layoutX="5.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="https://img.icons8.com/external-flaticons-flat-flat-icons/2x/external-blood-donation-anatomy-flaticons-flat-flat-icons.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="72.0" fitWidth="90.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPn6lbWIyOMr9dSfODgi5ZzAZQrIIRRd0bOA&amp;usqp=CAU" />
-               </image>
-            </ImageView>
-            <Label layoutX="68.0" layoutY="55.0" text="takes place on 14 June">
-               <font>
-                  <Font name="SimSun" size="12.0" />
-               </font></Label>
-            <Label layoutX="90.0" layoutY="116.0" text="AB-  is the rarest">
-               <font>
-                  <Font name="SimSun" size="12.0" />
-               </font></Label>
-            <Label layoutX="110.0" layoutY="131.0" text="blood group">
-               <font>
-                  <Font name="SimSun" size="12.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="60.0" fitWidth="67.0" layoutX="8.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="https://img.icons8.com/external-smashingstocks-outline-color-smashing-stocks/2x/external-blood-bag-medical-smashingstocks-outline-color-smashing-stocks.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="92.0" layoutY="190.0" text="Group O is the">
-               <font>
-                  <Font name="SimSun" size="12.0" />
-               </font></Label>
-            <Label layoutX="89.0" layoutY="205.0" text="universal donor">
-               <font>
-                  <Font name="SimSun" size="12.0" />
-               </font></Label>
-            <Label layoutX="68.0" layoutY="220.0" text="Group AB+ is known as ">
-               <font>
-                  <Font name="SimSun" size="12.0" />
-               </font></Label>
-            <Label layoutX="71.0" layoutY="235.0" text="&quot;universal recipient&quot;">
-               <font>
-                  <Font name="SimSun" size="12.0" />
-               </font></Label>
-         </children></AnchorPane>
+      <BorderPane BorderPane.alignment="CENTER">
+         <center>
+            <AnchorPane prefHeight="262.0" prefWidth="217.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="5.0" prefHeight="18.0" prefWidth="200.0" text="Few interesting facts:">
+                     <font>
+                        <Font name="SimSun" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="73.0" layoutY="39.0" prefHeight="15.0" prefWidth="152.0" text="World Blood Donor Day ">
+                     <font>
+                        <Font name="SimSun" size="12.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="66.0" fitWidth="63.0" layoutX="5.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="https://img.icons8.com/external-flaticons-flat-flat-icons/2x/external-blood-donation-anatomy-flaticons-flat-flat-icons.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="72.0" fitWidth="90.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPn6lbWIyOMr9dSfODgi5ZzAZQrIIRRd0bOA&amp;usqp=CAU" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="68.0" layoutY="55.0" text="takes place on 14 June">
+                     <font>
+                        <Font name="SimSun" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="90.0" layoutY="116.0" text="AB-  is the rarest">
+                     <font>
+                        <Font name="SimSun" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="110.0" layoutY="131.0" text="blood group">
+                     <font>
+                        <Font name="SimSun" size="12.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="60.0" fitWidth="67.0" layoutX="8.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="https://img.icons8.com/external-smashingstocks-outline-color-smashing-stocks/2x/external-blood-bag-medical-smashingstocks-outline-color-smashing-stocks.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="92.0" layoutY="190.0" text="Group O is the">
+                     <font>
+                        <Font name="SimSun" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="89.0" layoutY="205.0" text="universal donor">
+                     <font>
+                        <Font name="SimSun" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="68.0" layoutY="220.0" text="Group AB+ is known as ">
+                     <font>
+                        <Font name="SimSun" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="71.0" layoutY="235.0" text="&quot;universal recipient&quot;">
+                     <font>
+                        <Font name="SimSun" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
    </left>
 </BorderPane>
