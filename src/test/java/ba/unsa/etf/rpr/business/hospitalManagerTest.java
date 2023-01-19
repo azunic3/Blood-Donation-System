@@ -32,6 +32,9 @@ public class hospitalManagerTest {
     private Hospital hospital;
     private HospitalDaoSQLImpl hospitalDaoSQLMock;
     private List<Hospital> h;
+    /**
+     * This method will be called before each test method
+     */
     @BeforeEach
     public void initializeObjectsWeNeed(){
         hospitalManager = Mockito.mock(HospitalManager.class);
@@ -46,7 +49,9 @@ public class hospitalManagerTest {
         h = new ArrayList<>();
         h.addAll(Arrays.asList(new Hospital("Poliklinika1"), new Hospital("Poliklinika2")));
     }
-
+    /**
+     * In this method we will test validateHospitalName(String name) for correct and incorrect passed parameters
+     */
     @Test
     void validateHospitalName() throws BloodException {
         String correctName = "Sunce";
@@ -70,7 +75,9 @@ public class hospitalManagerTest {
         Assertions.assertEquals("Name must contain between 4 and 20 characters", bloodException2.getMessage());
     }
 
-
+    /**
+     * Testing if we can add a new hospital name
+     */
     @Test
     void addNewHospital() throws BloodException {
         Hospital newType = new Hospital("SAN");

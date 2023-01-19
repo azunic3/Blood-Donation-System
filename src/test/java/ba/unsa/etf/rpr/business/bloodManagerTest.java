@@ -91,7 +91,7 @@ public class bloodManagerTest {
     }
 
     /**
-     * Testing if we can add a blood id that is already in the table
+     * Testing if we can add a new blood group
      */
     @Test
     void addNewBloodType() throws BloodException {

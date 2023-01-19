@@ -27,7 +27,9 @@ public class donorManagerTest {
     private Donor donor;
     private DonorDaoSQLImpl donorDaoSQLMock;
     private List<Donor> d;
-
+    /**
+     * This method will be called before each test method
+     */
     @BeforeEach
     public void initializeObjectsWeNeed(){
         donorManager = Mockito.mock(DonorManager.class);
@@ -41,6 +43,9 @@ public class donorManagerTest {
         d = new ArrayList<>();
         d.addAll(Arrays.asList(new Donor("Jedno Ime"), new Donor("Drugo Ime")));
     }
+    /**
+     * In this method we will test validateDonorsName(String name) for correct and incorrect passed parameters
+     */
     @Test
     void validateDonorsName() throws BloodException {
         String correctName = "Nadja Kovacevic";
@@ -64,7 +69,9 @@ public class donorManagerTest {
             donorManager.validateDonorsName(incorrectNameLong);}, "Name must contain between 3 and 30 characters");
         Assertions.assertEquals("Name must contain between 3 and 30 characters", donorException2.getMessage());
     }
-
+    /**
+     * Testing if we can add a donor
+     */
     @Test
     void addNewDonor() throws BloodException {
         Donor newType = new Donor("D");

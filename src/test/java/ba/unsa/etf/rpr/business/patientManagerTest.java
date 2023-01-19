@@ -31,7 +31,9 @@ public class patientManagerTest {
     private Patient patient;
     private PatientDaoSQLImpl patientDaoSQLMock;
     private List<Patient> p;
-
+    /**
+     * This method will be called before each test method
+     */
     @BeforeEach
     public void initializeObjectsWeNeed(){
         patientManager = Mockito.mock(PatientManager.class);
@@ -45,7 +47,9 @@ public class patientManagerTest {
         p = new ArrayList<>();
         p.addAll(Arrays.asList(new Patient("Novi Pacijent"), new Patient("Drugi Pacijent")));
     }
-
+    /**
+     * In this method we will test validatePatientsName(String name) for correct and incorrect passed parameters
+     */
     @Test
     void validatePatientsName() throws BloodException {
         String correctName = "Emina Gagula";
@@ -68,7 +72,9 @@ public class patientManagerTest {
             patientManager.validatePatientsName(incorrectNameLong);}, "Name must contain between 3 and 30 characters");
         Assertions.assertEquals("Name must contain between 3 and 30 characters", bloodException2.getMessage());
     }
-
+    /**
+     * Testing if we can add a new patient
+     */
     @Test
     void addNewPatient() throws BloodException {
         Patient newType = new Patient("P");
