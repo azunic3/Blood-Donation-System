@@ -72,14 +72,13 @@ public class bloodManagerTest {
 
     /**
      * We are testing add() method. Trying to add type that already exists
+     * An exception will be thrown because our instance of Blood.java class has value for id
      */
     @Test
     void add() throws BloodException {
         MockedStatic<DaoFactory> daoFactoryMockedStatic = Mockito.mockStatic(DaoFactory.class);
         daoFactoryMockedStatic.when(DaoFactory::bloodDao).thenReturn(bloodDaoSQLMock);
-        /*
-        An exception will be thrown because our instance of Category.java class has value for id
-         */
+
         when(DaoFactory.bloodDao().getAll()).thenReturn(bl);
         Mockito.doCallRealMethod().when(bloodManager).add(blood);
         BloodException bloodException = Assertions.assertThrows(BloodException.class, () -> {

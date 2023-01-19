@@ -51,4 +51,5 @@ public interface DonorDao extends Dao<Donor>{
      * @throws BloodException
      */
     List<Donor> searchByName(String text) throws BloodException;
+    List<Donor> getAll() throws BloodException;
 }
