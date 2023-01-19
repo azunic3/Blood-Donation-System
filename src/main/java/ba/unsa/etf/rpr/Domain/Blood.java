@@ -2,7 +2,6 @@ package ba.unsa.etf.rpr.Domain;
 
 import java.time.LocalDate;
 import java.util.Objects;
-import java.util.Date;
 /**
  * java beans class for table Hospital
  * @author Azra Žunić

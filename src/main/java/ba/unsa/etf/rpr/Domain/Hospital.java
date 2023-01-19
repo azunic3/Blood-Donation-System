@@ -1,5 +1,4 @@
 package ba.unsa.etf.rpr.Domain;
-import ba.unsa.etf.rpr.Dao.HospitalDaoSQLImpl;
 
 import java.util.Objects;
 /**

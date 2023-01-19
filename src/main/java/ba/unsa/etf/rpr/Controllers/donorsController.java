@@ -4,7 +4,6 @@ import ba.unsa.etf.rpr.Dao.DonorDaoSQLImpl;
 import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 import ba.unsa.etf.rpr.business.DonorManager;
-import ba.unsa.etf.rpr.business.PatientManager;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

@@ -1,16 +1,13 @@
 package ba.unsa.etf.rpr.Dao;
+
 import ba.unsa.etf.rpr.Domain.Blood;
 import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 
-import java.sql.*;
-import java.time.LocalDate;
-import java.util.*;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 /**
  * MySQL Implementation of DAO
  * @author Azra Žunić

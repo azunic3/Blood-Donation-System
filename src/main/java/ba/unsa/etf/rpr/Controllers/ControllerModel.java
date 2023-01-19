@@ -2,7 +2,6 @@ package ba.unsa.etf.rpr.Controllers;
 
 import ba.unsa.etf.rpr.Dao.BloodDaoSQLImpl;
 import ba.unsa.etf.rpr.Domain.Blood;
-import ba.unsa.etf.rpr.Domain.Patient;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 import ba.unsa.etf.rpr.business.BloodManager;
 import ba.unsa.etf.rpr.business.DonorManager;

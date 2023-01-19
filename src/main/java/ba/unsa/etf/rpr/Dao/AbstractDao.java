@@ -2,8 +2,6 @@ package ba.unsa.etf.rpr.Dao;
 
 import ba.unsa.etf.rpr.Domain.Idable;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
-import java.io.Closeable;
-import java.io.IOException;
 import java.sql.*;
 import java.util.*;
 

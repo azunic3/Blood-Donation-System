@@ -1,12 +1,10 @@
 package ba.unsa.etf.rpr.Controllers;
 
 import ba.unsa.etf.rpr.Dao.PatientDaoSQLImpl;
-import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Domain.Patient;
-import ba.unsa.etf.rpr.business.PatientManager;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
+import ba.unsa.etf.rpr.business.PatientManager;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -14,7 +12,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
 /**

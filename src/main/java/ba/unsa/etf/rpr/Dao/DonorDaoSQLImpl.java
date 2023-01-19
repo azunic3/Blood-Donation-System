@@ -1,8 +1,6 @@
 package ba.unsa.etf.rpr.Dao;
 
-import ba.unsa.etf.rpr.Domain.Blood;
 import ba.unsa.etf.rpr.Domain.Donor;
-import ba.unsa.etf.rpr.Domain.Patient;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 
 import java.sql.ResultSet;

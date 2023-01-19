@@ -4,14 +4,11 @@ import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Dao.DonorDaoSQLImpl;
 import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
-import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.beans.value.ObservableValue;
 
 import java.sql.Date;
-import java.time.LocalDate;
 
 /**
  * JavaFX Controller for Registration window
