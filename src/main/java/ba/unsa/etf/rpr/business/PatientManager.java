@@ -13,7 +13,11 @@ import java.util.List;
  * @author Azra Žunić
  */
 public class PatientManager {
-
+    public void validatePatientsName(String name) throws BloodException{
+        if (name == null || name.length() > 30 || name.length() < 3){
+            throw new BloodException("Name must contain between 3 and 30 characters");
+        }
+    }
 public static List<Patient> searchPatients(String text) throws BloodException {
     return (DaoFactory.patientDao().searchByFullName(text));
     }

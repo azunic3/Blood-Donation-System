@@ -23,7 +23,6 @@ public class donorManagerTest {
     private DonorDaoSQLImpl donorDaoSQLMock;
     private List<Donor> d;
 
-
     @BeforeEach
     public void initializeObjectsWeNeed(){
         donorManager = Mockito.mock(DonorManager.class);

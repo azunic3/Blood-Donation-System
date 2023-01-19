@@ -57,7 +57,6 @@ public class bloodManagerTest {
             Assertions.assertTrue(false);
         }
 
-
         String incorrectNameShort = "A";
         Mockito.doCallRealMethod().when(bloodManager).validateBloodType(incorrectNameShort);
         BloodException bloodException1 = Assertions.assertThrows(BloodException.class, () -> {
