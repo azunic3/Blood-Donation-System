@@ -2,11 +2,9 @@ package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Domain.Blood;
-import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Domain.Patient;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 
-import java.util.Collections;
 import java.util.List;
 /**
  * Business Logic Layer for management of Patients
