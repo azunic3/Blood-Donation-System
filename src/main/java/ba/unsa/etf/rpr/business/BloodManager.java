@@ -70,8 +70,8 @@ public class BloodManager {
 //    public Blood add(Blood item) throws BloodException{
 //        return DaoFactory.bloodDao().add(item);
 //    }
-//    public Blood getById(int id) throws BloodException {
-//        return DaoFactory.bloodDao().getById(id);
-//    }
+    public Blood getById(int id) throws BloodException {
+        return DaoFactory.bloodDao().getById(id);
+    }
 
 }
