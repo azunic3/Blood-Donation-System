@@ -68,6 +68,10 @@ public class hospitalManagerTest {
             hospitalManager.validateHospitalName(incorrectNameLong);}, "Name must contain between 4 and 20 characters");
         Assertions.assertEquals("Name must contain between 4 and 20 characters", bloodException2.getMessage());
     }
+    /**
+     * We are testing add() method. Trying to add type that already exists
+     * An exception will be thrown because our instance of Hospital.java class has value for id
+     */
     @Test
     void add() throws BloodException {
         MockedStatic<DaoFactory> daoFactoryMockedStatic = Mockito.mockStatic(DaoFactory.class);
