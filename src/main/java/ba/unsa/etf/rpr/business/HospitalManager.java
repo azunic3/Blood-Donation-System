@@ -10,7 +10,13 @@ import java.util.List;
  * Business Logic Layer for Hospitals
  * @author Azra Žunić
  */
+
 public class HospitalManager {
+    public void validateHospitalName(String name) throws BloodException{
+        if (name == null || name.length() > 20 || name.length() < 4){
+            throw new BloodException("Name must contain between 4 and 20 characters");
+        }
+    }
     public List<Hospital> getAll() throws BloodException {
         return DaoFactory.hospitalDao().getAll();
     }

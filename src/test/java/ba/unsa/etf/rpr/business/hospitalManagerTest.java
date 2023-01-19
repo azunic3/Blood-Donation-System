@@ -32,5 +32,42 @@ public class hospitalManagerTest {
     private Hospital hospital;
     private HospitalDaoSQLImpl hospitalDaoSQLMock;
     private List<Hospital> h;
+    @BeforeEach
+    public void initializeObjectsWeNeed(){
+        hospitalManager = Mockito.mock(HospitalManager.class);
+        hospital = new Hospital();
+        hospital.setId(50);
+        hospital.setName("Sanasa");
+        hospital.setQuantityOnHand(25);
+        hospital.setAdress("Grbavicka 15");
+        hospital.setContactNumber (448552);
+
+        hospitalDaoSQLMock = Mockito.mock(HospitalDaoSQLImpl.class);
+        h = new ArrayList<>();
+        h.addAll(Arrays.asList(new Hospital("Poliklinika1"), new Hospital("Poliklinika2")));
+    }
+
+    @Test
+    void validateHospitalName() throws BloodException {
+        String correctName = "Sunce";
+        try {
+            Mockito.doCallRealMethod().when(hospitalManager).validateHospitalName(correctName);
+        } catch (BloodException e) {
+            e.printStackTrace();
+            Assertions.assertTrue(false);
+        }
+
+        String incorrectNameShort = "Sun";
+        Mockito.doCallRealMethod().when(hospitalManager).validateHospitalName(incorrectNameShort);
+        BloodException bloodException1 = Assertions.assertThrows(BloodException.class, () -> {
+            hospitalManager.validateHospitalName(incorrectNameShort);}, "Name must contain between 4 and 20 characters");
+        Assertions.assertEquals("Name must contain between 4 and 20 characters", bloodException1.getMessage());
+
+        String incorrectNameLong = RandomStringUtils.randomAlphabetic(50);
+        Mockito.doCallRealMethod().when(hospitalManager).validateHospitalName(incorrectNameLong);
+        BloodException bloodException2 = Assertions.assertThrows(BloodException.class, () -> {
+            hospitalManager.validateHospitalName(incorrectNameLong);}, "Name must contain between 4 and 20 characters");
+        Assertions.assertEquals("Name must contain between 4 and 20 characters", bloodException2.getMessage());
+    }
 
 }
