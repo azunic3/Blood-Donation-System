@@ -70,4 +70,13 @@ public class hospitalManagerTest {
         Assertions.assertEquals("Name must contain between 4 and 20 characters", bloodException2.getMessage());
     }
 
+
+    @Test
+    void addNewHospital() throws BloodException {
+        Hospital newType = new Hospital("SAN");
+        hospitalManager.add(newType);
+
+        Assertions.assertTrue(true);
+        Mockito.verify(hospitalManager).add(newType);
+    }
 }

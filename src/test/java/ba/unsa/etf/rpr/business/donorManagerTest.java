@@ -1,17 +1,22 @@
 package ba.unsa.etf.rpr.business;
+import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Dao.DonorDaoSQLImpl;
+import ba.unsa.etf.rpr.Domain.Blood;
 import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static org.mockito.Mockito.when;
 
 /**
  * @author Azra Žunić
@@ -49,15 +54,23 @@ public class donorManagerTest {
 
         String incorrectNameShort = "Na";
         Mockito.doCallRealMethod().when(donorManager).validateDonorsName(incorrectNameShort);
-        BloodException bloodException1 = Assertions.assertThrows(BloodException.class, () -> {
+        BloodException donorException1 = Assertions.assertThrows(BloodException.class, () -> {
             donorManager.validateDonorsName(incorrectNameShort);}, "Name must contain between 3 and 30 characters");
-        Assertions.assertEquals("Name must contain between 3 and 30 characters", bloodException1.getMessage());
+        Assertions.assertEquals("Name must contain between 3 and 30 characters", donorException1.getMessage());
 
         String incorrectNameLong = RandomStringUtils.randomAlphabetic(50);
         Mockito.doCallRealMethod().when(donorManager).validateDonorsName(incorrectNameLong);
-        BloodException bloodException2 = Assertions.assertThrows(BloodException.class, () -> {
+        BloodException donorException2 = Assertions.assertThrows(BloodException.class, () -> {
             donorManager.validateDonorsName(incorrectNameLong);}, "Name must contain between 3 and 30 characters");
-        Assertions.assertEquals("Name must contain between 3 and 30 characters", bloodException2.getMessage());
+        Assertions.assertEquals("Name must contain between 3 and 30 characters", donorException2.getMessage());
     }
 
+    @Test
+    void addNewDonor() throws BloodException {
+        Donor newType = new Donor("D");
+        donorManager.add(newType);
+
+        Assertions.assertTrue(true);
+        Mockito.verify(donorManager).add(newType);
+    }
 }
