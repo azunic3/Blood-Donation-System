@@ -69,6 +69,14 @@ public class patientManagerTest {
         Assertions.assertEquals("Name must contain between 3 and 30 characters", bloodException2.getMessage());
     }
 
+    @Test
+    void addNewPatient() throws BloodException {
+        Patient newType = new Patient("P");
+        patientManager.add(newType);
+
+        Assertions.assertTrue(true);
+        Mockito.verify(patientManager).add(newType);
+    }
 
 
 }

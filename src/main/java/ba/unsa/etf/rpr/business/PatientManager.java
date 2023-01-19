@@ -22,9 +22,6 @@ public static List<Patient> searchPatients(String text) throws BloodException {
     return (DaoFactory.patientDao().searchByFullName(text));
     }
 
-//    public Patient searchByPatientsName(String name) throws BloodException {
-//        return DaoFactory.patientDao().searchByPatientsName(name);
-//    }
     public List<Patient> getAll() throws BloodException {
             return DaoFactory.patientDao().getAll();
         }

@@ -44,4 +44,6 @@ public interface PatientDao extends Dao<Patient>{
      * @throws BloodException
      */
     List<Patient> searchByFullName(String text) throws BloodException;
+    List<Patient> getAll() throws BloodException;
+
 }
