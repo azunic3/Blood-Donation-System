@@ -24,6 +24,9 @@ public class Patient implements Idable {
      */
     public Patient() {
     }
+    public Patient(String Full_Name) {
+        this.Full_Name=Full_Name;
+    }
 
     public Patient(int id, String fullName, Date dateOfBirth, String gender, String adress, int phoneNumber, Blood fk_BloodType, Hospital fk_Hospital_id) {
         Id = id;

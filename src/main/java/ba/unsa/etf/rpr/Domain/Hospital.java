@@ -22,7 +22,9 @@ public class Hospital implements Idable {
      */
     public Hospital() {
     }
-
+    public Hospital(String Name) {
+        this.Name=Name;
+    }
     public Hospital(int id, String name, int quantityOnHand, String adress, int contactNumber, String description) {
         Id = id;
         Name = name;

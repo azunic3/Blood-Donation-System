@@ -26,7 +26,9 @@ public class Donor extends DonorDaoSQLImpl implements Idable {
      */
     public Donor() {
     }
-
+    public Donor(String FullName) {
+        this.FullName=FullName;
+    }
     public Donor(int id, String fullName, String password, Date dateOfBirth, String gender, String adress, int phoneNumber, Blood bloodType_id_fk, String alreadyDonated, Hospital fk_Hospital) {
         Id = id;
         FullName = fullName;
