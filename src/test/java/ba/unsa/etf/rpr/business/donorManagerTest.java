@@ -1,7 +1,11 @@
 package ba.unsa.etf.rpr.business;
 import ba.unsa.etf.rpr.Dao.DonorDaoSQLImpl;
 import ba.unsa.etf.rpr.Domain.Donor;
+import ba.unsa.etf.rpr.Exceptions.BloodException;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.sql.Date;
@@ -25,13 +29,36 @@ public class donorManagerTest {
         donorManager = Mockito.mock(DonorManager.class);
         donor = new Donor();
         donor.setId(50);
-        donor.setFullName("Neko Nebitno");
-        donor.setPassword("zaporka");
+        donor.setFullName("Nađa Kovačević");
+        donor.setPassword("nadjak");
         donor.setAlreadyDonated("NO");
-        donor.setDateOfBirth(Date.valueOf("2001-01-25 02:00:00"));
 
         donorDaoSQLMock = Mockito.mock(DonorDaoSQLImpl.class);
         d = new ArrayList<>();
         d.addAll(Arrays.asList(new Donor("Jedno Ime"), new Donor("Drugo Ime")));
     }
+    @Test
+    void validateDonorsName() throws BloodException {
+        String correctName = "Nadja Kovacevic";
+        try {
+            Mockito.doCallRealMethod().when(donorManager).validateDonorsName(correctName);
+        } catch (BloodException e) {
+            e.printStackTrace();
+            Assertions.assertTrue(false);
+        }
+
+
+        String incorrectNameShort = "Na";
+        Mockito.doCallRealMethod().when(donorManager).validateDonorsName(incorrectNameShort);
+        BloodException bloodException1 = Assertions.assertThrows(BloodException.class, () -> {
+            donorManager.validateDonorsName(incorrectNameShort);}, "Name must contain between 3 and 30 characters");
+        Assertions.assertEquals("Name must contain between 3 and 30 characters", bloodException1.getMessage());
+
+        String incorrectNameLong = RandomStringUtils.randomAlphabetic(50);
+        Mockito.doCallRealMethod().when(donorManager).validateDonorsName(incorrectNameLong);
+        BloodException bloodException2 = Assertions.assertThrows(BloodException.class, () -> {
+            donorManager.validateDonorsName(incorrectNameLong);}, "Name must contain between 3 and 30 characters");
+        Assertions.assertEquals("Name must contain between 3 and 30 characters", bloodException2.getMessage());
+    }
+
 }

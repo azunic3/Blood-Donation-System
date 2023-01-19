@@ -53,7 +53,6 @@ public class bloodManagerTest {
         try {
             Mockito.doCallRealMethod().when(bloodManager).validateBloodType(correctGroup);
         } catch (BloodException e) {
-            //Test will fall if method validateCategoryName(name) throws an exception for correct parameter
             e.printStackTrace();
             Assertions.assertTrue(false);
         }

@@ -11,6 +11,11 @@ import java.util.List;
  * @author Azra Žunić
  */
 public class DonorManager {
+    public void validateDonorsName(String name) throws BloodException{
+        if (name == null || name.length() < 3 || name.length() >30 ){
+            throw new BloodException("Name must contain between 3 and 30 characters");
+        }
+    }
     public Donor searchByDonorsName(String name) throws BloodException {
         return DaoFactory.donorDao().searchByDonorsName(name);
     }
