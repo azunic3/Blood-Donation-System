@@ -109,36 +109,4 @@ public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao {
         return executeQuery("SELECT * FROM Blood WHERE BloodGroup LIKE concat('%', ?, '%')",new Object[]{group});
     }
 
-    /**
-     * searching by a certain date of blood donation
-     * @param date
-     * @return
-     * @throws BloodException
-     */
-    @Override
-    public List<Blood> searchByDonateDate(Date date) throws BloodException {
-        return executeQuery("SELECT * FROM Blood WHERE DonateDate LIKE concat('%', ?, '%')",new Object[]{date});
-    }
-
-    /**
-     * searching by blood bag number
-     * @param bagnum
-     * @return
-     * @throws BloodException
-     */
-    @Override
-    public List<Blood> searchByBagNumber(String bagnum) throws BloodException {
-        return executeQuery("SELECT * FROM Blood WHERE BloodBagNumber LIKE concat('%', ?, '%')",new Object[]{bagnum});
-    }
-
-    /**
-     * searching by amount of blood bag
-     * @param am
-     * @return
-     * @throws BloodException
-     */
-    @Override
-    public List<Blood> searchByBloodAmount(int am) throws BloodException {
-        return executeQuery("SELECT * FROM Blood WHERE BloodAmount LIKE concat('%', ?, '%')",new Object[]{am});
-    }
 }

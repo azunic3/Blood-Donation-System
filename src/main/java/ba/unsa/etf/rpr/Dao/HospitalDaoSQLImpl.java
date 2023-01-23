@@ -74,15 +74,4 @@ public class HospitalDaoSQLImpl extends AbstractDao<Hospital> implements Hospita
         return executeQueryUnique("SELECT * FROM Hospital WHERE Name = ?", new Object[]{name});
     }
 
-    /**
-     * method used for searching by quantity of certain blood group that is available at the moment
-     *
-     * @param q
-     * @return
-     * @throws BloodException
-     */
-    @Override
-    public List<Hospital> searchByQuantityOnHand(int q) throws BloodException {
-        return executeQuery("SELECT * FROM Hospital WHERE QuantityOnHand LIKE concat('%', ?, '%')", new Object[]{q});
-    }
 }

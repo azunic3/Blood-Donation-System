@@ -65,26 +65,6 @@ public class DonorManager {
 
     /**
      *
-     * @param don
-     * @return
-     * @throws BloodException
-     */
-    public List<Donor> searchByDonated(String don) throws BloodException{
-        return DaoFactory.donorDao().searchByDonated(don);
-    }
-
-    /**
-     *
-     * @param Id
-     * @return
-     * @throws BloodException
-     */
-    public Donor searchByBloodId(int Id) throws BloodException{
-        return DaoFactory.donorDao().getById(Id);
-    }
-
-    /**
-     *
      * @return
      * @throws BloodException
      */

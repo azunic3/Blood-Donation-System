@@ -12,7 +12,6 @@ import java.util.List;
  */
 public interface HospitalDao extends Dao<Hospital>{
     public Hospital searchByName(String name) throws BloodException;
-    List<Hospital> searchByQuantityOnHand(int q) throws BloodException;
     List<Hospital> getAll() throws BloodException;
 
 }

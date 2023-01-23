@@ -27,22 +27,6 @@ public interface DonorDao extends Dao<Donor>{
     public Donor searchByDonorsName(String name) throws BloodException;
 
     /**
-     * used for searching by donate date
-     * @param don
-     * @return
-     * @throws BloodException
-     */
-    List<Donor> searchByDonated(String don) throws BloodException;
-
-    /**
-     * method used for searching by blood type
-     * @param id
-     * @return
-     * @throws BloodException
-     */
-    public Donor searchByBloodId(int id) throws BloodException;
-
-    /**
      * returns list of values when searching by name of the donor
      * @param text
      * @return

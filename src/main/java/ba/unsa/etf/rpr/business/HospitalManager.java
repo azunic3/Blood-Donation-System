@@ -91,13 +91,4 @@ public class HospitalManager {
         return DaoFactory.hospitalDao().searchByName(name);
     }
 
-    /**
-     *
-     * @param q
-     * @return
-     * @throws BloodException
-     */
-    public List<Hospital> searchByQuantityOnHand(int q) throws BloodException{
-        return DaoFactory.hospitalDao().searchByQuantityOnHand(q);
-    }
 }

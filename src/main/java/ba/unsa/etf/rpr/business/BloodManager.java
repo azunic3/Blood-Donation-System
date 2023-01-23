@@ -84,46 +84,6 @@ public class BloodManager {
 
     /**
      *
-     * @param date
-     * @return
-     * @throws BloodException
-     */
-    public List<Blood> searchByDonateDate(Date date) throws BloodException {
-        return DaoFactory.bloodDao().searchByDonateDate(date);
-    }
-
-    /**
-     *
-     * @param bagnum
-     * @return
-     * @throws BloodException
-     */
-    public List<Blood> searchByBagNumber(String bagnum) throws BloodException {
-        return DaoFactory.bloodDao().searchByBagNumber(bagnum);
-    }
-
-    /**
-     *
-     * @param am
-     * @return
-     * @throws BloodException
-     */
-    public List<Blood> searchByBloodAmount(int am) throws BloodException {
-        return DaoFactory.bloodDao().searchByBloodAmount(am);
-    }
-
-    /**
-     *
-     * @param group
-     * @return
-     * @throws BloodException
-     */
-    public List<Blood> searchByBloodGroup(String group) throws BloodException{
-        return DaoFactory.bloodDao().searchByBloodGroup(group);
-    }
-
-    /**
-     *
      * @param hospital
      * @return
      * @throws BloodException

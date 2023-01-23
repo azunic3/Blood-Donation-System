@@ -88,28 +88,6 @@ public class DonorDaoSQLImpl extends AbstractDao<Donor> implements DonorDao{
     }
 
     /**
-     * checking if the donor has donated blood before
-     * @param don
-     * @return date
-     * @throws BloodException
-     */
-    @Override
-    public List<Donor> searchByDonated(String don) throws BloodException {
-        return executeQuery("SELECT * FROM Donor WHERE AlreadyDonated LIKE concat('%', ?, '%')",new Object[]{don});
-    }
-
-    /**
-     * searching donors by blood id
-     * @param Id
-     * @return ID
-     * @throws BloodException
-     */
-    @Override
-    public Donor searchByBloodId(int Id) throws BloodException{
-        return executeQueryUnique("SELECT * FROM Donor WHERE Donor_id = ?", new Object[]{Id});
-    }
-
-    /**
      * returns list searched by name of the donor
      * @param text
      * @return list

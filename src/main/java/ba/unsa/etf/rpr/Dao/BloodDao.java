@@ -18,11 +18,10 @@ public interface BloodDao extends Dao<Blood> {
      * methods: getAll, searchByBagNumber, searchByHospital
      * @return lists
      */
+
     List<Blood> getAll() throws BloodException;
     List<Blood> searchByHospital(Hospital hospital) throws BloodException;
     List<Blood> searchByBloodGroup(String group) throws BloodException;
-    List<Blood> searchByDonateDate(Date date) throws BloodException;
-    List<Blood> searchByBagNumber(String bagnum) throws BloodException;
-    List<Blood> searchByBloodAmount(int am) throws BloodException;
+
 
 }
