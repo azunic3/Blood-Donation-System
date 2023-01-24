@@ -7,7 +7,7 @@ import java.util.Objects;
  * @author Azra Žunić
  * version 1.2
  */
-public class Blood implements Idable {
+public class Blood implements Idable{
 
     private int Id;
     private String BloodBagNumber;
@@ -102,5 +102,4 @@ public class Blood implements Idable {
     public int hashCode() {
         return Objects.hash(Id, BloodBagNumber, BloodGroup, DonateDate, BloodAmount, fk_hospital_id);
     }
-
 }

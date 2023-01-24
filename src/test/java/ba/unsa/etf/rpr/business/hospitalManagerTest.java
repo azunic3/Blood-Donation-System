@@ -45,6 +45,7 @@ public class hospitalManagerTest {
     }
     /**
      * In this method we will test validateHospitalName(String name) for correct and incorrect passed parameters
+     * there is a mock setup stage and test stage
      */
     @Test
     void validateHospitalName() throws BloodException {

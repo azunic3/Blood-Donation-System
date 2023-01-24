@@ -44,6 +44,7 @@ public class donorManagerTest {
     }
     /**
      * In this method we will test validateDonorsName(String name) for correct and incorrect passed parameters
+     * there is a mock setup stage and test stage
      */
     @Test
     void validateDonorsName() throws BloodException {

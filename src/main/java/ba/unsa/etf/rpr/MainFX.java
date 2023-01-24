@@ -20,16 +20,14 @@ public class MainFX extends Application {
             fl.setController(controller);
             Parent root = fl.load();
             stage.setTitle("Blood Donation System Application");
-            stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); //da bude taman veličine prozor
+            stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.setResizable(false);
-            //stage.setMinHeight(200);
-            //stage.setMinWidth(200);
             stage.show();
         } catch (Exception e) {
             System.out.println(e);
         }
     }
-       /* public void start(Stage primaryStage) throws Exception{
+       /*public void start(Stage primaryStage) throws Exception{
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/loginWindow.fxml"));
             primaryStage.setTitle("Register");
             primaryStage.setScene(new Scene(root, 600, 575));

@@ -46,6 +46,7 @@ public class bloodManagerTest {
     }
     /**
      * In this method we will test validateBloodType(String group) for correct and incorrect passed parameters
+     * there is a mock setup stage and test stage
      */
     @Test
     void validateBloodType() throws BloodException{
@@ -56,7 +57,6 @@ public class bloodManagerTest {
             e.printStackTrace();
             Assertions.assertTrue(false);
         }
-
         String incorrectNameShort = "A";
         Mockito.doCallRealMethod().when(bloodManager).validateBloodType(incorrectNameShort);
         BloodException bloodException1 = Assertions.assertThrows(BloodException.class, () -> {
@@ -97,7 +97,6 @@ public class bloodManagerTest {
     void addNewBloodType() throws BloodException {
         Blood newType = new Blood("Ca+");
         bloodManager.add(newType);
-
         Assertions.assertTrue(true);
         Mockito.verify(bloodManager).add(newType);
     }
