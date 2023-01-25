@@ -20,7 +20,6 @@
               <menus>
                 <Menu text="_File">
                   <items>
-                        <MenuItem fx:id="mniNew" text="_New" />
                         <MenuItem fx:id="mniOpen" onAction="#akcijaOtvori" text="_Open" />
                         <MenuItem fx:id="mniSave" text="_Save">
                            <accelerator>
@@ -43,16 +42,6 @@
                         <KeyCodeCombination alt="UP" code="H" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
                 </Menu>
-                  <Menu text="_View">
-                    <items>
-                      <MenuItem fx:id="openEditDonor" onAction="#openEditDonor" text="_Donor" />
-                        <MenuItem fx:id="openEditMedstaff" onAction="#openEditMedstaff" text="_MedicalStaff" />
-                        <MenuItem fx:id="openEditHeroes" onAction="#openEditHeroes" text="_Heroes" />
-                    </items>
-                     <accelerator>
-                        <KeyCodeCombination alt="UP" code="V" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                     </accelerator>
-                  </Menu>
               </menus>
             </MenuBar>
             <ToolBar prefHeight="40.0" prefWidth="200.0">

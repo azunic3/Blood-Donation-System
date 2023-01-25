@@ -80,12 +80,12 @@
                   <Font name="Arial" size="14.0" />
                </font>
                <padding>
-                  <Insets left="7.0" top="2.0" />
+                  <Insets left="7.0" top="35.0" />
                </padding>
             </Label>
-            <TextArea prefHeight="100.0" prefWidth="595.0" promptText="Men can donate blood every 3 months and women every 4 months. A medical examination determines your health status and the possibility of donating blood. A light meal is recommended two hours before donating, and smoking should be avoided for two hours after donating. Alcohol should not be consumed on the day of donating blood." wrapText="true">
+            <TextArea prefHeight="100.0" prefWidth="595.0" text="Men can donate blood every 3 months and women every 4 months. A medical examination determines your health status and the possibility of donating blood. A light meal is recommended two hours before donating, and smoking should be avoided for two hours after donating. Alcohol should not be consumed on the day of donating blood." wrapText="true">
                <font>
-                  <Font name="Arial" size="13.0" />
+                  <Font name="Arial Italic" size="13.0" />
                </font>
                <HBox.margin>
                   <Insets bottom="2.0" left="1.0" right="2.0" top="2.0" />

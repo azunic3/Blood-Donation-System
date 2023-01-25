@@ -158,16 +158,6 @@ public class HomeController {
         }
     }
 
-    public void openEditDonor(ActionEvent event){
-        openDialog("Manage Patients", "/fxml/medstaffClick.fxml", new MedstaffController());
-    }
-
-    public void openEditMedstaff(ActionEvent event){
-        openDialog("Manage Donors", "/fxml/loginWindow.fxml", new ControllerLogin());
-    }
-    public void openEditHeroes(ActionEvent event){
-        openDialog("Manage Heroes", "/fxml/donors.fxml", new donorsController());
-    }
 }
 
 
