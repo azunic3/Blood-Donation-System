@@ -68,7 +68,7 @@ public class donorsController {
     }
 
     /**
-     * searching donors by name
+     * searching donors by name event handler
      * @param actionEvent
      */
     public void searchDonors(ActionEvent actionEvent) {

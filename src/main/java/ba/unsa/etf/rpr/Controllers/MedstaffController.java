@@ -112,7 +112,7 @@ public class MedstaffController {
         }
     }
     /**
-     * search patients event handler
+     * search patients by name event handler
      *
      * @param actionEvent
      * @throws BloodException
