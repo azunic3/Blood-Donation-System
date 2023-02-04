@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.Domain;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -11,7 +12,7 @@ import java.util.Objects;
 public class Patient implements Idable {
     private int Id;
     private String Full_Name;
-    private Date DateOfBirth;
+    private LocalDate DateOfBirth;
     private String Gender;
     private String Adress;
     private int PhoneNumber;
@@ -27,7 +28,7 @@ public class Patient implements Idable {
         this.Full_Name=Full_Name;
     }
 
-    public Patient(int id, String fullName, Date dateOfBirth, String gender, String adress, int phoneNumber, Blood fk_BloodType, Hospital fk_Hospital_id) {
+    public Patient(int id, String fullName, LocalDate dateOfBirth, String gender, String adress, int phoneNumber, Blood fk_BloodType, Hospital fk_Hospital_id) {
         Id = id;
         Full_Name = fullName;
         DateOfBirth = dateOfBirth;
@@ -62,10 +63,10 @@ public class Patient implements Idable {
     public void setFull_Name(String full_Name) {
         Full_Name = full_Name;
     }
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return DateOfBirth;
     }
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         DateOfBirth = dateOfBirth;
     }
     public String getGender() {

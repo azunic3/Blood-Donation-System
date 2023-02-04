@@ -1,8 +1,11 @@
 package ba.unsa.etf.rpr.Controllers;
 
 import ba.unsa.etf.rpr.Dao.PatientDaoSQLImpl;
+import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Domain.Patient;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
+import ba.unsa.etf.rpr.business.BloodManager;
+import ba.unsa.etf.rpr.business.HospitalManager;
 import ba.unsa.etf.rpr.business.PatientManager;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -13,6 +16,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * JavaFX Controller for Medical staff action
@@ -42,6 +46,9 @@ public class MedstaffController {
     public TableColumn<Patient, Integer> bloodcol;
     PatientManager manager = new PatientManager();
     private final PatientManager patientManager = new PatientManager();
+    private final HospitalManager bloodManager = new HospitalManager();
+    private final BloodManager bManager = new BloodManager();
+
     /**
      * special class that specifies actions on TableColumns
      *
@@ -88,15 +95,14 @@ public class MedstaffController {
         try {
             Patient p = new Patient();
             p.setFull_Name(fieldName.getText());
-            p.setId(Integer.parseInt(fieldID.getText()));
             if(F.isSelected())
                 p.setGender("F");
             else if(M.isSelected())
                 p.setGender("M");
 
-//        p.setDateOfBirth((Date)DatePick.getValue());
-//        p.setFk_Hospital_id(fieldHosp.getText());
-//        p.setFk_BloodType(fieldBlood.getText());
+        p.setDateOfBirth((LocalDate)DatePick.getValue());
+        p.setFk_Hospital_id(bloodManager.searchByName(fieldHosp.getText()));
+        p.setFk_BloodType(bManager.searchByBloodGroup(fieldBlood.getText()));
 
 
             patientsTable.getItems().add(p);
