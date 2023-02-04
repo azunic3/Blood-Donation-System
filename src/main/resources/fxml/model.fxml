@@ -48,16 +48,8 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <TextField fx:id="fgroup" GridPane.columnIndex="1">
-                     <GridPane.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <DatePicker fx:id="datefield" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <GridPane.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </GridPane.margin>
-                  </DatePicker>
+                  <Text fx:id="fgroup" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="129.0000274181366" GridPane.columnIndex="1" />
+                  <Text fx:id="fdate" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
                <VBox.margin>
                   <Insets right="10.0" top="50.0" />
@@ -95,15 +87,11 @@
       </HBox>
    </bottom>
    <center>
-      <TableView fx:id="bloodTable" prefHeight="257.0" prefWidth="301.0" BorderPane.alignment="CENTER">
-        <columns>
-          <TableColumn fx:id="IDcol" prefWidth="51.599974036216736" text="ID" />
-          <TableColumn fx:id="bloodCol" prefWidth="144.40003204345703" text="Blood type" />
-            <TableColumn fx:id="DateCol" prefWidth="135.1999938964844" text="Donate date" />
-        </columns>
-         <BorderPane.margin>
-            <Insets bottom="20.0" right="15.0" top="10.0" />
-         </BorderPane.margin>
-      </TableView>
+      <HBox prefHeight="224.0" prefWidth="348.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Name:" />
+            <TextField fx:id="fname" />
+         </children>
+      </HBox>
    </center>
 </BorderPane>
