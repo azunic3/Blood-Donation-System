@@ -38,7 +38,6 @@ public class bloodManagerTest {
         blood.setBloodGroup("Blood Type");
         blood.setBloodAmount(500);
         blood.setBloodBagNumber("WER-7-GH");
-        blood.setDonateDate(Date.valueOf(LocalDate.now()).toLocalDate());
 
         bloodDaoSQLMock = Mockito.mock(BloodDaoSQLImpl.class);
         bl = new ArrayList<>();

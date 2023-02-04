@@ -37,7 +37,7 @@ public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao {
             b.setId(rs.getInt("Blood_id"));
             b.setBloodGroup(rs.getString("BloodGroup"));
             b.setBloodBagNumber(rs.getString("BloodBagNumber"));
-            //b.setDonateDate((rs.getObject("DonateDate"));
+            b.setDonateDate( rs.getDate("DonateDate"));
             b.setBloodAmount(rs.getInt("BloodAmount"));
             b.setFk_hospital_id (DaoFactory.hospitalDao().getById(rs.getInt("fk_hospital_id")));
             return b;

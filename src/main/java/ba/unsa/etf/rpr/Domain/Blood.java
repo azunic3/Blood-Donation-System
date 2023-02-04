@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.Domain;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 /**
  * java beans class for table Hospital
@@ -12,7 +13,7 @@ public class Blood implements Idable{
     private int Id;
     private String BloodBagNumber;
     private String BloodGroup;
-    private LocalDate DonateDate;
+    private Date DonateDate;
     private int BloodAmount;
     private Hospital fk_hospital_id;
 
@@ -28,7 +29,7 @@ public class Blood implements Idable{
     public Blood() {
     }
 
-    public Blood(int id, String bloodBagNumber, String bloodGroup, LocalDate donateDate, int bloodAmount, Hospital fk_hospital_id) {
+    public Blood(int id, String bloodBagNumber, String bloodGroup, Date donateDate, int bloodAmount, Hospital fk_hospital_id) {
         Id = id;
         BloodBagNumber = bloodBagNumber;
         BloodGroup = bloodGroup;
@@ -61,11 +62,11 @@ public class Blood implements Idable{
         BloodBagNumber = bloodBagNumber;
     }
 
-    public LocalDate getDonateDate() {
+    public Date getDonateDate() {
         return DonateDate;
     }
 
-    public void setDonateDate(LocalDate donateDate) {
+    public void setDonateDate(Date donateDate) {
         DonateDate = donateDate;
     }
 
