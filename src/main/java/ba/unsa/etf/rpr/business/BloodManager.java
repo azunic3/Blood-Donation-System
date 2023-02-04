@@ -101,5 +101,7 @@ public class BloodManager {
     public Blood getById(int id) throws BloodException {
         return DaoFactory.bloodDao().getById(id);
     }
-
+    public Blood searchByBloodGroup(String group) throws BloodException{
+        return DaoFactory.bloodDao().searchByBloodGroup(group);
+    }
 }

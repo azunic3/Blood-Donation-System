@@ -100,13 +100,14 @@ public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao {
 
     /**
      * used to search by blood type
+     *
      * @param group
      * @return
      * @throws BloodException
      */
     @Override
-    public List<Blood> searchByBloodGroup(String group) throws BloodException {
-        return executeQuery("SELECT * FROM Blood WHERE BloodGroup LIKE concat('%', ?, '%')",new Object[]{group});
+    public Blood searchByBloodGroup(String group) throws BloodException {
+        return executeQueryUnique("SELECT * FROM Blood WHERE BloodGroup LIKE concat('%', ?, '%')",new Object[]{group});
     }
 
 }
