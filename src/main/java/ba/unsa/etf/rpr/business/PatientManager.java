@@ -22,6 +22,11 @@ public class PatientManager {
         }
     }
 
+    public void validateGender(String gen) throws BloodException{
+        if(gen==null || gen.length()>1 || gen!="F" || gen!="M")
+            throw new BloodException("Incorrect gender option!");
+    }
+
     /**
      *
      * @param b

@@ -4,6 +4,7 @@ import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 
+import java.time.LocalDate;
 import java.util.List;
 /**
  * Business Logic Layer for management of Donors
@@ -16,9 +17,30 @@ public class DonorManager {
      * @throws BloodException
      */
     public void validateDonorsName(String name) throws BloodException{
-        if (name == null || name.length() < 3 || name.length() >30 ){
+        if (name == null || name.length() < 3 || name.length() >30) {
             throw new BloodException("Name must contain between 3 and 30 characters");
         }
+    }
+
+    /**
+     *
+     * @param pass
+     * @throws BloodException
+     */
+    public void validatePassword(String pass ) throws BloodException{
+        if(pass == null || pass.length()<6 || pass.length()>20){
+            throw new BloodException("Password cannot be shorter than 6 signs nor longer than 20 signs!");
+        }
+    }
+    private boolean validateDateOfBirth(LocalDate date){
+        int y=date.getYear();
+        int m=date.getMonthValue();
+        int d=date.getDayOfMonth();
+        if((m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) && d > 31)
+            return false;
+        else if(d > 30)
+            return false;
+        return true;
     }
 
     /**

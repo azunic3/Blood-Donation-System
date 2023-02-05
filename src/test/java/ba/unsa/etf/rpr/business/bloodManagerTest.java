@@ -99,4 +99,11 @@ public class bloodManagerTest {
         Assertions.assertTrue(true);
         Mockito.verify(bloodManager).add(newType);
     }
+
+
+    /**
+     * JUnit5 tests
+     * testing basic methods
+     */
+
 }
