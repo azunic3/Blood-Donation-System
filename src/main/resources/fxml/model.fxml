@@ -19,13 +19,56 @@
             </Label>
          </children></HBox>
    </top>
-   <right>
-      <VBox prefHeight="357.0" prefWidth="252.0" BorderPane.alignment="CENTER">
+   <bottom>
+      <HBox prefHeight="117.0" prefWidth="600.0" style="-fx-background-color: lightGRAY;" BorderPane.alignment="CENTER">
          <children>
-            <GridPane prefHeight="122.0" prefWidth="363.0" style="-fx-background-color: lightgrey;">
+            <Label prefHeight="33.0" prefWidth="218.0" text="Important information!" textAlignment="JUSTIFY" textFill="#400404">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+               <padding>
+                  <Insets left="7.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets left="25.0" top="35.0" />
+               </HBox.margin>
+            </Label>
+            <TextArea prefHeight="102.0" prefWidth="439.0" text="Men can donate blood every 3 months and women every 4 months. A medical examination determines your health status and the possibility of donating blood. A light meal is recommended two hours before donating, and smoking should be avoided for two hours after donating. Alcohol should not be consumed on the day of donating blood." wrapText="true">
+               <font>
+                  <Font name="Arial Italic" size="13.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </HBox.margin>
+            </TextArea>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="6.0" />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
+   <center>
+      <VBox prefHeight="257.0" prefWidth="475.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" text="Name:">
+               <font>
+                  <Font name="Arial Bold Italic" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="275.0" top="15.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="fname" alignment="CENTER" prefHeight="20.0" prefWidth="70.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets left="200.0" right="200.0" top="8.0" />
+               </VBox.margin></TextField>
+            <GridPane alignment="CENTER" prefHeight="122.0" prefWidth="491.0" style="-fx-background-color: lightgrey;">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="178.0" minWidth="10.0" prefWidth="94.6" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="273.00000762939453" minWidth="10.0" prefWidth="137.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="197.2" minWidth="10.0" prefWidth="195.2" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="273.00000762939453" minWidth="10.0" prefWidth="193.6" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -52,7 +95,7 @@
                   <Text fx:id="fdate" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
                <VBox.margin>
-                  <Insets right="10.0" top="50.0" />
+                  <Insets left="120.0" right="120.0" top="20.0" />
                </VBox.margin>
                <padding>
                   <Insets left="10.0" />
@@ -63,35 +106,5 @@
             </GridPane>
          </children>
       </VBox>
-   </right>
-   <bottom>
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: lightGRAY;" BorderPane.alignment="CENTER">
-         <children>
-            <Label prefHeight="16.0" prefWidth="304.0" text="Important information!" textAlignment="JUSTIFY" textFill="#400404">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-               <padding>
-                  <Insets left="7.0" top="35.0" />
-               </padding>
-            </Label>
-            <TextArea prefHeight="100.0" prefWidth="595.0" text="Men can donate blood every 3 months and women every 4 months. A medical examination determines your health status and the possibility of donating blood. A light meal is recommended two hours before donating, and smoking should be avoided for two hours after donating. Alcohol should not be consumed on the day of donating blood." wrapText="true">
-               <font>
-                  <Font name="Arial Italic" size="13.0" />
-               </font>
-               <HBox.margin>
-                  <Insets bottom="2.0" left="1.0" right="2.0" top="2.0" />
-               </HBox.margin>
-            </TextArea>
-         </children>
-      </HBox>
-   </bottom>
-   <center>
-      <HBox prefHeight="224.0" prefWidth="348.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label text="Name:" />
-            <TextField fx:id="fname" />
-         </children>
-      </HBox>
    </center>
 </BorderPane>
