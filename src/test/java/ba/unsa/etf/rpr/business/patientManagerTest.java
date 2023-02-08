@@ -100,7 +100,7 @@ public class patientManagerTest {
         Assertions.assertTrue(true);
         Mockito.verify(patientManager).add(newType);
     }
-    @Test
+   @Test
     void validateGender() throws BloodException {
         String gen="";
         assertThrows(BloodException.class, ()->patientManager.validateGender(gen), "Incorrect gender option!");
