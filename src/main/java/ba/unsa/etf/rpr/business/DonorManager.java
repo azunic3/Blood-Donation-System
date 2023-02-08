@@ -21,6 +21,16 @@ public class DonorManager {
             throw new BloodException("Name must contain between 3 and 30 characters");
         }
     }
+    public static void validateGender(String gen) throws BloodException{
+        if(gen==null || gen.length()>1 || gen!="F" || gen!="M")
+            throw new BloodException("Incorrect gender option!");
+    }
+
+    public static void validateADonated(String don) throws BloodException{
+        if(don==null || don.length()>3 || don.length()<2){
+            throw new BloodException("An answer must be either 'YES' or 'NO'");
+        }
+    }
 
     /**
      *
@@ -71,7 +81,7 @@ public class DonorManager {
      * @return
      * @throws BloodException
      */
-    public Donor searchByDonorsName(String name) throws BloodException {
+    public static Donor searchByDonorsName(String name) throws BloodException {
         return DaoFactory.donorDao().searchByDonorsName(name);
     }
 

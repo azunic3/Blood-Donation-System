@@ -16,6 +16,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -100,19 +101,19 @@ public class MedstaffController {
             else if(M.isSelected())
                 p.setGender("M");
 
-        p.setDateOfBirth((LocalDate)DatePick.getValue());
+        p.setDateOfBirth(DatePick.getValue());
         p.setFk_Hospital_id(bloodManager.searchByName(fieldHosp.getText()));
         p.setFk_BloodType(bManager.searchByBloodGroup(fieldBlood.getText()));
 
 
             patientsTable.getItems().add(p);
             p=manager.add(p);
-            fieldName.setText("");
-            fieldID.setText("");
-            fieldHosp.setText("");
-            fieldBlood.setText("");
-            DatePick= null;
-
+//            fieldName.setText("");
+//            fieldID.setText("");
+//            fieldHosp.setText("");
+//            fieldBlood.setText("");
+//            DatePick= null;
+refreshPatients();
         } catch(BloodException e){
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
@@ -138,6 +139,7 @@ public class MedstaffController {
      */
     private void refreshPatients(){
         try {
+
             patientsTable.setItems(FXCollections.observableList(patientManager.getAll()));
             patientsTable.refresh();
         } catch (BloodException e) {
