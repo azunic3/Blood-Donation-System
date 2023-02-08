@@ -21,7 +21,7 @@ import static org.mockito.Mockito.when;
 
 /**
  * @author Azra Žunić
- * version 1.0
+ * version 1.3
  */
 public class patientManagerTest {
     private PatientManager patientManager;
@@ -39,7 +39,6 @@ public class patientManagerTest {
         patient.setFull_Name("Emina Gagula");
         patient.setGender("F");
         patient.setPhoneNumber(0603577421);
-
         patientDaoSQLMock = Mockito.mock(PatientDaoSQLImpl.class);
         p = new ArrayList<>();
         p.addAll(Arrays.asList(new Patient("Novi Pacijent"), new Patient("Drugi Pacijent")));
@@ -51,7 +50,14 @@ public class patientManagerTest {
         assertThrows(BloodException.class, ()->patientManager.validateGender(gen), "Incorrect gender option!");
     }
 
+    /**
+     * Mocking tests
+     */
 
+    /**
+     * Testing add method using mocking
+      * @throws BloodException
+     */
     @Test
     void add() throws BloodException{
         MockedStatic<DaoFactory> daoFactoryMockedStatic = Mockito.mockStatic(DaoFactory.class);
@@ -62,6 +68,11 @@ public class patientManagerTest {
         Assertions.assertTrue(true);
         daoFactoryMockedStatic.close();
     }
+
+    /**
+     * testing method for searching patients by name using mocking
+     * @throws BloodException
+     */
     @Test
     void search() throws BloodException {
         MockedStatic<DaoFactory> daoFactoryMockedStatic = Mockito.mockStatic(DaoFactory.class);
