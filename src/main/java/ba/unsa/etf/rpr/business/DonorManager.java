@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class DonorManager {
     /**
-     *
+     * validation method for tests
      * @param name
      * @throws BloodException
      */
@@ -21,11 +21,22 @@ public class DonorManager {
             throw new BloodException("Name must contain between 3 and 30 characters");
         }
     }
+
+    /**
+     * simple method that validates attribute used for tests
+     * @param gen
+     * @throws BloodException
+     */
     public static void validateGender(String gen) throws BloodException{
         if(gen==null || gen.length()>1 || gen!="F" || gen!="M")
             throw new BloodException("Incorrect gender option!");
     }
 
+    /**
+     * similar method for validation
+     * @param don
+     * @throws BloodException
+     */
     public static void validateADonated(String don) throws BloodException{
         if(don==null || don.length()>3 || don.length()<2){
             throw new BloodException("An answer must be either 'YES' or 'NO'");
@@ -33,7 +44,7 @@ public class DonorManager {
     }
 
     /**
-     *
+     * validation of attributes used for tests
      * @param pass
      * @throws BloodException
      */
@@ -42,6 +53,12 @@ public class DonorManager {
             throw new BloodException("Password cannot be shorter than 6 signs nor longer than 20 signs!");
         }
     }
+
+    /**
+     * method used for tests
+     * @param date
+     * @return
+     */
     private static boolean validateDateOfBirth(LocalDate date){
         int y=date.getYear();
         int m=date.getMonthValue();
@@ -54,7 +71,7 @@ public class DonorManager {
     }
 
     /**
-     *
+     * add method
      * @param b
      * @return
      * @throws BloodException
@@ -86,7 +103,7 @@ public class DonorManager {
     }
 
     /**
-     *
+     * searcing by ID
      * @param Id
      * @return
      * @throws BloodException
@@ -96,7 +113,6 @@ public class DonorManager {
     }
 
     /**
-     *
      * @return
      * @throws BloodException
      */
