@@ -55,8 +55,12 @@ public class PatientManager {
      * @return
      * @throws BloodException
      */
-    public static List<Patient> searchPatients(String text) throws BloodException {
+    public  List<Patient> searchPatients(String text) throws BloodException {
     return (DaoFactory.patientDao().searchByFullName(text));
+    }
+
+    public  Patient searchPatientsByName(String text) throws BloodException {
+        return (DaoFactory.patientDao().searchByPatientsName(text));
     }
 
     /**
