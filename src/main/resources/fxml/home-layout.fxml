@@ -21,14 +21,8 @@
                 <Menu text="_File">
                   <items>
                         <MenuItem fx:id="mniOpen" onAction="#akcijaOtvori" text="_Open" />
-                        <MenuItem fx:id="mniSave" text="_Save">
-                           <accelerator>
-                              <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                           </accelerator></MenuItem>
-                    <MenuItem fx:id="mniClose" onAction="#closeApp" text="_Close">
-                           <accelerator>
-                              <KeyCodeCombination alt="UP" code="C" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                           </accelerator></MenuItem>
+                        <MenuItem fx:id="mniSave" text="_Save" />
+                    <MenuItem fx:id="mniClose" onAction="#closeApp" text="_Close" />
                   </items>
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="F" control="DOWN" meta="UP" shift="UP" shortcut="UP" />

@@ -1,9 +1,3 @@
-#mniNew > .label{
-    -fx-graphic: url("/img/icons8-new-document-30.png");
-}
-#mniNew .accelerator-text{
-    -fx-graphic: none;
-}
 
 #mniOpen > .label{
     -fx-graphic: url("/img/icons8-opened-folder-24.png");
