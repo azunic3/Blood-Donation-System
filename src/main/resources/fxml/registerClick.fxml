@@ -8,9 +8,9 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.Controllers.ControllerRegister">
    <center>
-      <AnchorPane prefHeight="235.0" prefWidth="514.0" style="-fx-background-color: lightcoral;">
+      <AnchorPane prefHeight="235.0" prefWidth="514.0" style="-fx-background-color: #FF817A;">
          <children>
-            <GridPane hgap="5.0" layoutX="14.0" layoutY="38.0" prefHeight="200.0" prefWidth="479.0" vgap="5.0">
+            <GridPane alignment="CENTER" hgap="5.0" layoutX="14.0" layoutY="38.0" prefHeight="200.0" vgap="5.0">
                <stylesheets>
                   <URL value="@/css/properties.css" />
                </stylesheets>

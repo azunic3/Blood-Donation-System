@@ -1,21 +1,13 @@
 package ba.unsa.etf.rpr.business;
 
-import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Dao.HospitalDaoSQLImpl;
 import ba.unsa.etf.rpr.Domain.Hospital;
-import ba.unsa.etf.rpr.Exceptions.BloodException;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static org.mockito.Mockito.when;
 
 /**
  * @author Azra Žunić
