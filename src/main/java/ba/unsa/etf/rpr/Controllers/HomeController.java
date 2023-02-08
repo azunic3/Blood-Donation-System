@@ -1,5 +1,8 @@
 package ba.unsa.etf.rpr.Controllers;
 
+import ba.unsa.etf.rpr.Domain.Blood;
+import ba.unsa.etf.rpr.Exceptions.BloodException;
+import ba.unsa.etf.rpr.business.BloodManager;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,13 +10,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.awt.*;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Iterator;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
@@ -29,7 +41,9 @@ public class HomeController {
     public Label StatusBarLabel;
     public MenuItem mniClose;
     public Button tbClose;
+    private static final String filename = "File.txt";
     ControllerRegister noviprozor2;
+    BloodManager manager=new BloodManager();
     @FXML
     public void initialize() {
 
@@ -124,25 +138,47 @@ public class HomeController {
      * @param actionEvent
      * @throws IOException
      */
-    public void akcijaOtvori(ActionEvent actionEvent) throws IOException{
-        FileChooser izbornik = new FileChooser();
-        izbornik.setTitle("Choose file: ");
-        izbornik.getExtensionFilters().add(new FileChooser.ExtensionFilter("Txt file", "*.txt"));
-        File izabrani=izbornik.showOpenDialog(textArea.getScene().getWindow());
-        if(izabrani==null) return;
+    public void mniSave(ActionEvent actionEvent) throws IOException{
+        Path path = Paths.get(filename);
+        BufferedWriter bw = Files.newBufferedWriter(path);
         try {
-            String tekst = new String(Files.readAllBytes(izabrani.toPath()));
-            textArea.setText(tekst);
-        }
-        catch(IOException e){
-            Alert alert=new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("There was an error while reading file!");
-            alert.setContentText(e.getMessage());
-            alert.setTitle("Cannot open file");
-            alert.show();
-            StatusBarLabel.setText("File executed");
+            Iterator<Blood> iterator = null;
+            try {
+                iterator = manager.getAll().iterator();
+            } catch (BloodException e) {
+                e.printStackTrace();
+            }
+            while (true) {
+                assert iterator != null;
+                if (!iterator.hasNext()) break;
+                Blood temp = iterator.next();
+                bw.write(String.format("%s\t%s\t%s\t%s\t%s\t%s", temp.getBloodGroup(), temp.getId(), temp.getBloodAmount(), temp.getDonateDate(), temp.getBloodBagNumber(), temp.getFk_hospital_id()));
+                bw.newLine();
+            }
+
+        } finally {
+            if (bw != null) {
+                bw.close();
+            }
         }
     }
+    public void akcijaOtvori(ActionEvent actionEvent) {
+        try {
+            File file = new File("File.txt");
+            if (!Desktop.isDesktopSupported()) {
+
+                System.out.println("Not supported");
+                return;
+            }
+            Desktop desktop = Desktop.getDesktop();
+            if (file.exists())
+                desktop.open(file);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private void openDialog(String title, String file, Object controller){
         try {
