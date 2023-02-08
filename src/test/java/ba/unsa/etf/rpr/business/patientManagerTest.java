@@ -50,6 +50,8 @@ public class patientManagerTest {
         String gen="";
         assertThrows(BloodException.class, ()->patientManager.validateGender(gen), "Incorrect gender option!");
     }
+
+
     @Test
     void add() throws BloodException{
         MockedStatic<DaoFactory> daoFactoryMockedStatic = Mockito.mockStatic(DaoFactory.class);
