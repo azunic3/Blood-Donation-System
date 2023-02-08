@@ -4,7 +4,6 @@ import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Domain.Blood;
 import ba.unsa.etf.rpr.Domain.Patient;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
-
 import java.util.List;
 /**
  * Business Logic Layer for management of Patients
@@ -12,7 +11,7 @@ import java.util.List;
  */
 public class PatientManager {
     /**
-     *
+     * method used for tests
      * @param name
      * @throws BloodException
      */
@@ -22,13 +21,18 @@ public class PatientManager {
         }
     }
 
+    /**
+     * validation method used for tests
+     * @param gen
+     * @throws BloodException
+     */
     public static void validateGender(String gen) throws BloodException{
         if(gen==null || gen.length()>1 || gen!="F" || gen!="M")
             throw new BloodException("Incorrect gender option!");
     }
 
     /**
-     *
+     * add method
      * @param b
      * @return
      * @throws BloodException
@@ -48,7 +52,6 @@ public class PatientManager {
             throw e;
         }
     }
-
     /**
      *
      * @param text
@@ -58,7 +61,6 @@ public class PatientManager {
     public  List<Patient> searchPatients(String text) throws BloodException {
     return (DaoFactory.patientDao().searchByFullName(text));
     }
-
     public  Patient searchPatientsByName(String text) throws BloodException {
         return (DaoFactory.patientDao().searchByPatientsName(text));
     }

@@ -3,7 +3,6 @@ package ba.unsa.etf.rpr.business;
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
-
 import java.time.LocalDate;
 import java.util.List;
 /**

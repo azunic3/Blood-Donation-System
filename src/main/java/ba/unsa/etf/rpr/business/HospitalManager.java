@@ -3,7 +3,6 @@ package ba.unsa.etf.rpr.business;
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
-
 import java.util.List;
 /**
  * Business Logic Layer for Hospitals
@@ -72,14 +71,6 @@ public class HospitalManager {
         return DaoFactory.hospitalDao().getById(Hospital_id);
     }
 
-    /**
-     *
-     * @param q
-     * @throws BloodException
-     */
-    public void update(Hospital q) throws BloodException{
-        DaoFactory.hospitalDao().update(q);
-    }
 
     /**
      *
