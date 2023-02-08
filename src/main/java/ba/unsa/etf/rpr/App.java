@@ -5,14 +5,13 @@ import ba.unsa.etf.rpr.business.BloodManager;
 import ba.unsa.etf.rpr.business.PatientManager;
 import org.apache.commons.cli.*;
 import java.io.PrintWriter;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
 /**
  * @author Azra Žunić
  * version 1.2
- * * CLI (Command Line Interface) implementation in following class
+ *  CLI (Command Line Interface) implementation in following class
  */
 public class App {
     /**
@@ -55,7 +54,6 @@ public static Options addOptions() {
      * @throws Exception
      * @author Azra Žunić
      */
-
     public static void main(String[] args) throws Exception {
         Options options = addOptions();
         CommandLineParser commandLineParser = new DefaultParser();
@@ -77,7 +75,7 @@ public static Options addOptions() {
             Patient patient = new Patient();
              patient.setFk_BloodType(blood);
             patient.setFull_Name(cl.getArgList().get(0));
-            patient.setDateOfBirth(Date.valueOf(LocalDate.of(2002,2,15)));
+            patient.setDateOfBirth((LocalDate.of(2002,2,15)));
             patientManager.add(patient);
             System.out.println("You successfully added patient to database!");
 
@@ -107,9 +105,8 @@ public static Options addOptions() {
             System.exit(-1);
 
         }
-
-       }
-        }
+    }
+}
 
 
 
