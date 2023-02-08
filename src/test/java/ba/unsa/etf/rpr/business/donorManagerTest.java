@@ -61,5 +61,15 @@ public class donorManagerTest {
         String pass = "";
         assertThrows( BloodException.class, ()->donorManager.validatePassword(pass), "Password cannot be shorter than 6 signs nor longer than 20 signs!");
     }
+    @Test
+    void validateGender() throws BloodException {
+        String gen="";
+        assertThrows(BloodException.class, ()->donorManager.validateGender(gen), "Incorrect gender option!");
+    }
+    @Test
+    void validateADonated() throws BloodException {
+        String don="";
+        assertThrows(BloodException.class, ()->donorManager.validateADonated(don), "An answer must be either 'YES' or 'NO'");
+    }
 
 }
