@@ -1,7 +1,6 @@
 package ba.unsa.etf.rpr.Controllers;
 
 import ba.unsa.etf.rpr.Dao.PatientDaoSQLImpl;
-import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Domain.Patient;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 import ba.unsa.etf.rpr.business.BloodManager;
@@ -14,10 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * JavaFX Controller for Medical staff action
@@ -108,11 +104,6 @@ public class MedstaffController {
 
             patientsTable.getItems().add(p);
             p=manager.add(p);
-//            fieldName.setText("");
-//            fieldID.setText("");
-//            fieldHosp.setText("");
-//            fieldBlood.setText("");
-//            DatePick= null;
 refreshPatients();
         } catch(BloodException e){
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();

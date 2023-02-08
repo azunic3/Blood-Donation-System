@@ -9,15 +9,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
-import javafx.stage.FileChooser;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.awt.*;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -162,6 +160,11 @@ public class HomeController {
             }
         }
     }
+
+    /**
+     * menu option that opens file imported in project
+     * @param actionEvent
+     */
     public void akcijaOtvori(ActionEvent actionEvent) {
         try {
             File file = new File("File.txt");
@@ -193,7 +196,6 @@ public class HomeController {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
     }
-
 }
 
 

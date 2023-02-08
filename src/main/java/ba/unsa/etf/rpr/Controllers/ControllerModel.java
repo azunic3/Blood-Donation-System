@@ -1,5 +1,4 @@
 package ba.unsa.etf.rpr.Controllers;
-
 import ba.unsa.etf.rpr.Dao.BloodDaoSQLImpl;
 import ba.unsa.etf.rpr.Domain.Blood;
 import ba.unsa.etf.rpr.Domain.Donor;
@@ -12,16 +11,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Locale;
 
 public class ControllerModel {
@@ -73,11 +67,6 @@ fdate.textProperty().bindBidirectional(bm.fdate);
             d1.setFullName(this.fname.getName());
             return d;
         }
-    }
-    public void searchD (ActionEvent actionEvent) throws BloodException {
-        Blood p = bloodDaoSQL.getById(Integer.parseInt(search.getText()));
-        ObservableList<Blood> pat = FXCollections.observableArrayList();
-        pat.add(p);
     }
 }
 

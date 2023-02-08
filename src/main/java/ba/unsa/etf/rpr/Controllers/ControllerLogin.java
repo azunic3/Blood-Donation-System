@@ -1,5 +1,4 @@
 package ba.unsa.etf.rpr.Controllers;
-
 import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 import javafx.beans.value.ChangeListener;
@@ -11,10 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.Objects;
-
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 /**

@@ -1,5 +1,4 @@
 package ba.unsa.etf.rpr.Controllers;
-
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Dao.DonorDaoSQLImpl;
 import ba.unsa.etf.rpr.Domain.Donor;
