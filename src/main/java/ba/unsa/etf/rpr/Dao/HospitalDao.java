@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * Dao interface for Hospital domain bean
- * no special classes except for those in Abstract Dao
+ * classes: searchByName, getAll
  * @author Azra Žunić
  */
 public interface HospitalDao extends Dao<Hospital>{

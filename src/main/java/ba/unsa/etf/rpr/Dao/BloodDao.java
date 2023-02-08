@@ -13,7 +13,7 @@ import java.util.List;
 public interface BloodDao extends Dao<Blood> {
 
     /**
-     * methods: getAll, searchByBagNumber, searchByHospital
+     * methods: getAll, searchByBloodGroup, searchByHospital
      * @return lists
      */
 

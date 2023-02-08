@@ -67,7 +67,7 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
     /**
      * method is used for searching patients by their name
      * @param name
-     * @return
+     * @return patients whose name is sent as parameter
      * @throws BloodException
      */
     @Override
@@ -78,7 +78,6 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
     /**
      * checking blood type for patients
      * @param group
-     * @return
      * @throws BloodException
      */
     @Override
@@ -89,7 +88,7 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
     /**
      * searching patients by name
      * @param text
-     * @return
+     * @return list
      * @throws BloodException
      */
     @Override

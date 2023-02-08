@@ -75,16 +75,6 @@ public class DonorDaoSQLImpl extends AbstractDao<Donor> implements DonorDao{
     public Donor searchByDonorsName(String name) throws BloodException {
         return executeQueryUnique("SELECT * FROM Donor WHERE FullName = ?", new Object[]{name});
     }
-    /**
-     * searching donors by donor_id
-     * @param Id
-     * @return donors id
-     * @throws BloodException
-     */
-    @Override
-    public Donor searchById(int Id) throws BloodException{
-        return executeQueryUnique("SELECT * FROM Donor WHERE Donor_id = ?", new Object[]{Id});
-    }
 
     /**
      * returns list searched by name of the donor

@@ -62,7 +62,6 @@ public class HospitalDaoSQLImpl extends AbstractDao<Hospital> implements Hospita
 
     /**
      * @param name
-     * @return
      * @throws BloodException
      * @author Azra Žunić
      * searching for a hospital by its name

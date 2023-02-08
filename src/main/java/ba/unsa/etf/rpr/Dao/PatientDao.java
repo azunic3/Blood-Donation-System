@@ -8,13 +8,11 @@ import java.util.List;
 
 /**
  * Dao interface for Patient domain bean
- * methods:searchByPatientsName,searchById,searchByFullName
  */
 public interface PatientDao extends Dao<Patient>{
     /**
      * searching patients by full name
      * @param name
-     * @return
      * @throws BloodException
      */
     public Patient searchByPatientsName(String name) throws BloodException;
@@ -22,7 +20,6 @@ public interface PatientDao extends Dao<Patient>{
     /**
      * returns all patients with the specified blood type
      * @param group
-     * @return
      * @throws BloodException
      */
     List<Patient> searchByBloodGroup(Blood group) throws BloodException;
@@ -30,7 +27,6 @@ public interface PatientDao extends Dao<Patient>{
     /**
      * returns all patients with specified name
      * @param text
-     * @return
      * @throws BloodException
      */
     List<Patient> searchByFullName(String text) throws BloodException;

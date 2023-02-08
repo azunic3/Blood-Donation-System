@@ -28,7 +28,11 @@ public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao {
             instance=null;
     }
 
-
+    /**
+     * method same as the one on github
+     * @param rs - result set from database
+     * @throws BloodException
+     */
     @Override
     public Blood row2object(ResultSet rs) throws BloodException {
         try {
@@ -89,7 +93,6 @@ public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao {
      * @author Azra Žunić
      * method that is used for searching infos by hospital id
      * @param hospital
-     * @return
      * @throws BloodException
      */
     @Override
@@ -99,9 +102,7 @@ public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao {
 
     /**
      * used to search by blood type
-     *
      * @param group
-     * @return
      * @throws BloodException
      */
     @Override
