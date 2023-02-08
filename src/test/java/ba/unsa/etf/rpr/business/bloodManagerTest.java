@@ -15,6 +15,7 @@ import java.util.List;
 import static org.mockito.Mockito.when;
 
 /**
+ * Class uses mocking technique showed on Quote-Maker project
  * @author Azra Žunić
  * version 1.0
  */
