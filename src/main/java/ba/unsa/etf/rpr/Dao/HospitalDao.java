@@ -2,7 +2,6 @@ package ba.unsa.etf.rpr.Dao;
 
 import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
-
 import java.util.List;
 
 /**

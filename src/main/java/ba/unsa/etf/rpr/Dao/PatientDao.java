@@ -12,14 +12,6 @@ import java.util.List;
  */
 public interface PatientDao extends Dao<Patient>{
     /**
-     * searching patients by ID
-     * @param Id
-     * @return
-     * @throws BloodException
-     */
-    public Patient searchById(int Id) throws BloodException;
-
-    /**
      * searching patients by full name
      * @param name
      * @return
@@ -43,5 +35,4 @@ public interface PatientDao extends Dao<Patient>{
      */
     List<Patient> searchByFullName(String text) throws BloodException;
     List<Patient> getAll() throws BloodException;
-
 }

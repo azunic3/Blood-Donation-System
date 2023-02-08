@@ -2,7 +2,6 @@ package ba.unsa.etf.rpr.Dao;
 
 import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -97,5 +96,4 @@ public class DonorDaoSQLImpl extends AbstractDao<Donor> implements DonorDao{
     public List<Donor> searchByName(String text) throws BloodException{
         return executeQuery("SELECT * FROM Donor WHERE FullName LIKE concat('%', ?, '%')",new Object[]{text});
     }
-
 }

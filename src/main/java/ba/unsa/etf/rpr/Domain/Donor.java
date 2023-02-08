@@ -1,7 +1,6 @@
 package ba.unsa.etf.rpr.Domain;
 
 import ba.unsa.etf.rpr.Dao.DonorDaoSQLImpl;
-
 import java.util.Date;
 import java.util.Objects;
 /**

@@ -2,7 +2,6 @@ package ba.unsa.etf.rpr.Dao;
 import ba.unsa.etf.rpr.Domain.Blood;
 import ba.unsa.etf.rpr.Domain.Patient;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
-
 import java.util.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -63,19 +62,6 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
         item.put("fk_Hospital_id", object.getFk_Hospital_id().getId());
         item.put("fk_BloodType", object.getFk_BloodType().getId());
         return item;
-    }
-
-
-    /**
-     * @author Azra Žunić
-     * searching by id
-     * @param Id
-     * @return patients id
-     * @throws BloodException
-     */
-    @Override
-    public Patient searchById(int Id) throws BloodException{
-        return getById(Id);
     }
 
     /**

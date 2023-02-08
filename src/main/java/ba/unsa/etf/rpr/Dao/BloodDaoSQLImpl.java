@@ -3,7 +3,6 @@ package ba.unsa.etf.rpr.Dao;
 import ba.unsa.etf.rpr.Domain.Blood;
 import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -109,5 +108,4 @@ public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao {
     public Blood searchByBloodGroup(String group) throws BloodException {
         return executeQueryUnique("SELECT * FROM Blood WHERE BloodGroup LIKE concat('%', ?, '%')",new Object[]{group});
     }
-
 }

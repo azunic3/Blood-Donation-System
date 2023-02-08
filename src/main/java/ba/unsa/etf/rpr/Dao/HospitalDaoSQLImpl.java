@@ -2,10 +2,8 @@ package ba.unsa.etf.rpr.Dao;
 
 import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 /**
@@ -73,5 +71,4 @@ public class HospitalDaoSQLImpl extends AbstractDao<Hospital> implements Hospita
     public Hospital searchByName(String name) throws BloodException {
         return executeQueryUnique("SELECT * FROM Hospital WHERE Name = ?", new Object[]{name});
     }
-
 }

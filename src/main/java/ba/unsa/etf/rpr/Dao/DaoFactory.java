@@ -14,7 +14,6 @@ public class DaoFactory {
     public DaoFactory(){
     }
     public static BloodDao bloodDao(){
-
         return bloodDao;
     }
 
@@ -22,11 +21,9 @@ public class DaoFactory {
         return donorDao;
     }
     public static PatientDao patientDao(){
-
         return patientDao;
     }
     public static HospitalDao hospitalDao(){
-
         return hospitalDao;
     }
 }

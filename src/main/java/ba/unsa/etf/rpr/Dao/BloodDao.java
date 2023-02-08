@@ -3,8 +3,6 @@ package ba.unsa.etf.rpr.Dao;
 import ba.unsa.etf.rpr.Domain.Blood;
 import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
-
-import java.util.Date;
 import java.util.List;
 
 /**
