@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -56,17 +55,17 @@ public class donorManagerTest {
         assertThrows( BloodException.class, ()->donorManager.validatePassword(pass), "Password cannot be shorter than 6 signs nor longer than 20 signs!");
     }
     @Test
-    void validateGender() throws BloodException {
+    void validateGender()  {
         String gen="";
         assertThrows(BloodException.class, ()->donorManager.validateGender(gen), "Incorrect gender option!");
     }
     @Test
-    void validateADonated() throws BloodException {
+    void validateADonated(){
         String don="";
         assertThrows(BloodException.class, ()->donorManager.validateADonated(don), "An answer must be either 'YES' or 'NO'");
     }
     @Test
-    void testing () throws BloodException, ParseException {
+    void testing () throws BloodException {
         String donated = "YES";
         Donor dd=new Donor();
         dd.setAlreadyDonated(donated);

@@ -40,7 +40,7 @@ public class patientManagerTest {
     }
 
    @Test
-    void validateGender() throws BloodException {
+    void validateGender() {
         String gen="";
         assertThrows(BloodException.class, ()->patientManager.validateGender(gen), "Incorrect gender option!");
     }
