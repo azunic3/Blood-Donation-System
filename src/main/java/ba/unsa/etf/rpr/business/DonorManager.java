@@ -16,7 +16,7 @@ public class DonorManager {
      * @param name
      * @throws BloodException
      */
-    public void validateDonorsName(String name) throws BloodException{
+    public static void validateDonorsName(String name) throws BloodException{
         if (name == null || name.length() < 3 || name.length() >30) {
             throw new BloodException("Name must contain between 3 and 30 characters");
         }
@@ -27,12 +27,12 @@ public class DonorManager {
      * @param pass
      * @throws BloodException
      */
-    public void validatePassword(String pass ) throws BloodException{
+    public static void validatePassword(String pass ) throws BloodException{
         if(pass == null || pass.length()<6 || pass.length()>20){
             throw new BloodException("Password cannot be shorter than 6 signs nor longer than 20 signs!");
         }
     }
-    private boolean validateDateOfBirth(LocalDate date){
+    private static boolean validateDateOfBirth(LocalDate date){
         int y=date.getYear();
         int m=date.getMonthValue();
         int d=date.getDayOfMonth();

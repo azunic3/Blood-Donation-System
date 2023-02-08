@@ -23,13 +23,13 @@ import static org.mockito.Mockito.when;
  * version 1.0
  */
 public class bloodManagerTest {
-    private BloodManager bloodManager;
+   private BloodManager bloodManager;
     private Blood blood;
     private BloodDaoSQLImpl bloodDaoSQLMock;
     private List<Blood> bl;
     /**
      * This method will be called before each test method
-     */
+*/
     @BeforeEach
     public void initializeObjectsWeNeed(){
         bloodManager = Mockito.mock(BloodManager.class);
@@ -46,7 +46,7 @@ public class bloodManagerTest {
     /**
      * In this method we will test validateBloodType(String group) for correct and incorrect passed parameters
      * there is a mock setup stage and test stage
-     */
+*/
     @Test
     void validateBloodType() throws BloodException{
         String correctGroup = "B+";
@@ -72,7 +72,7 @@ public class bloodManagerTest {
     /**
      * We are testing add() method. Trying to add type that already exists
      * An exception will be thrown because our instance of Blood.java class has value for id
-     */
+*/
     @Test
     void add() throws BloodException {
         MockedStatic<DaoFactory> daoFactoryMockedStatic = Mockito.mockStatic(DaoFactory.class);
@@ -91,7 +91,7 @@ public class bloodManagerTest {
 
     /**
      * Testing if we can add a new blood group
-     */
+*/
     @Test
     void addNewBloodType() throws BloodException {
         Blood newType = new Blood("Ca+");
@@ -99,11 +99,5 @@ public class bloodManagerTest {
         Assertions.assertTrue(true);
         Mockito.verify(bloodManager).add(newType);
     }
-
-
-    /**
-     * JUnit5 tests
-     * testing basic methods
-     */
 
 }
