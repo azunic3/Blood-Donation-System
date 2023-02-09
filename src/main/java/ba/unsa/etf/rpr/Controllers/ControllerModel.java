@@ -1,4 +1,5 @@
 package ba.unsa.etf.rpr.Controllers;
+
 import ba.unsa.etf.rpr.Dao.BloodDaoSQLImpl;
 import ba.unsa.etf.rpr.Domain.Blood;
 import ba.unsa.etf.rpr.Domain.Donor;
@@ -7,30 +8,27 @@ import ba.unsa.etf.rpr.business.BloodManager;
 import ba.unsa.etf.rpr.business.DonorManager;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+/**
+ * JavaFX Controller for model class
+ * uses binding
+ */
 public class ControllerModel {
-
+   //form fields
     public Text fdate ;
     public Text fgroup;
     public TextField fname;
     String ime;
-    private final DonorManager donorManager = new DonorManager();
 
-    BloodManager bmanager = new BloodManager();
-BloodModel bm=new BloodModel();
-    public TextField search;
-    private BloodDaoSQLImpl bloodDaoSQL = new BloodDaoSQLImpl();
-
+    BloodModel bm=new BloodModel();
 
     public void setIme(String t) throws BloodException {
         this.ime=t;
@@ -41,23 +39,33 @@ BloodModel bm=new BloodModel();
 
     @FXML
     public void initialize() throws BloodException {
-
         fname.textProperty().bindBidirectional(bm.fname);
-fgroup.textProperty().bindBidirectional(bm.fgroup);
-fdate.textProperty().bindBidirectional(bm.fdate);
+        fgroup.textProperty().bindBidirectional(bm.fgroup);
+        fdate.textProperty().bindBidirectional(bm.fdate);
     }
+
+    /**
+     * class used for binding
+     */
     public class BloodModel {
         public SimpleStringProperty fgroup = new SimpleStringProperty("");
         public SimpleObjectProperty<String> fdate = new SimpleObjectProperty<String>();
         public SimpleStringProperty fname = new SimpleStringProperty("");
 
-
+        /**
+         * from method for binding
+         * @param d
+         */
         public void fromBlood(Blood d) {
-
             this.fgroup.set(d.getBloodGroup());
             this.fdate.set(String.valueOf(d.getDonateDate()));
             this.fname.set(ime);
         }
+
+        /**
+         * to method
+         * @throws ParseException
+         */
         public Blood toBlood() throws ParseException {
             Blood d = new Blood();
             d.setBloodGroup(this.fgroup.getName());

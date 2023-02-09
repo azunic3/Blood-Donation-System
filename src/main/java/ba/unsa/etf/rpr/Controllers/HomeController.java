@@ -44,8 +44,8 @@ public class HomeController {
     BloodManager manager=new BloodManager();
     @FXML
     public void initialize() {
-
     }
+
     public ControllerRegister getNoviprozor2() {
         return noviprozor2;
     }
