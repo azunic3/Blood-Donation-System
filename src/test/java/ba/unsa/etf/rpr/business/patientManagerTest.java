@@ -1,6 +1,8 @@
 package ba.unsa.etf.rpr.business;
 import ba.unsa.etf.rpr.Dao.DaoFactory;
+import ba.unsa.etf.rpr.Dao.HospitalDaoSQLImpl;
 import ba.unsa.etf.rpr.Dao.PatientDaoSQLImpl;
+import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Domain.Patient;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 import org.junit.jupiter.api.Assertions;
@@ -11,6 +13,8 @@ import org.mockito.Mockito;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
@@ -41,10 +45,9 @@ public class patientManagerTest {
 
    @Test
     void validateGender() {
-        String gen="";
+        String gen="MEJBI";
         assertThrows(BloodException.class, ()->patientManager.validateGender(gen), "Incorrect gender option!");
     }
-
     /**
      * Mocking tests
      */

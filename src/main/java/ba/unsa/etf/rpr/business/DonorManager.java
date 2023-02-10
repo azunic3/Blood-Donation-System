@@ -3,7 +3,6 @@ package ba.unsa.etf.rpr.business;
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
-import java.time.LocalDate;
 import java.util.List;
 /**
  * Business Logic Layer for management of Donors
@@ -22,13 +21,13 @@ public class DonorManager {
     }
 
     /**
-     * simple method that validates attribute used for tests
-     * @param gen
+     * update method used for mocking tests
+     * @param donor
      * @throws BloodException
      */
-    public static void validateGender(String gen) throws BloodException{
-        if(gen==null || gen.length()>1 || gen!="F" || gen!="M")
-            throw new BloodException("Incorrect gender option!");
+    public Donor update(Donor donor) throws BloodException {
+        validateDonorsName(donor.getFullName());
+        return DaoFactory.donorDao().update(donor);
     }
 
     /**

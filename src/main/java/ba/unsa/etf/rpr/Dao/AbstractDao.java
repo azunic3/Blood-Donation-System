@@ -11,7 +11,9 @@ import java.util.*;
  * @author Azra Žunić
  */
 public abstract class AbstractDao<T extends Idable> implements Dao<T>{
-
+    /**
+     * connection to database created and refactored
+     */
     private static Connection connection = null;
     private String tableName;
 
@@ -48,7 +50,6 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
     public static Connection getConnection(){
         return AbstractDao.connection;
     }
-
 
     /**
      * Method for mapping ResultSet into Object
@@ -207,7 +208,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
                 continue;
             columns.append(entry.getKey());
             questions.append("?");
-            if (row.size() != counter) {
+            if (row.size() -1 != counter) {
                 columns.append(",");
                 questions.append(",");
             }
