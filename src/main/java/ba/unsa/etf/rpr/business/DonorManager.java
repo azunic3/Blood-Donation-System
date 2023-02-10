@@ -37,7 +37,7 @@ public class DonorManager {
      * @throws BloodException
      */
     public static void validateADonated(String don) throws BloodException{
-        if(don==null || don.length()>3 || don.length()<2){
+        if(don==null || don!="YES" || don!="NO"){
             throw new BloodException("An answer must be either 'YES' or 'NO'");
         }
     }

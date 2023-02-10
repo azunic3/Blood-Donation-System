@@ -11,7 +11,7 @@ import java.util.List;
 
 public class HospitalManager {
     /**
-     *
+     * validation of hospitals name, used for tests
      * @param name
      * @throws BloodException
      */
