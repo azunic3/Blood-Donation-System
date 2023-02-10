@@ -119,6 +119,9 @@ public class MedstaffController {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
     }
+    public void updatePatients(ActionEvent actionEvent){
+
+    }
 
     /**
      * fetch patients from database

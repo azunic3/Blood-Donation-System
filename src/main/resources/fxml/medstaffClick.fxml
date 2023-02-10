@@ -17,7 +17,7 @@
             <TableColumn fx:id="bloodcol" prefWidth="100.79998779296875" text="Blood type" />
         </columns>
          <BorderPane.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            <Insets bottom="5.0" left="2.0" right="5.0" top="5.0" />
          </BorderPane.margin>
       </TableView>
    </center>
@@ -26,17 +26,12 @@
          <buttons>
             <HBox prefHeight="32.0" prefWidth="554.0">
                <children>
-                  <Separator orientation="VERTICAL" prefHeight="200.0">
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin>
-                  </Separator>
                   <TextField fx:id="search" alignment="CENTER" promptText="Find a patient">
                      <padding>
                         <Insets bottom="5.0" right="5.0" top="5.0" />
                      </padding>
                      <HBox.margin>
-                        <Insets bottom="5.0" right="5.0" top="5.0" />
+                        <Insets bottom="5.0" left="3.0" right="3.0" top="5.0" />
                      </HBox.margin>
                      <font>
                         <Font name="Arial Bold Italic" size="12.0" />
@@ -48,7 +43,7 @@
                   <Separator orientation="VERTICAL" prefHeight="200.0" />
                   <Button mnemonicParsing="false" onAction="#searchPatients" prefHeight="23.0" prefWidth="65.0" text="Search">
                      <HBox.margin>
-                        <Insets left="5.0" right="5.0" top="5.0" />
+                        <Insets left="3.0" right="3.0" top="5.0" />
                      </HBox.margin>
                      <font>
                         <Font name="Arial" size="12.0" />
@@ -57,18 +52,28 @@
                   <Separator orientation="VERTICAL" prefHeight="200.0" />
                   <Button fx:id="DeletePat" alignment="CENTER" mnemonicParsing="false" onAction="#DeletePat" prefHeight="23.0" prefWidth="65.0" styleClass="tbButton" text="Delete" textAlignment="JUSTIFY" textOverrun="WORD_ELLIPSIS">
                      <HBox.margin>
-                        <Insets left="5.0" right="5.0" top="5.0" />
+                        <Insets left="3.0" right="3.0" top="5.0" />
                      </HBox.margin>
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Button>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <Button fx:id="updatePatients" mnemonicParsing="false" prefHeight="23.0" prefWidth="62.0" text="Update">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="3.0" right="3.0" top="5.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Button>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
                   <Button fx:id="addNew" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#addNew" prefHeight="23.0" prefWidth="65.0" styleClass="tbButton" text="Add" textOverrun="WORD_ELLIPSIS">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="70.0" right="7.0" top="5.0" />
+                        <Insets bottom="5.0" left="3.0" right="3.0" top="5.0" />
                      </HBox.margin>
                   </Button>
                   <Separator orientation="VERTICAL" prefHeight="200.0" />
@@ -77,7 +82,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="10.0" right="7.0" top="5.0" />
+                        <Insets left="3.0" right="7.0" top="5.0" />
                      </HBox.margin>
                   </Button>
                </children>
@@ -172,7 +177,7 @@
             </GridPane>
          </children>
          <BorderPane.margin>
-            <Insets bottom="5.0" />
+            <Insets bottom="5.0" right="2.0" />
          </BorderPane.margin>
       </VBox>
    </right>
