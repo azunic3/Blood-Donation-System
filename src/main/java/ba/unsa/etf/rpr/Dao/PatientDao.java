@@ -15,7 +15,7 @@ public interface PatientDao extends Dao<Patient>{
      * @param name
      * @throws BloodException
      */
-    public Patient searchByPatientsName(String name) throws BloodException;
+    Patient searchByPatientsName(String name) throws BloodException;
 
     /**
      * returns all patients with the specified blood type
@@ -30,5 +30,10 @@ public interface PatientDao extends Dao<Patient>{
      * @throws BloodException
      */
     List<Patient> searchByFullName(String text) throws BloodException;
+
+    /**
+     * @return list
+     * @throws BloodException
+     */
     List<Patient> getAll() throws BloodException;
 }

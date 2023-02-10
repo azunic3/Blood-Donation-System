@@ -10,7 +10,7 @@ import java.util.List;
  * @author Azra Žunić
  */
 public interface HospitalDao extends Dao<Hospital>{
-    public Hospital searchByName(String name) throws BloodException;
+    Hospital searchByName(String name) throws BloodException;
     List<Hospital> getAll() throws BloodException;
 
 }

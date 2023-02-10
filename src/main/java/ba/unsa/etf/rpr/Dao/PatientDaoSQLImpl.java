@@ -14,6 +14,9 @@ import java.util.TreeMap;
  */
 public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDao {
 
+    /**
+     * creating and removing instance typed as PatientDaoSQLImpl
+     */
     private static  PatientDaoSQLImpl instance = null;
     public PatientDaoSQLImpl(){
         super("Patient");
@@ -24,7 +27,6 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
             instance = new PatientDaoSQLImpl();
         return instance;
     }
-
     public static void removeInstance(){
         if(instance!=null)
             instance=null;
@@ -78,6 +80,7 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
     /**
      * checking blood type for patients
      * @param group
+     * @return list of patients with specified blood type
      * @throws BloodException
      */
     @Override
@@ -88,7 +91,7 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
     /**
      * searching patients by name
      * @param text
-     * @return list
+     * @return patient with a specified name
      * @throws BloodException
      */
     @Override

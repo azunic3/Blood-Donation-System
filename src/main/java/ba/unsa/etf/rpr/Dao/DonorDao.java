@@ -6,22 +6,20 @@ import java.util.List;
 
 /**
  * Dao interface for Donor domain bean
- * methods:getAll,searchByDonorsName,searchByName
+ * methods:getAll, searchByDonorsName, searchByName
  */
 public interface DonorDao extends Dao<Donor>{
 
     /**
      * returns donor's name
      * @param name
-     * @return
      * @throws BloodException
      */
-    public Donor searchByDonorsName(String name) throws BloodException;
+    Donor searchByDonorsName(String name) throws BloodException;
 
     /**
-     * returns list of values when searching by name of the donor
+     * @return list of values when searching by name of the donor
      * @param text
-     * @return
      * @throws BloodException
      */
     List<Donor> searchByName(String text) throws BloodException;

@@ -11,6 +11,9 @@ import java.util.TreeMap;
  * @author Azra Žunić
  */
 public class HospitalDaoSQLImpl extends AbstractDao<Hospital> implements HospitalDao {
+    /**
+     * creating and removing instance typed as HospitalDaoSQLImpl
+     */
     private static HospitalDaoSQLImpl instance = null;
 
     public HospitalDaoSQLImpl() {
@@ -61,10 +64,10 @@ public class HospitalDaoSQLImpl extends AbstractDao<Hospital> implements Hospita
     }
 
     /**
+     * searching for a hospital by its name
      * @param name
      * @throws BloodException
      * @author Azra Žunić
-     * searching for a hospital by its name
      */
     @Override
     public Hospital searchByName(String name) throws BloodException {

@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * java bean for table Patient
+ * java beans for table Patient
  * @author Azra Žunić
  * version 1.2
  */
@@ -18,7 +18,7 @@ public class Patient implements Idable {
     private Blood fk_BloodType;
     private Hospital fk_Hospital_id;
     /**
-     *getters and setter for each private atribute
+     * getters and setter for each private atribute
      * constructor, hashcode, toString, equals method
      */
     public Patient() {
@@ -119,5 +119,4 @@ public class Patient implements Idable {
                 ", fk_Hospital_id=" + fk_Hospital_id +
                 '}';
     }
-
 }

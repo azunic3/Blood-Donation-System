@@ -13,6 +13,9 @@ import java.util.TreeMap;
  * @author Azra Žunić
  */
 public class DonorDaoSQLImpl extends AbstractDao<Donor> implements DonorDao{
+    /**
+     * creating and removing instance typed as DonorDaoSQLImpl
+     */
     private static  DonorDaoSQLImpl instance = null;
     public DonorDaoSQLImpl() {
         super("Donor");
@@ -29,6 +32,11 @@ public class DonorDaoSQLImpl extends AbstractDao<Donor> implements DonorDao{
             instance=null;
     }
 
+    /**
+     * setting attributes
+     * @param rs - result set from database
+     * @throws BloodException
+     */
     @Override
     public Donor row2object(ResultSet rs) throws BloodException {
         try {
@@ -68,7 +76,6 @@ public class DonorDaoSQLImpl extends AbstractDao<Donor> implements DonorDao{
      * @author Azra Žunić
      * method that searches donors by full name
      * @param name
-     * @return name
      * @throws BloodException
      */
     @Override
@@ -79,7 +86,7 @@ public class DonorDaoSQLImpl extends AbstractDao<Donor> implements DonorDao{
     /**
      * returns list searched by name of the donor
      * @param text
-     * @return list
+     * @return list of attributes associated with a name that is sent in a query
      * @throws BloodException
      */
     @Override

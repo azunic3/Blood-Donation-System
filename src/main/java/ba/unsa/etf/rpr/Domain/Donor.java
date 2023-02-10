@@ -4,7 +4,7 @@ import ba.unsa.etf.rpr.Dao.DonorDaoSQLImpl;
 import java.util.Date;
 import java.util.Objects;
 /**
- * java bean for table hospital
+ * java beans for table hospital
  * @author Azra Žunić
  * version 1.2
  */

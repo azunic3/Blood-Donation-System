@@ -2,9 +2,9 @@ package ba.unsa.etf.rpr.Domain;
 
 import java.util.Objects;
 /**
- * bean for hospital
+ * java beans for hospital
  * @author Azra Žunić
- * version 1.0
+ * version 1.2
  */
 public class Hospital implements Idable {
 
@@ -22,6 +22,10 @@ public class Hospital implements Idable {
     public Hospital() {
     }
     public Hospital(String Name) {
+        this.Name=Name;
+    }
+    public Hospital(int id, String Name){
+        this.Id=id;
         this.Name=Name;
     }
     public Hospital(int id, String name, int quantityOnHand, String adress, int contactNumber, String description) {

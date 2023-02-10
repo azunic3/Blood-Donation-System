@@ -12,6 +12,9 @@ import java.util.*;
  * @author Azra Žunić
  */
 public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao {
+    /**
+     * creating and removing instance typed as BloodDaoSQLImpl
+     */
     private static  BloodDaoSQLImpl instance = null;
     public BloodDaoSQLImpl() {
         super("Blood");
@@ -73,7 +76,6 @@ public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao {
      * @throws BloodException
      */
     public List<Blood> searchByBagNumber(int BloodBagNumber) throws BloodException {
-        //mora sa concat jer inace nece raditi jer radi sa key chars
         String query = "SELECT * FROM Blood WHERE BloodBagNumber LIKE concat('%', ?, '%')";
         try {
             PreparedStatement stmt = getConnection().prepareStatement(query);
@@ -93,6 +95,7 @@ public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao {
      * @author Azra Žunić
      * method that is used for searching infos by hospital id
      * @param hospital
+     * @return list of attributes connected with a specified name
      * @throws BloodException
      */
     @Override
