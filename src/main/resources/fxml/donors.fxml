@@ -14,6 +14,9 @@
           <TableColumn fx:id="NAMEcol" prefWidth="169.00000381469727" text="Name" />
             <TableColumn fx:id="typecol" prefWidth="90.39998474121091" text="BloodType" />
         </columns>
+         <BorderPane.margin>
+            <Insets left="5.0" />
+         </BorderPane.margin>
       </TableView>
    </left>
    <top>
@@ -44,7 +47,7 @@
                      </font>
                   </TextField>
                   <Separator minWidth="11.0" orientation="VERTICAL" prefHeight="40.0" />
-                  <Button defaultButton="true" mnemonicParsing="false" onAction="#searchDonors" prefHeight="23.0" prefWidth="70.0" text="Search">
+                  <Button alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#searchDonors" prefHeight="23.0" prefWidth="70.0" text="Search" textOverrun="CENTER_ELLIPSIS">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -53,7 +56,16 @@
                      </HBox.margin>
                   </Button>
                   <Separator orientation="VERTICAL" prefHeight="200.0" />
-                <Button fx:id="btnCancel" cancelButton="true" mnemonicParsing="false" onAction="#akcijaZatvori" prefHeight="23.0" prefWidth="70.0" styleClass="tbButton" text="Close">
+                  <Button mnemonicParsing="false" onAction="#updateCategory" prefHeight="23.0" prefWidth="70.0" text="Update" textOverrun="CENTER_ELLIPSIS">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Button>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                <Button fx:id="btnCancel" alignment="CENTER" cancelButton="true" mnemonicParsing="false" onAction="#akcijaZatvori" prefHeight="23.0" prefWidth="70.0" styleClass="tbButton" text="Close" textOverrun="CENTER_ELLIPSIS">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
@@ -61,7 +73,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                      <HBox.margin>
-                        <Insets bottom="5.0" left="250.0" right="5.0" top="5.0" />
+                        <Insets bottom="5.0" left="150.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </Button>
                </children>
@@ -105,6 +117,9 @@
                   <Image url="https://img.icons8.com/doodle/512/drop-of-blood.png" />
                </image></ImageView>
          </children>
+         <BorderPane.margin>
+            <Insets right="5.0" />
+         </BorderPane.margin>
       </VBox>
    </right>
 </BorderPane>

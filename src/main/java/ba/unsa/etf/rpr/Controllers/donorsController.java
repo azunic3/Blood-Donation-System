@@ -79,5 +79,23 @@ public class donorsController {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
     }
+
+    public void updateCategory(ActionEvent actionEvent){
+        try {
+            Donor cat = (Donor) DonorTable.getSelectionModel().getSelectedItem();
+            cat.setFullName(search.getText());
+            refreshDonors();
+        }catch (BloodException e){
+            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();}
+    }
+
+    private void refreshDonors() throws BloodException{
+        try {
+            DonorTable.setItems(FXCollections.observableList(donorManager.getAll()));
+            search.setText("");
+        } catch (BloodException e) {
+            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
+        }
+    }
 }
 
