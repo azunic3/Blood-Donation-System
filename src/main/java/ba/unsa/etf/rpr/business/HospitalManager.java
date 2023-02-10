@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.Dao.DaoFactory;
+import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 import java.util.List;
@@ -19,6 +20,10 @@ public class HospitalManager {
         if (name == null || name.length() > 20 || name.length() < 4){
             throw new BloodException("Name must contain between 4 and 20 characters");
         }
+    }
+    public Hospital update(Hospital hosp) throws BloodException {
+        validateHospitalName(hosp.getName());
+        return DaoFactory.hospitalDao().update(hosp);
     }
 
     /**
