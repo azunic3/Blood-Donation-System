@@ -69,22 +69,11 @@ public class donorsController {
     /**
      * searching donors by name event handler
      * @param actionEvent
+     * @return information about donor whose name is used for searching
      */
     public void searchDonors(ActionEvent actionEvent) {
         try {
             DonorTable.setItems(FXCollections.observableList(donorManager.searchDonors(search.getText())));
-            DonorTable.refresh();
-        } catch (BloodException e) {
-            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
-        }
-    }
-
-    /**
-     * fetch donors from database
-     */
-    private void refreshDonors(){
-        try {
-            DonorTable.setItems(FXCollections.observableList(donorManager.getAll()));
             DonorTable.refresh();
         } catch (BloodException e) {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();

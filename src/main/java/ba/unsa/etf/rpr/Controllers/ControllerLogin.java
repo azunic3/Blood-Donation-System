@@ -16,7 +16,6 @@ import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 /**
  * JavaFX Controller for login popup window
- *
  * @author Azra Žunić
  */
 public class ControllerLogin {
@@ -24,11 +23,13 @@ public class ControllerLogin {
     public PasswordField Password;
     public Button loginBtn;
     public Button btnCancel;
+
     public TextField fieldUsername2;
-    //private Object actionEvent;
+
 
     /**
      * special class that specifies actions on text fields
+     * using css files to style text areas
      */
     @FXML
     public void initialize() {
@@ -88,10 +89,6 @@ public class ControllerLogin {
      * @throws IOException
      */
     public void buttonClick1(ActionEvent actionEvent) throws IOException {
-     /*   if (fieldUsername.getText().isEmpty()) {
-            fieldUsername.getStyleClass().add("poljeNijeIspravno");
-            return;
-        }*/
         Stage secondstage3 = new Stage();
         FXMLLoader fl = new FXMLLoader(getClass().getResource("/fxml/registerClick.fxml"));
         Parent root = fl.load();

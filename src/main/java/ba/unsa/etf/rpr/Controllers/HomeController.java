@@ -5,15 +5,11 @@ import ba.unsa.etf.rpr.Exceptions.BloodException;
 import ba.unsa.etf.rpr.business.BloodManager;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.awt.*;
@@ -34,17 +30,9 @@ import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
  */
 
 public class HomeController {
-    //attributes
-    public TextArea textArea;
-    public Label StatusBarLabel;
-    public MenuItem mniClose;
-    public Button tbClose;
     private static final String filename = "File.txt";
     ControllerRegister noviprozor2;
     BloodManager manager=new BloodManager();
-    @FXML
-    public void initialize() {
-    }
 
     public ControllerRegister getNoviprozor2() {
         return noviprozor2;
@@ -182,7 +170,9 @@ public class HomeController {
         }
     }
 
-
+    /**
+     * @param title, file, controller
+     */
     private void openDialog(String title, String file, Object controller){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(file));

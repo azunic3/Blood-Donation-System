@@ -15,14 +15,14 @@ import java.sql.Date;
  * version 1.3
  */
 public class ControllerRegister {
-    //attributes
     public Button btnCancel;
     public TextField fieldUsername2;
     public PasswordField fieldPassword;
     public TextField fieldPhoneNumber;
     public DatePicker fieldDateofBirth;
-   public CheckBox F;
-   public CheckBox M;
+
+    public CheckBox F;
+    public CheckBox M;
     public CheckBox fldAlready;
     public Button btnOK;
 
@@ -36,13 +36,11 @@ public class ControllerRegister {
      */
     public void akcijaSubmit(ActionEvent actionEvent)  {
         d=new Donor();
-
         if (fieldUsername2.getText().isEmpty()  || fieldPassword.getText().isEmpty() || fldAlready.getText().isEmpty() ) {
             HomeController m=new HomeController();
             m.setNoviprozor2(null);
             new Alert(Alert.AlertType.NONE,"Invalid registration",ButtonType.OK).show();
         }
-
             if(M.isSelected() && F.isSelected())
                 new Alert(Alert.AlertType.NONE,"You can only choose one",ButtonType.OK).show();
             d.setFullName(fieldUsername2.getText());
@@ -50,7 +48,6 @@ public class ControllerRegister {
             d.setDateOfBirth(Date.valueOf(fieldDateofBirth.getValue()));
             d.setAlreadyDonated(fldAlready.getText());
             d.setPhoneNumber(Integer.parseInt(fieldPhoneNumber.getText()));
-
             if(F.isSelected())
                 d.setGender("F");
             else if(M.isSelected())
@@ -65,8 +62,6 @@ public class ControllerRegister {
             Stage stage = (Stage) btnOK.getScene().getWindow();
             stage.close();
         }
-
-
 
     /**
      * action on close button

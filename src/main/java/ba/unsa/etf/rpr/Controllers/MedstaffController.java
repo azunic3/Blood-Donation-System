@@ -11,13 +11,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import java.time.LocalDate;
 
 /**
  * JavaFX Controller for Medical staff action
  * shows list of all patient's information
+ * gives options to view, add, delete and update information about patients
  */
 public class MedstaffController {
     public CheckBox F;
@@ -33,8 +33,6 @@ public class MedstaffController {
     public TextField search;
     public TableView patientsTable;
 
-    public BorderPane patientsScreen;
-    //components
     public TableColumn<Patient, Integer> Idcol;
     public TableColumn<Patient, String> namecol;
     public TableColumn<Patient, String> gendercol;
@@ -84,7 +82,7 @@ public class MedstaffController {
     }
 
     /**
-     * adding a new patient to the table
+     * adding a new patient to the database and table
      * @param actionEvent
      */
 
@@ -100,18 +98,15 @@ public class MedstaffController {
         p.setDateOfBirth(DatePick.getValue());
         p.setFk_Hospital_id(bloodManager.searchByName(fieldHosp.getText()));
         p.setFk_BloodType(bManager.searchByBloodGroup(fieldBlood.getText()));
-
-
             patientsTable.getItems().add(p);
             p=manager.add(p);
-refreshPatients();
+           refreshPatients();
         } catch(BloodException e){
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
     }
     /**
      * search patients by name event handler
-     *
      * @param actionEvent
      * @throws BloodException
      */

@@ -1,17 +1,13 @@
 package ba.unsa.etf.rpr.Controllers;
 
-import ba.unsa.etf.rpr.Dao.BloodDaoSQLImpl;
 import ba.unsa.etf.rpr.Domain.Blood;
 import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
-import ba.unsa.etf.rpr.business.BloodManager;
-import ba.unsa.etf.rpr.business.DonorManager;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
