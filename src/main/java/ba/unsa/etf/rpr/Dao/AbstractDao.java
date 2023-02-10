@@ -99,19 +99,17 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
 
         try{
             PreparedStatement stmt = getConnection().prepareStatement(builder.toString(), Statement.RETURN_GENERATED_KEYS);
-            // bind params. IMPORTANT treeMap is used to keep columns sorted so params are bind correctly
             int counter = 1;
             for (Map.Entry<String, Object> entry: row.entrySet()) {
-                //if (entry.getKey().equals("id")) continue; // skip ID
-                if (entry.getKey().equals(this.tableName.substring(0,tableName.length())+ "_id")) continue; // skip ID
+                if (entry.getKey().equals(this.tableName.substring(0,tableName.length())+ "_id")) continue;
                 stmt.setObject(counter, entry.getValue());
                 counter++;
             }
             stmt.executeUpdate();
 
             ResultSet rs = stmt.getGeneratedKeys();
-            rs.next(); // we know that there is one key
-            item.setId(rs.getInt(1)); //set id to return it back */
+            rs.next();
+            item.setId(rs.getInt(1));
 
             return item;
         }catch (SQLException e){
@@ -206,7 +204,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
         for (Map.Entry<String, Object> entry: row.entrySet()) {
             counter++;
             if (entry.getKey().equals(this.tableName.substring(0,tableName.length())+ "_id"))
-                continue; //skip insertion of id due autoincrement
+                continue;
             columns.append(entry.getKey());
             questions.append("?");
             if (row.size() != counter) {
@@ -223,17 +221,16 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
      * @return String for update statement
      */
     private String prepareUpdateParts(Map<String, Object> row){
-        StringBuilder columns = new StringBuilder();
-
+        StringBuilder col = new StringBuilder();
         int counter = 0;
-        for (Map.Entry<String, Object> entry: row.entrySet()) {
+        for (Map.Entry<String, Object> e : row.entrySet()) {
+            if (e.getKey().equals(this.tableName+ "_id")) continue;
             counter++;
-            if (entry.getKey().equals(this.tableName+ "_id")) continue; //skip update of id due where clause
-            columns.append(entry.getKey()).append("= ?");
-            if (row.size() != counter) {
-                columns.append(",");
+            col.append(e.getKey()).append("= ?");
+            if (row.size() != counter + 1) {
+                col.append(",");
             }
         }
-        return columns.toString();
-    }
+        return col.toString();
+  }
 }
