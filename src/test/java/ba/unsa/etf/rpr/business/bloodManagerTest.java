@@ -1,4 +1,5 @@
 package ba.unsa.etf.rpr.business;
+
 import ba.unsa.etf.rpr.Dao.BloodDaoSQLImpl;
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Domain.Blood;
@@ -10,8 +11,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -38,7 +37,7 @@ public class bloodManagerTest {
         bloodManager = Mockito.mock(BloodManager.class);
         blood = new Blood();
         blood.setId(50);
-        blood.setBloodGroup("Blood Type");
+        blood.setBloodGroup("A-");
         blood.setBloodAmount(500);
         blood.setBloodBagNumber("WER-7-GH");
 
@@ -110,4 +109,5 @@ public class bloodManagerTest {
         assertNotSame(blood1, blood2);
         assertArrayEquals(new Blood[] { blood1, blood2 }, new Blood[] { blood2, blood1 });
     }
+
 }

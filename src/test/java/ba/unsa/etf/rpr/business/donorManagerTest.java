@@ -70,4 +70,20 @@ void validateName(){
         Assertions.assertTrue(true);
         daoFactoryMockedStatic.close();
     }
+
+    /**
+     * mocking test for searching method
+     * @throws BloodException
+     */
+    @Test
+    void search() throws BloodException {
+        MockedStatic<DaoFactory> daoFactoryMockedStatic = Mockito.mockStatic(DaoFactory.class);
+        DonorDaoSQLImpl depDao = Mockito.mock(DonorDaoSQLImpl.class);
+        daoFactoryMockedStatic.when(DaoFactory::donorDao).thenReturn(depDao);
+        when(depDao.searchByDonorsName("Amina Hajric")).thenReturn(donor);
+        donorManager.searchDonors("Amina Hajric");
+        Assertions.assertTrue(true);
+        daoFactoryMockedStatic.close();
+    }
+
     }
