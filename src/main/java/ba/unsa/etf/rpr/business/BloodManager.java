@@ -3,6 +3,7 @@ package ba.unsa.etf.rpr.business;
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Domain.Blood;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
+
 import java.util.List;
 /**
  * Business Logic Layer for table Blood
@@ -20,7 +21,6 @@ public class BloodManager {
             throw new BloodException("Blood type must contain between 2 and 3 characters");
         }
     }
-
     /**
      * standard method getAll defined in DaoFactory
      * @throws BloodException

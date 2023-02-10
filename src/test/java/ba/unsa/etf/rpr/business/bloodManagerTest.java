@@ -9,9 +9,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 /**
@@ -51,7 +57,7 @@ public class bloodManagerTest {
             Mockito.doCallRealMethod().when(bloodManager).validateBloodType(correctGroup);
         } catch (BloodException e) {
             e.printStackTrace();
-            Assertions.assertTrue(false);
+            assertTrue(false);
         }
         String incorrectNameShort = "A";
         Mockito.doCallRealMethod().when(bloodManager).validateBloodType(incorrectNameShort);
@@ -93,8 +99,15 @@ public class bloodManagerTest {
     void addNewBloodType() throws BloodException {
         Blood newType = new Blood("Ca+");
         bloodManager.add(newType);
-        Assertions.assertTrue(true);
+        assertTrue(true);
         Mockito.verify(bloodManager).add(newType);
     }
-
+    @Test
+    public void testEquals() {
+        Blood blood1 = new Blood(14, "QRM-7-GH", "A+", new Date(), 22);
+        Blood blood2 = new Blood(14, "QRM-7-GH", "A+", new Date(), 22);
+        assertSame(blood1, blood1);
+        assertNotSame(blood1, blood2);
+        assertArrayEquals(new Blood[] { blood1, blood2 }, new Blood[] { blood2, blood1 });
+    }
 }

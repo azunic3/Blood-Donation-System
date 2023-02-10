@@ -36,6 +36,13 @@ public class Blood implements Idable{
         BloodAmount = bloodAmount;
         this.fk_hospital_id = fk_hospital_id;
     }
+    public Blood(int id, String bloodBagNumber, String bloodGroup, Date donateDate, int bloodAmount) {
+        Id = id;
+        BloodBagNumber = bloodBagNumber;
+        BloodGroup = bloodGroup;
+        DonateDate = donateDate;
+        BloodAmount = bloodAmount;
+       ;}
 
     @Override
     public int getId() {
