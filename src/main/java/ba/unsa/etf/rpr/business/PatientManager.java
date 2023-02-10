@@ -34,7 +34,7 @@ public class PatientManager {
     /**
      * add method
      * @param b
-     * @return
+     * @return new patient
      * @throws BloodException
      */
     public Patient add(Patient b) throws BloodException {
@@ -53,9 +53,9 @@ public class PatientManager {
         }
     }
     /**
-     *
+     * ordinary searching methods
      * @param text
-     * @return
+     * @return information about patients whose name is sent
      * @throws BloodException
      */
     public  List<Patient> searchPatients(String text) throws BloodException {
@@ -64,10 +64,11 @@ public class PatientManager {
     public  Patient searchPatientsByName(String text) throws BloodException {
         return (DaoFactory.patientDao().searchByPatientsName(text));
     }
+/**
+ * basic methods defined in Dao Factory and implemented in PatientDaoSqlImpl
+ */
 
     /**
-     *
-     * @return
      * @throws BloodException
      */
     public List<Patient> getAll() throws BloodException {
@@ -75,7 +76,6 @@ public class PatientManager {
         }
 
     /**
-     *
      * @param id
      * @throws BloodException
      */
@@ -84,9 +84,7 @@ public class PatientManager {
     }
 
     /**
-     *
      * @param Patient_id
-     * @return
      * @throws BloodException
      */
         public Patient getById(int Patient_id) throws BloodException{
@@ -94,7 +92,6 @@ public class PatientManager {
         }
 
     /**
-     *
      * @param q
      * @throws BloodException
      */
@@ -103,9 +100,7 @@ public class PatientManager {
         }
 
     /**
-     *
      * @param group
-     * @return
      * @throws BloodException
      */
     public List<Patient> searchByBloodGroup(Blood group) throws BloodException{

@@ -53,7 +53,7 @@ public class HospitalManager {
     }
 
     /**
-     *
+     * delete method
      * @param id
      * @throws BloodException
      */
@@ -62,9 +62,7 @@ public class HospitalManager {
     }
 
     /**
-     *
      * @param Hospital_id
-     * @return
      * @throws BloodException
      */
     public Hospital getById(int Hospital_id) throws BloodException{
@@ -73,9 +71,9 @@ public class HospitalManager {
 
 
     /**
-     *
+     * searching by name
      * @param name
-     * @return
+     * @return information about hospital named as a parameter
      * @throws BloodException
      */
     public Hospital searchByName(String name) throws BloodException {

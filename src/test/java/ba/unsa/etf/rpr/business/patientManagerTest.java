@@ -65,7 +65,7 @@ public class patientManagerTest {
     }
 
     /**
-     * testing method for searching patients by name using mocking
+     * Testing method for searching patients by name using mocking
      * @throws BloodException
      */
     @Test
