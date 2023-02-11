@@ -22,7 +22,7 @@ public interface PatientDao extends Dao<Patient>{
      * @param group
      * @throws BloodException
      */
-    List<Patient> searchByBloodGroup(Blood group) throws BloodException;
+    List<Patient> searchByBloodGroup(String group) throws BloodException;
 
     /**
      * returns all patients with specified name

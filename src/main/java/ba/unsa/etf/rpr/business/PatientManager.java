@@ -103,7 +103,7 @@ public class PatientManager {
      * @param group
      * @throws BloodException
      */
-    public List<Patient> searchByBloodGroup(Blood group) throws BloodException{
+    public List<Patient> searchByBloodGroup(String group) throws BloodException{
         return DaoFactory.patientDao().searchByBloodGroup(group);
     }
 

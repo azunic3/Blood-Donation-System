@@ -45,6 +45,14 @@ public class hospitalManagerTest {
         assertThrows(BloodException.class, () -> hospitalManager.validateHospitalName(name), "Name must contain between 4 and 20 characters");
     }
     @Test
+    public void searchByName(){
+        HospitalManager hospitalManager1=new HospitalManager();
+        Hospital d=new Hospital();
+        d.setId(4);
+        d.setName("Bolnica");
+        assertThrows(BloodException.class,()->hospitalManager1.searchByName(String.valueOf(d)),"There is no hospital with that name in out DB");
+    }
+    @Test
     void testHospitalProperties() {
         Hospital hospital = new Hospital(5, "Sanasa", 100,  null, 33446820, "Leading medical facility");
         assertEquals("Sanasa", hospital.getName());

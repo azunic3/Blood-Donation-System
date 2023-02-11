@@ -76,7 +76,7 @@ void validateName(){
      * @throws BloodException
      */
     @Test
-    void search() throws BloodException {
+    void searchDonor() throws BloodException {
         MockedStatic<DaoFactory> daoFactoryMockedStatic = Mockito.mockStatic(DaoFactory.class);
         DonorDaoSQLImpl depDao = Mockito.mock(DonorDaoSQLImpl.class);
         daoFactoryMockedStatic.when(DaoFactory::donorDao).thenReturn(depDao);

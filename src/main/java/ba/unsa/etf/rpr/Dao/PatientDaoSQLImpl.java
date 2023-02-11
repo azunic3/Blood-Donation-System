@@ -84,8 +84,8 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
      * @throws BloodException
      */
     @Override
-    public List<Patient> searchByBloodGroup(Blood group) throws BloodException{
-        return executeQuery("SELECT * FROM Patient WHERE fk_BloodType LIKE concat('%', ?, '%')",new Object[]{group.getId()});
+    public List<Patient> searchByBloodGroup(String group) throws BloodException{
+        return executeQuery("SELECT * FROM Patient WHERE fk_BloodType LIKE concat('%', ?, '%')",new Object[]{group});
     }
 
     /**

@@ -2,6 +2,8 @@ package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Dao.PatientDaoSQLImpl;
+import ba.unsa.etf.rpr.Domain.Blood;
+import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Domain.Patient;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 import org.junit.jupiter.api.Assertions;
@@ -10,11 +12,14 @@ import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 /**
@@ -56,13 +61,13 @@ public class patientManagerTest {
       * @throws BloodException
      */
     @Test
-    void add() throws BloodException{
+    void addPatient() throws BloodException{
         MockedStatic<DaoFactory> daoFactoryMockedStatic = Mockito.mockStatic(DaoFactory.class);
         PatientDaoSQLImpl depDao = Mockito.mock(PatientDaoSQLImpl.class);
         daoFactoryMockedStatic.when(DaoFactory::patientDao).thenReturn(depDao);
         when(depDao.add(patient)).thenReturn(patient);
         patientManager.add(patient);
-        Assertions.assertTrue(true);
+        assertTrue(true);
         daoFactoryMockedStatic.close();
     }
 
@@ -71,13 +76,24 @@ public class patientManagerTest {
      * @throws BloodException
      */
     @Test
-    void search() throws BloodException {
+    void searchPatient() throws BloodException {
         MockedStatic<DaoFactory> daoFactoryMockedStatic = Mockito.mockStatic(DaoFactory.class);
         PatientDaoSQLImpl depDao = Mockito.mock(PatientDaoSQLImpl.class);
         daoFactoryMockedStatic.when(DaoFactory::patientDao).thenReturn(depDao);
         when(depDao.searchByPatientsName("Nerma Kadric")).thenReturn(patient);
         patientManager.searchPatients("Nerma Kadric");
-        Assertions.assertTrue(true);
+        assertTrue(true);
         daoFactoryMockedStatic.close();
     }
+    @Test
+    public void searchByBloodGroup() throws BloodException {
+        List<Patient> plays=DaoFactory.patientDao().searchByBloodGroup("A+");
+        Patient plays1=DaoFactory.patientDao().getById(2);
+        List<Patient>plays2=new ArrayList<>();
+        plays2.add(plays1);
+        plays1=DaoFactory.patientDao().getById(3);
+        plays2.add(plays1);
+        assertNotEquals(plays2,plays);
+    }
+
 }
