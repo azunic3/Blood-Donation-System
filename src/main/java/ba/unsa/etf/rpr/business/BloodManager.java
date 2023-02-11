@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Domain.Blood;
+import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 
 import java.util.List;
@@ -88,4 +89,7 @@ public class BloodManager {
     public Blood searchByBloodGroup(String group) throws BloodException{
         return DaoFactory.bloodDao().searchByBloodGroup(group);
     }
+   public  List<Blood> searchByHospital(String hospital) throws BloodException{
+       return DaoFactory.bloodDao().getAll();
+   }
 }

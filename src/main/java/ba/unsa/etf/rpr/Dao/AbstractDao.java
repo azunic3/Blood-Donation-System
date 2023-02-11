@@ -139,7 +139,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
             int counter = 1;
             for (Map.Entry<String, Object> entry: row.entrySet()) {
                 if (entry.getKey().equals(this.tableName.substring(0,tableName.length())+ "_id"))
-                    continue; // skip ID
+                    continue;
                 stmt.setObject(counter, entry.getValue());
                 counter++;
             }

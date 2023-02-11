@@ -18,8 +18,7 @@ public interface BloodDao extends Dao<Blood> {
      */
 
     List<Blood> getAll() throws BloodException;
-    List<Blood> searchByHospital(Hospital hospital) throws BloodException;
+    List<Blood> searchByHospital(String hospital) throws BloodException;
     Blood searchByBloodGroup(String group) throws BloodException;
-
 
 }
