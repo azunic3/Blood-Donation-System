@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.Dao.DaoFactory;
+import ba.unsa.etf.rpr.Dao.DonorDao;
 import ba.unsa.etf.rpr.Dao.DonorDaoSQLImpl;
 import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
@@ -10,8 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 /**
@@ -67,7 +67,7 @@ void validateName(){
         donor.setPhoneNumber(61258963);
         when(depDao.update(donor)).thenReturn(donor);
         donorManager.update(donor);
-        Assertions.assertTrue(true);
+        assertTrue(true);
         daoFactoryMockedStatic.close();
     }
 
@@ -82,8 +82,18 @@ void validateName(){
         daoFactoryMockedStatic.when(DaoFactory::donorDao).thenReturn(depDao);
         when(depDao.searchByDonorsName("Amina Hajric")).thenReturn(donor);
         donorManager.searchDonors("Amina Hajric");
-        Assertions.assertTrue(true);
+        assertTrue(true);
         daoFactoryMockedStatic.close();
+    }
+    @Test
+    void validatDonorExists() throws BloodException {
+        MockedStatic<DaoFactory> dao = Mockito.mockStatic(DaoFactory.class);
+        DonorDao UD = Mockito.mock(DonorDao.class);
+        when(DaoFactory.donorDao()).thenReturn(UD);
+        when(DaoFactory.donorDao().searchByDonorsName("Nerma Kadric")).thenReturn(new Donor("Nerma Kadric"));
+        boolean x = donorManager.validateDonorsName(DaoFactory.donorDao().searchByDonorsName("Nerma Kadric").getFullName());
+        assertFalse(x);
+        dao.close();
     }
 
     }

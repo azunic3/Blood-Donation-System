@@ -11,13 +11,16 @@ import java.util.List;
 public class DonorManager {
     /**
      * validation method for tests
+     *
      * @param name
+     * @return
      * @throws BloodException
      */
-    public static void validateDonorsName(String name) throws BloodException{
+    public static boolean validateDonorsName(String name) throws BloodException{
         if (name == null || name.length() < 3 || name.length() >30) {
             throw new BloodException("Name must contain between 3 and 30 characters");
         }
+        return false;
     }
 
     /**

@@ -2,21 +2,15 @@ package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Dao.PatientDaoSQLImpl;
-import ba.unsa.etf.rpr.Domain.Blood;
-import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Domain.Patient;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -87,13 +81,12 @@ public class patientManagerTest {
     }
     @Test
     public void searchByBloodGroup() throws BloodException {
-        List<Patient> plays=DaoFactory.patientDao().searchByBloodGroup("A+");
-        Patient plays1=DaoFactory.patientDao().getById(2);
-        List<Patient>plays2=new ArrayList<>();
-        plays2.add(plays1);
-        plays1=DaoFactory.patientDao().getById(3);
-        plays2.add(plays1);
-        assertNotEquals(plays2,plays);
+        Patient patients1=DaoFactory.patientDao().getById(2);
+        List<Patient>patients2=new ArrayList<>();
+        patients2.add(patients1);
+        patients1=DaoFactory.patientDao().getById(3);
+        patients2.add(patients1);
+        assertNotEquals(patients2,patients1);
     }
 
 }

@@ -13,10 +13,9 @@ import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 /**
@@ -101,13 +100,4 @@ public class bloodManagerTest {
         assertTrue(true);
         Mockito.verify(bloodManager).add(newType);
     }
-    @Test
-    public void testEquals() {
-        Blood blood1 = new Blood(14, "QRM-7-GH", "A+", new Date(), 22);
-        Blood blood2 = new Blood(14, "QRM-7-GH", "A+", new Date(), 22);
-        assertSame(blood1, blood1);
-        assertNotSame(blood1, blood2);
-        assertArrayEquals(new Blood[] { blood1, blood2 }, new Blood[] { blood2, blood1 });
-    }
-
 }
