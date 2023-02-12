@@ -97,8 +97,6 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
         builder.append("INSERT INTO ").append(tableName);
         builder.append(" (").append(columns.getKey()).append(") ");
         builder.append("VALUES (").append(columns.getValue()).append(")");
-      //  System.out.println("ABSTRACTDAO: ");
-      //  for(Map.Entry<String, String> e : columns.)
         try{
             PreparedStatement stmt = getConnection().prepareStatement(builder.toString(), Statement.RETURN_GENERATED_KEYS);
             int counter = 1;
