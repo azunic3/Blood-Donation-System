@@ -44,11 +44,19 @@ public class hospitalManagerTest {
         h = new ArrayList<>();
         h.addAll(Arrays.asList(new Hospital("Poliklinika1"), new Hospital("Poliklinika2")));
     }
+
+    /**
+     * simple validation JUnit Test
+     */
     @Test
     void validateHName() {
         String name = "kli";
         assertThrows(BloodException.class, () -> hospitalManager.validateHospitalName(name), "Name must contain between 4 and 20 characters");
     }
+
+    /**
+     * testing method that does the searching by name of the hospital
+     */
     @Test
     public void searchByName(){
         HospitalManager hospitalManager1=new HospitalManager();
@@ -57,6 +65,10 @@ public class hospitalManagerTest {
         d.setName("Bolnica");
         assertThrows(BloodException.class,()->hospitalManager1.searchByName(String.valueOf(d)),"There is no hospital with that name in out DB");
     }
+
+    /**
+     * simple test for Hospital table attributes
+     */
     @Test
     void testHospitalProperties() {
         Hospital hospital = new Hospital(5, "Sanasa", 100,  null, 33446820, "Leading medical facility");
@@ -67,12 +79,18 @@ public class hospitalManagerTest {
         assertEquals(100, hospital.getQuantityOnHand());
     }
 
+    /**
+     * JUnit5 test for description attribute
+     */
     @Test
     void testHospitalSetDescription() {
         Hospital hospital = new Hospital(5, "Sanasa", 100,  "Grbavicka 15", 33446820, "Leading medical facility");
         assertDoesNotThrow(() -> hospital.setDescription("Top-rated healthcare provider"));
         assertEquals("Top-rated healthcare provider", hospital.getDescription());
     }
+    /**
+     * Mocking test
+     */
     @Test
     public void validateHospital() throws BloodException {
         ArrayList<Hospital> hos=new ArrayList<>();

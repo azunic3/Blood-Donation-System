@@ -33,7 +33,11 @@ public class donorManagerTest {
         donor.setPassword("nadjak");
         donor.setAlreadyDonated("YES");
     }
-@Test
+
+    /**
+     * simple validation tests for specific attributes
+     */
+    @Test
 void validateName(){
         String name=null;
         assertThrows(BloodException.class, ()->donorManager.validateDonorsName(name));
@@ -48,6 +52,11 @@ void validateName(){
         String don="MEJBI";
         assertThrows(BloodException.class, ()->donorManager.validateADonated(don), "An answer must be either 'YES' or 'NO'");
     }
+
+    /**
+     * testing searching method to check if exists donor named ? in a table
+     * @throws BloodException
+     */
     @Test
     void testing () throws BloodException {
         Donor dd=new Donor();
@@ -56,7 +65,7 @@ void validateName(){
     }
 
     /**
-     * mocking test for update
+     * mocking test for update method
      * @throws BloodException
      */
     @Test
@@ -73,6 +82,7 @@ void validateName(){
 
     /**
      * mocking test for searching method
+     * using assertTrue
      * @throws BloodException
      */
     @Test
@@ -85,6 +95,12 @@ void validateName(){
         assertTrue(true);
         daoFactoryMockedStatic.close();
     }
+
+    /**
+     * testing if there is patient named ? in a base
+     * using assertFalse
+     * @throws BloodException
+     */
     @Test
     void validatDonorExists() throws BloodException {
         MockedStatic<DaoFactory> dao = Mockito.mockStatic(DaoFactory.class);

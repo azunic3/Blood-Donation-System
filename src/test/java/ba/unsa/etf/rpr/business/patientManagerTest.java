@@ -41,6 +41,9 @@ public class patientManagerTest {
         p.addAll(Arrays.asList(new Patient("Novi Pacijent"), new Patient("Drugi Pacijent")));
     }
 
+    /**
+     * simple validation test
+     */
    @Test
     void validateGender() {
         String gen="MEJBI";
@@ -67,6 +70,7 @@ public class patientManagerTest {
 
     /**
      * Testing method for searching patients by name using mocking
+     * using assertTrue
      * @throws BloodException
      */
     @Test
