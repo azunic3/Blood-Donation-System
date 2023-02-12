@@ -89,7 +89,7 @@ public class BloodManager {
     public Blood searchByBloodGroup(String group) throws BloodException{
         return DaoFactory.bloodDao().searchByBloodGroup(group);
     }
-   public  List<Blood> searchByHospital(String hospital) throws BloodException{
+    public  List<Blood> searchByHospital(Hospital hospital) throws BloodException{
        return DaoFactory.bloodDao().getAll();
    }
 }

@@ -1,6 +1,8 @@
 package ba.unsa.etf.rpr.Domain;
 
 import ba.unsa.etf.rpr.Dao.DonorDaoSQLImpl;
+
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 /**
@@ -8,7 +10,7 @@ import java.util.Objects;
  * @author Azra Žunić
  * version 1.2
  */
-public class Donor extends DonorDaoSQLImpl implements Idable {
+public class Donor extends DonorDaoSQLImpl implements Idable, Serializable {
     private int Id;
     private String FullName;
     private String Password;
@@ -28,15 +30,25 @@ public class Donor extends DonorDaoSQLImpl implements Idable {
     public Donor(String FullName) {
         this.FullName=FullName;
     }
-    public Donor(int id, String fullName, String password, Date dateOfBirth, String gender, String adress, int phoneNumber, Blood bloodType_id_fk, String alreadyDonated, Hospital fk_Hospital) {
-        Id = id;
-        FullName = fullName;
-        Password = password;
-        DateOfBirth = dateOfBirth;
-        Gender = gender;
-        PhoneNumber = phoneNumber;
-        BloodType_id_fk = bloodType_id_fk;
-        AlreadyDonated = alreadyDonated;
+    public Donor(int id, String fullName, String password, Date dateOfBirth, String gender, int phoneNumber, Blood bloodType_id_fk, String alreadyDonated, Hospital fk_Hospital) {
+        this.Id = id;
+      this. FullName = fullName;
+       this.Password = password;
+       this.DateOfBirth = dateOfBirth;
+      this.Gender = gender;
+       this.PhoneNumber = phoneNumber;
+      this.BloodType_id_fk = bloodType_id_fk;
+      this.AlreadyDonated = alreadyDonated;
+        this.fk_Hospital = fk_Hospital;
+    }
+    public Donor(String fullName, String password, Date dateOfBirth, String gender, int phoneNumber, Blood bloodType_id_fk, String alreadyDonated, Hospital fk_Hospital) {
+        this. FullName = fullName;
+        this.Password = password;
+        this.DateOfBirth = dateOfBirth;
+        this.Gender = gender;
+        this.PhoneNumber = phoneNumber;
+        this.BloodType_id_fk = bloodType_id_fk;
+        this.AlreadyDonated = alreadyDonated;
         this.fk_Hospital = fk_Hospital;
     }
 
@@ -60,7 +72,7 @@ public class Donor extends DonorDaoSQLImpl implements Idable {
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.Password = password;
     }
 
     public Date getDateOfBirth() {
@@ -110,7 +122,7 @@ public class Donor extends DonorDaoSQLImpl implements Idable {
 
     @Override
     public String toString() {
-        return "Donor{" +
+      /*  return "Donor{" +
                 "Id=" + Id +
                 ", FullName='" + FullName + '\'' +
                 ", Password='" + Password + '\'' +
@@ -120,7 +132,8 @@ public class Donor extends DonorDaoSQLImpl implements Idable {
                 ", BloodType_id_fk=" + BloodType_id_fk.getId() +
                 ", AlreadyDonated='" + AlreadyDonated + '\'' +
                 ", fk_Hospital=" + fk_Hospital.getId() +
-                '}';
+                '}';*/
+        return FullName;
     }
 
     @Override

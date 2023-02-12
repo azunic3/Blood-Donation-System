@@ -66,11 +66,13 @@ public class DonorDaoSQLImpl extends AbstractDao<Donor> implements DonorDao{
         Map<String, Object> row = new TreeMap<String, Object>();
         row.put("Donor_id", object.getId());
         row.put("FullName", object.getFullName());
+        row.put("Password", object.getPassword());
         row.put("Gender", object.getGender());
         row.put("PhoneNumber", object.getPhoneNumber());
         row.put("DateOfBirth", object.getDateOfBirth());
-        row.put("Fk_Hospital", object.getFk_Hospital());
-        row.put("BloodType_id_fk", object.getBloodType_id_fk());
+        row.put("Fk_Hospital", object.getFk_Hospital().getId());
+        row.put("BloodType_id_fk", object.getBloodType_id_fk().getId());
+        row.put("AlreadyDonated", object.getAlreadyDonated());
         return row;
     }
     /**
@@ -104,4 +106,5 @@ public class DonorDaoSQLImpl extends AbstractDao<Donor> implements DonorDao{
     public Donor searchByDName(String name) throws BloodException {
         return executeQueryUnique("SELECT * FROM Donor WHERE FullName = ?", new Object[]{name});
     }
+
 }

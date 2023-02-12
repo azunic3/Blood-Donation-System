@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.Domain;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -8,7 +9,7 @@ import java.util.Objects;
  * @author Azra Žunić
  * version 1.2
  */
-public class Patient implements Idable {
+public class Patient implements Idable, Serializable {
     private int Id;
     private String Full_Name;
     private LocalDate DateOfBirth;

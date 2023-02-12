@@ -99,8 +99,8 @@ public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao {
      * @throws BloodException
      */
     @Override
-    public List<Blood> searchByHospital(String hospital) throws BloodException{
-        return executeQuery("SELECT * FROM Blood WHERE fk_hospital_id LIKE concat('%', ?, '%')",new Object[]{hospital});
+    public List<Blood> searchByHospital(Hospital hospital) throws BloodException{
+        return executeQuery("SELECT * FROM Blood WHERE fk_hospital_id LIKE concat('%', ?, '%')",new Object[]{hospital.getId()});
     }
 
     /**
@@ -112,4 +112,5 @@ public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao {
     public Blood searchByBloodGroup(String group) throws BloodException {
         return executeQueryUnique("SELECT * FROM Blood WHERE BloodGroup LIKE concat('%', ?, '%')",new Object[]{group});
     }
+
 }

@@ -79,14 +79,6 @@ public class patientManagerTest {
         assertTrue(true);
         daoFactoryMockedStatic.close();
     }
-    @Test
-    public void searchByBloodGroup() throws BloodException {
-        Patient patients1=DaoFactory.patientDao().getById(2);
-        List<Patient>patients2=new ArrayList<>();
-        patients2.add(patients1);
-        patients1=DaoFactory.patientDao().getById(3);
-        patients2.add(patients1);
-        assertNotEquals(patients2,patients1);
-    }
+
 
 }

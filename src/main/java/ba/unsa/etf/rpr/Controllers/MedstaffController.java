@@ -94,14 +94,15 @@ public class MedstaffController {
                 p.setGender("F");
             else if(M.isSelected())
                 p.setGender("M");
-
         p.setDateOfBirth(DatePick.getValue());
         p.setFk_Hospital_id(bloodManager.searchByName(fieldHosp.getText()));
         p.setFk_BloodType(bManager.searchByBloodGroup(fieldBlood.getText()));
-            patientsTable.getItems().add(p);
             p=manager.add(p);
-           refreshPatients();
+            patientsTable.getItems().add(p);
+
+            //patientsTable.refresh();
         } catch(BloodException e){
+            e.printStackTrace();
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
     }
@@ -119,16 +120,12 @@ public class MedstaffController {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
     }
-    public void updatePatients(ActionEvent actionEvent){
-
-    }
 
     /**
      * fetch patients from database
      */
     private void refreshPatients(){
         try {
-
             patientsTable.setItems(FXCollections.observableList(patientManager.getAll()));
             patientsTable.refresh();
         } catch (BloodException e) {

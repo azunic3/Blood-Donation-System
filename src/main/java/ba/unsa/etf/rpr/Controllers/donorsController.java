@@ -30,13 +30,13 @@ public class donorsController {
     private final DonorManager donorManager = new DonorManager();
 
     @FXML
-    public void initialize() throws BloodException {
+    public void initialize() {
         IDcol.setCellValueFactory(new PropertyValueFactory<Donor,Integer>("Id"));
         NAMEcol.setCellValueFactory(new PropertyValueFactory<Donor,String>("FullName"));
         typecol.setCellValueFactory(new PropertyValueFactory<Donor,Integer>("BloodType_id_fk"));
         try {
             DonorTable.setItems(FXCollections.observableList(donorDaoSQL.getAll()));
-            DonorTable.refresh();
+           refreshDonors();
         }catch (Exception e){
             e.printStackTrace();
         }

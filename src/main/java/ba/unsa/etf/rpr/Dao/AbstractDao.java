@@ -97,7 +97,8 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
         builder.append("INSERT INTO ").append(tableName);
         builder.append(" (").append(columns.getKey()).append(") ");
         builder.append("VALUES (").append(columns.getValue()).append(")");
-
+      //  System.out.println("ABSTRACTDAO: ");
+      //  for(Map.Entry<String, String> e : columns.)
         try{
             PreparedStatement stmt = getConnection().prepareStatement(builder.toString(), Statement.RETURN_GENERATED_KEYS);
             int counter = 1;
@@ -114,8 +115,10 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
 
             return item;
         }catch (SQLException e){
+            e.printStackTrace();
             throw new BloodException(e.getMessage(), e);
         }
+
     }
 
     /**
@@ -201,9 +204,8 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
         StringBuilder columns = new StringBuilder();
         StringBuilder questions = new StringBuilder();
 
-        int counter = 0;
+        int counter = 1;
         for (Map.Entry<String, Object> entry: row.entrySet()) {
-            counter++;
             if (entry.getKey().equals(this.tableName.substring(0,tableName.length())+ "_id"))
                 continue;
             columns.append(entry.getKey());
@@ -212,6 +214,8 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
                 columns.append(",");
                 questions.append(",");
             }
+            counter++;
+
         }
         return new AbstractMap.SimpleEntry<String,String>(columns.toString(), questions.toString());
     }

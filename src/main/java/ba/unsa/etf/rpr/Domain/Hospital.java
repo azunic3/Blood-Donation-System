@@ -1,12 +1,13 @@
 package ba.unsa.etf.rpr.Domain;
 
+import java.io.Serializable;
 import java.util.Objects;
 /**
  * java beans for hospital
  * @author Azra Žunić
  * version 1.2
  */
-public class Hospital implements Idable {
+public class Hospital implements Idable, Serializable {
 
     private int Id;
     private String Name;
@@ -28,8 +29,16 @@ public class Hospital implements Idable {
         this.Id=id;
         this.Name=Name;
     }
+
     public Hospital(int id, String name, int quantityOnHand, String adress, int contactNumber, String description) {
         Id = id;
+        Name = name;
+        QuantityOnHand = quantityOnHand;
+        Adress = adress;
+        ContactNumber = contactNumber;
+        Description = description;
+    }
+    public Hospital(String name, int quantityOnHand, String adress, int contactNumber, String description) {
         Name = name;
         QuantityOnHand = quantityOnHand;
         Adress = adress;

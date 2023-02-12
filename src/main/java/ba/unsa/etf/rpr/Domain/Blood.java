@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.Domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 /**
@@ -7,7 +8,7 @@ import java.util.Objects;
  * @author Azra Žunić
  * version 1.2
  */
-public class Blood implements Idable{
+public class Blood implements Idable, Serializable {
 
     private int Id;
     private String BloodBagNumber;

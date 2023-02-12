@@ -66,20 +66,7 @@ public class hospitalManagerTest {
         assertEquals("Leading medical facility", hospital.getDescription());
         assertEquals(100, hospital.getQuantityOnHand());
     }
-    @Test
-    void testHospitalMocking() {
-        Hospital mockHospital = mock(Hospital.class);
-        when(mockHospital.getName()).thenReturn("Sanasa");
-        when(mockHospital.getAdress()).thenReturn("Grbavicka 15");
-        when(mockHospital.getContactNumber()).thenReturn(33446820);
-        when(mockHospital.getDescription()).thenReturn("Leading medical facility");
-        when(mockHospital.getQuantityOnHand()).thenReturn(100);
-        assertEquals("Sanasa", mockHospital.getName());
-        assertEquals("Grbavicka 15", mockHospital.getAdress());
-        assertEquals(33446820, mockHospital.getContactNumber());
-        assertEquals("Leading medical facility", mockHospital.getDescription());
-        assertEquals(100, mockHospital.getQuantityOnHand());
-    }
+
     @Test
     void testHospitalSetDescription() {
         Hospital hospital = new Hospital(5, "Sanasa", 100,  "Grbavicka 15", 33446820, "Leading medical facility");

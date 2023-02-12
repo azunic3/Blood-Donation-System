@@ -74,16 +74,16 @@ public class App {
         CommandLine cl = commandLineParser.parse(options, args);
         if (cl.hasOption(addHospital.getOpt()) || cl.hasOption(addHospital.getLongOpt())) {
             HospitalManager hospitalManager = new HospitalManager();
-            Hospital hosp = null;
+           /* Hospital hosp = null;
             try {
                hosp = searchThroughHospitals(hospitalManager.getAll(), cl.getArgList().get(1));
             } catch (Exception e) {
                 System.out.println("There is no hospital in the list! Try again.");
                 System.exit(1);
-            }
+            }*/
             Hospital hospital=new Hospital();
 
-            hospital.setId(5);
+
             hospital.setName(cl.getArgList().get(0));
             hospital.setQuantityOnHand(Integer.parseInt(cl.getArgList().get(1)));
             hospital.setAdress(cl.getArgList().get(2));
@@ -93,13 +93,14 @@ public class App {
             hospitalManager.add(hospital);
             System.out.println("You successfully added new hospital to the DataBase!");
         }
-
+//posto ne radim nista s hospital u gui ovdje sm to stavila al nez sad mozel to bit problem tamo za hospital...
+        //ne moze to bit prob stani da izguglam
         else if (cl.hasOption(getHospital.getOpt()) || cl.hasOption(getHospital.getLongOpt())){
             HospitalManager hm=new HospitalManager();
             hm.getAll().forEach(q -> System.out.println(q.getName()));
         }
 
-        else if (cl.hasOption(getHospital.getOpt()) || cl.hasOption(getHospital.getLongOpt())){
+        else if (cl.hasOption(getBlood.getOpt()) || cl.hasOption(getBlood.getLongOpt())){
             BloodManager hm=new BloodManager();
             hm.getAll().forEach(q -> System.out.println(q.getBloodGroup()));
         }

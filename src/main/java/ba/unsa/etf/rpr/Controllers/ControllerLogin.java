@@ -1,4 +1,5 @@
 package ba.unsa.etf.rpr.Controllers;
+import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
 import javafx.beans.value.ChangeListener;
@@ -54,14 +55,13 @@ public class ControllerLogin {
      * @throws IOException
      * @throws BloodException
      */
-    public void buttonClick(ActionEvent actionEvent) {
-        Donor d = new Donor();
+    public void buttonClick(ActionEvent actionEvent) throws BloodException {
         try {
             if (fieldUsername.getText().isEmpty()) {
                 fieldUsername.getStyleClass().add("poljeNijeIspravno");
                 return;
             }
-            d = (Donor) d.searchByDonorsName(fieldUsername.getText());
+            Donor d = DaoFactory.donorDao().searchByDName(fieldUsername.getText());
             if (d != null) {
                 if (!Objects.equals(d.getPassword(), Password.getText()))
                     new Alert(Alert.AlertType.NONE,"incorrect password", ButtonType.OK).show();
