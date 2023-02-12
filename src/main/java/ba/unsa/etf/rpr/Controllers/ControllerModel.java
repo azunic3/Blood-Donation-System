@@ -54,7 +54,7 @@ public class ControllerModel {
 
         /**
          * from method for binding
-         * @param d
+         * @param d, type Blood
          */
         public void fromBlood(Blood d) {
             this.fgroup.set(d.getBloodGroup());
@@ -69,7 +69,7 @@ public class ControllerModel {
         public Blood toBlood() throws ParseException {
             Blood d = new Blood();
             d.setBloodGroup(this.fgroup.getName());
-            DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
+            DateFormat format = new SimpleDateFormat("yyyy-mm-d", Locale.ENGLISH);
             d.setDonateDate(format.parse(this.fdate.getName()));
             Donor d1=new Donor();
             d1.setFullName(this.fname.getName());
