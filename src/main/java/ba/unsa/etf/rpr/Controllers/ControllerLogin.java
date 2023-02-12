@@ -1,4 +1,5 @@
 package ba.unsa.etf.rpr.Controllers;
+
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
@@ -13,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
+
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 /**
@@ -61,7 +63,7 @@ public class ControllerLogin {
             Donor d = DaoFactory.donorDao().searchByDName(fieldUsername.getText());
             if (d != null) {
                 if (!Objects.equals(d.getPassword(), Password.getText()))
-                    new Alert(Alert.AlertType.NONE,"incorrect password", ButtonType.OK).show();
+                    new Alert(Alert.AlertType.NONE,"Incorrect password", ButtonType.OK).show();
                 Stage s = (Stage) loginBtn.getScene().getWindow();
                 s.close();
             }
@@ -70,7 +72,7 @@ public class ControllerLogin {
             Parent root = fl.load();
             ControllerModel prvi = fl.getController();
             prvi.setIme(fieldUsername.getText());
-            stage.setTitle("Blood donation");
+            stage.setTitle("Medical history");
             stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.setResizable(false);
             stage.show();

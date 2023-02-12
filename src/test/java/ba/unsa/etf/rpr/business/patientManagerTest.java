@@ -5,6 +5,7 @@ import ba.unsa.etf.rpr.Dao.PatientDao;
 import ba.unsa.etf.rpr.Dao.PatientDaoSQLImpl;
 import ba.unsa.etf.rpr.Domain.Patient;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
@@ -17,6 +18,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 /**
