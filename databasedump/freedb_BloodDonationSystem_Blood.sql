@@ -32,9 +32,9 @@ CREATE TABLE `Blood` (
   PRIMARY KEY (`Blood_id`),
   UNIQUE KEY `BloodType_UNIQUE` (`Blood_id`),
   UNIQUE KEY `BloodBagNumber_UNIQUE` (`BloodBagNumber`),
-  KEY `fk_hospital_constraint_idx` (`fk_hospital_id`),
-  CONSTRAINT `Hospital_id_constraint` FOREIGN KEY (`fk_hospital_id`) REFERENCES `Hospital` (`Hospital_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `hospital_id_fk_idx` (`fk_hospital_id`),
+  CONSTRAINT `hospital_id_fk` FOREIGN KEY (`fk_hospital_id`) REFERENCES `Hospital` (`Hospital_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `Blood` (
 
 LOCK TABLES `Blood` WRITE;
 /*!40000 ALTER TABLE `Blood` DISABLE KEYS */;
-INSERT INTO `Blood` VALUES (1,'A+','QRE-7-GH','2004-12-20 00:00:00',350,3),(2,'AB+','BNJ-7-JH','2030-11-20 00:00:00',450,2),(3,'B-','BDF-7-GH','2014-11-20 00:00:00',450,1),(4,'B+','GRF-8-JH','2015-11-20 00:00:00',455,1),(5,'B+','RTE-8-JH','2009-06-20 00:00:00',450,1),(6,'O-','FDR-7-JH','2030-11-20 00:00:00',350,3),(7,'B-','KZT-7-JH','2007-10-20 00:00:00',450,1),(8,'A-','HTZ-8-GH','2007-10-20 00:00:00',460,2);
+INSERT INTO `Blood` VALUES (1,'A+','QRE-7-GH','2022-12-20 00:00:00',350,3),(2,'AB+','BNJ-7-JH','2022-11-02 00:00:00',450,2),(3,'B-','BDF-7-GH','2022-03-14 00:00:00',450,1),(4,'O+','GRF-8-JH','2022-04-29 00:00:00',455,1),(5,'B+','RTE-8-JH','2022-08-07 00:00:00',450,1),(6,'O-','FDR-7-JH','2022-10-17 00:00:00',350,3),(7,'AB-','KZT-7-JH','2023-01-01 00:00:00',450,1),(8,'A-','HTZ-8-GH','2022-09-30 00:00:00',460,2);
 /*!40000 ALTER TABLE `Blood` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-11 10:31:42
+-- Dump completed on 2023-02-12 23:14:32

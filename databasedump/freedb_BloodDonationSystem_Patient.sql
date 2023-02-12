@@ -27,17 +27,16 @@ CREATE TABLE `Patient` (
   `Full_Name` varchar(45) NOT NULL,
   `Gender` varchar(2) DEFAULT NULL,
   `DateOfBirth` datetime DEFAULT NULL,
-  `Adress` varchar(45) DEFAULT NULL,
   `PhoneNumber` decimal(10,0) DEFAULT NULL,
   `fk_BloodType` int DEFAULT NULL,
   `fk_Hospital_id` int DEFAULT NULL,
   PRIMARY KEY (`Patient_id`),
   UNIQUE KEY `FullName_UNIQUE` (`Full_Name`),
-  KEY `fk_Hospital_id` (`fk_Hospital_id`),
   KEY `fk_BloodType_id_idx` (`fk_BloodType`),
+  KEY `fk_Hospital_id_idx` (`fk_Hospital_id`),
   CONSTRAINT `fk_BloodType_id` FOREIGN KEY (`fk_BloodType`) REFERENCES `Blood` (`Blood_id`),
   CONSTRAINT `fk_Hospital_id` FOREIGN KEY (`fk_Hospital_id`) REFERENCES `Hospital` (`Hospital_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +45,7 @@ CREATE TABLE `Patient` (
 
 LOCK TABLES `Patient` WRITE;
 /*!40000 ALTER TABLE `Patient` DISABLE KEYS */;
-INSERT INTO `Patient` VALUES (1,'Feriha Babic','F','2002-03-14 00:00:00','Sarajevo',62123541,1,2),(2,'Aisa Focak','F','2004-02-20 03:00:00','Sarajevo',61214563,2,1),(3,'Safija Tadefi','F','2000-05-20 02:00:00','Sarajevo',61256203,2,2),(4,'Farah Cosic','F','2001-03-14 02:00:00','Sarajevo',62143526,3,3),(5,'Lejla Kahriman','F','2000-07-18 02:00:00','Sarajevo',62589963,4,1),(6,'Amina Hromic ','F','2002-07-29 02:00:00','Sarajevo',65239867,4,2),(7,'Nerma Kadric','F','2002-09-17 02:00:00','Sarajevo',62147852,5,3),(8,'Dzejlan Zdralovic','F','2001-02-15 02:00:00','Sarajevo',62335412,7,3),(9,'Adla Halilovic','F','2000-01-10 02:00:00','Sarajevo',61052631,8,1),(10,'Muaz Sikiric','M','2002-06-12 00:00:00','Kakanj',62587441,5,2);
+INSERT INTO `Patient` VALUES (1,'Feriha Babic','F','2002-03-14 00:00:00',62123541,1,2),(2,'Aisa Focak','F','2004-02-20 03:00:00',61214563,2,1),(3,'Safija Tadefi','F','2000-05-20 02:00:00',61256203,2,2),(4,'Farah Cosic','F','2001-03-14 02:00:00',62143526,3,3),(5,'Lejla Kahriman','F','2000-07-18 02:00:00',62589963,4,1),(6,'Amina Hromic ','F','2002-07-29 02:00:00',65239867,4,2),(7,'Nerma Kadric','F','2002-09-17 02:00:00',62147852,5,3),(8,'Dzejlan Zdralovic','F','2001-02-15 02:00:00',62335412,7,3),(9,'Adla Halilovic','F','2000-01-10 02:00:00',61052631,8,1),(10,'Muaz Sikiric','M','2002-06-12 00:00:00',62587441,5,2),(17,'Nejra Adilovic','F','2001-02-14 00:00:00',0,4,1),(19,'Amna Salcin','F','2000-02-16 00:00:00',0,1,3);
 /*!40000 ALTER TABLE `Patient` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -59,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-11 10:30:45
+-- Dump completed on 2023-02-12 23:14:34

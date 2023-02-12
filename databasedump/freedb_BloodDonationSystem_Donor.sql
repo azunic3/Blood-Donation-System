@@ -35,10 +35,10 @@ CREATE TABLE `Donor` (
   PRIMARY KEY (`Donor_id`),
   UNIQUE KEY `FullName_UNIQUE` (`FullName`),
   KEY `BloodType_id_idx` (`BloodType_id_fk`),
-  KEY `fk_Hospital_id_idx` (`fk_Hospital`),
+  KEY `fk_Hospital_idx` (`fk_Hospital`),
   CONSTRAINT `BloodType_id_fk` FOREIGN KEY (`BloodType_id_fk`) REFERENCES `Blood` (`Blood_id`),
   CONSTRAINT `fk_Hospital` FOREIGN KEY (`fk_Hospital`) REFERENCES `Hospital` (`Hospital_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,7 +47,7 @@ CREATE TABLE `Donor` (
 
 LOCK TABLES `Donor` WRITE;
 /*!40000 ALTER TABLE `Donor` DISABLE KEYS */;
-INSERT INTO `Donor` VALUES (1,'Azra Žunic','azraz','2002-01-25 02:00:00','F',61056103,7,1,'YES'),(2,'Adna Herak','adnah','2001-12-22 01:00:00','F',61203769,8,2,'NO'),(3,'Amina Hajric','aminah','2003-06-21 03:00:00','F',62410606,7,3,'NO'),(4,'Anida Mulaomerovic','anidam','2000-11-14 02:00:00','F',62361351,4,1,'NO'),(6,'Faris Žunic','farisz','2004-02-13 04:00:00','M',603577424,6,3,'YES'),(7,'Benjamin Kablar','benjamink','2000-08-06 02:00:00','M',603013380,3,1,'NO'),(8,'Muhamed Gazija','muhamedg','2001-09-11 02:00:00','M',61985862,7,2,'YES'),(9,'Saida Kurtanovic','saidak','2001-10-14 01:00:00','F',62551007,4,3,'NO'),(10,'Lejla Jakupovic','lejlaj','2002-03-14 02:00:00','F',62830333,2,2,'YES');
+INSERT INTO `Donor` VALUES (1,'Azra Žunic','azraz','2002-01-25 02:00:00','F',61056103,7,1,'YES'),(2,'Adna Herak','adnah','2001-12-22 01:00:00','F',61203769,8,2,'NO'),(3,'Amina Hajric','aminah','2003-06-21 03:00:00','F',62410606,7,3,'NO'),(4,'Anida Mulaomerovic','anidam','2000-11-14 02:00:00','F',62361351,4,1,'NO'),(6,'Faris Žunic','farisz','2004-02-13 04:00:00','M',603577424,6,3,'YES'),(7,'Benjamin Kablar','benjamink','2000-08-06 02:00:00','M',603013380,3,1,'NO'),(8,'Muhamed Gazija','muhamedg','2001-09-11 02:00:00','M',61985862,7,2,'YES'),(9,'Saida Kurtanovic','saidak','2001-10-14 01:00:00','F',62551007,4,3,'NO'),(10,'Lejla Jakupovic','lejlaj','2002-03-14 02:00:00','F',62830333,2,2,'YES'),(24,'Hana Mahmutovic','hanam','2001-06-28 00:00:00','F',61457896,6,2,'Yes'),(25,'Amila Gagula','amilag','2005-02-18 00:00:00','F',63528964,2,2,'Yes'),(26,'Nadja Kovacevic','nadjak','2002-05-15 00:00:00','F',66587123,2,1,'Yes'),(28,'Nadina Miralem','nadinam','2000-08-16 00:00:00','F',62589635,4,5,'Yes');
 /*!40000 ALTER TABLE `Donor` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -60,4 +60,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-11 10:31:20
+-- Dump completed on 2023-02-12 23:14:35

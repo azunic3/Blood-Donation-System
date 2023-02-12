@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `Hospital`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Hospital` (
-  `Hospital_id` int NOT NULL,
+  `Hospital_id` int NOT NULL AUTO_INCREMENT,
   `Name` varchar(45) NOT NULL,
   `QuantityOnHand` int DEFAULT NULL,
   `Adress` varchar(45) DEFAULT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE `Hospital` (
   `Description` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`Hospital_id`),
   UNIQUE KEY `Name_UNIQUE` (`Name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `Hospital` (
 
 LOCK TABLES `Hospital` WRITE;
 /*!40000 ALTER TABLE `Hospital` DISABLE KEYS */;
-INSERT INTO `Hospital` VALUES (1,'KCUS',7,'Bolnicka',33446820,'drzavna'),(2,'Vojna Bolnica',9,'Kranjceviceva',33447295,'drzavna'),(3,'Poliklinika',19,'Nikole Šopa',33537372,'privatna ');
+INSERT INTO `Hospital` VALUES (1,'KCUS',7,'Bolnicka',33446820,'drzavna'),(2,'Vojna Bolnica',9,'Kranjceviceva',33447295,'drzavna'),(3,'Poliklinika',19,'Nikole Šopa',33537372,'privatna '),(5,'Bolnica',25,'Banovici',256897,'Bolnica za bolesne'),(6,'Sanasa',25,'Grbavicka 15',33446820,'najbolja');
 /*!40000 ALTER TABLE `Hospital` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-11 10:31:03
+-- Dump completed on 2023-02-12 23:14:33
