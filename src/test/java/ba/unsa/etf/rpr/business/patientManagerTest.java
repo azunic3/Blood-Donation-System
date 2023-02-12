@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.Dao.DaoFactory;
+import ba.unsa.etf.rpr.Dao.PatientDao;
 import ba.unsa.etf.rpr.Dao.PatientDaoSQLImpl;
 import ba.unsa.etf.rpr.Domain.Patient;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
@@ -84,5 +85,19 @@ public class patientManagerTest {
         daoFactoryMockedStatic.close();
     }
 
+    /**
+     * checking if patient with the specified name exists
+     * @throws BloodException
+     */
+    @Test
+    void validatePatient() throws BloodException {
+        MockedStatic<DaoFactory> dao = Mockito.mockStatic(DaoFactory.class);
+        PatientDao UD = Mockito.mock(PatientDao.class);
+        when(DaoFactory.patientDao()).thenReturn(UD);
+        when(DaoFactory.patientDao().searchByPatientsName("Amna Salcin")).thenReturn(new Patient("Amna Salcin"));
+        boolean x = PatientManager.validatePat(DaoFactory.patientDao().searchByPatientsName("Amna Salcin").getFull_Name());
+        assertTrue(x);
+        dao.close();
+    }
 
 }

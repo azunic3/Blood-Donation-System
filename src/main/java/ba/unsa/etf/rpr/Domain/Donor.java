@@ -27,6 +27,10 @@ public class Donor extends DonorDaoSQLImpl implements Idable, Serializable {
      */
     public Donor() {
     }
+    public Donor(String fullName, String password){
+        this.FullName=fullName;
+        this.Password=password;
+    }
     public Donor(String FullName) {
         this.FullName=FullName;
     }

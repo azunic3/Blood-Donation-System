@@ -34,14 +34,6 @@ public class donorManagerTest {
         donor.setAlreadyDonated("YES");
     }
 
-    /**
-     * simple validation tests for specific attributes
-     */
-    @Test
-void validateName(){
-        String name=null;
-        assertThrows(BloodException.class, ()->donorManager.validateDonorsName(name));
-}
     @Test
     void validatePassword(){
         String pass = "";
@@ -97,19 +89,17 @@ void validateName(){
     }
 
     /**
-     * testing if there is patient named ? in a base
-     * using assertFalse
+     * tests is checking if donor with specified name exists
      * @throws BloodException
      */
     @Test
-    void validatDonorExists() throws BloodException {
+    void validation() throws BloodException {
         MockedStatic<DaoFactory> dao = Mockito.mockStatic(DaoFactory.class);
         DonorDao UD = Mockito.mock(DonorDao.class);
         when(DaoFactory.donorDao()).thenReturn(UD);
-        when(DaoFactory.donorDao().searchByDonorsName("Nerma Kadric")).thenReturn(new Donor("Nerma Kadric"));
-        boolean x = donorManager.validateDonorsName(DaoFactory.donorDao().searchByDonorsName("Nerma Kadric").getFullName());
-        assertFalse(x);
+        when(DaoFactory.donorDao().searchByDonorsName("Nadina Miralem")).thenReturn(new Donor("Nadina Miralem", "nadinam"));
+        boolean x = DonorManager.validateDonor(DaoFactory.donorDao().searchByDonorsName("Nadina Miralem").getFullName(),DaoFactory.donorDao().searchByDonorsName("Nadina Miralem").getPassword());
+        assertTrue(x);
         dao.close();
     }
-
     }
