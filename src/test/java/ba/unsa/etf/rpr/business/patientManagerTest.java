@@ -10,11 +10,13 @@ import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 /**
@@ -31,15 +33,15 @@ public class patientManagerTest {
      */
     @BeforeEach
     public void initializeObjectsWeNeed(){
-        patientManager = Mockito.mock(PatientManager.class);
-        patient = new Patient();
-        patient.setId(50);
-        patient.setFull_Name("Emina Gagula");
-        patient.setGender("F");
-        patient.setPhoneNumber(0603577421);
-        patientDaoSQLMock = Mockito.mock(PatientDaoSQLImpl.class);
-        p = new ArrayList<>();
-        p.addAll(Arrays.asList(new Patient("Novi Pacijent"), new Patient("Drugi Pacijent")));
+       patientManager = new PatientManager();
+       patient = new Patient();
+     patient.setFull_Name("Emina Gagula");
+      patient.setGender("F");
+       patient.setPhoneNumber(0603577421);
+       patient.setDateOfBirth(LocalDate.of(2000,10,10));
+      patientDaoSQLMock = Mockito.mock(PatientDaoSQLImpl.class);
+      p = new ArrayList<>();
+       p.addAll(Arrays.asList(new Patient("Nezir Zunic"), new Patient("Djordje Balasevic")));
     }
 
     /**
@@ -59,11 +61,12 @@ public class patientManagerTest {
       * @throws BloodException
      */
     @Test
-    void addPatient() throws BloodException{
-        MockedStatic<DaoFactory> daoFactoryMockedStatic = Mockito.mockStatic(DaoFactory.class);
-        PatientDaoSQLImpl depDao = Mockito.mock(PatientDaoSQLImpl.class);
-        daoFactoryMockedStatic.when(DaoFactory::patientDao).thenReturn(depDao);
-        when(depDao.add(patient)).thenReturn(patient);
+    void add() throws BloodException {
+        MockedStatic<DaoFactory> daoFactoryMockedStatic=Mockito.mockStatic(DaoFactory.class);
+        PatientDao patientDao=Mockito.mock(PatientDaoSQLImpl.class);
+        daoFactoryMockedStatic.when(DaoFactory::patientDao).thenReturn(patientDao);
+        initializeObjectsWeNeed();
+        when(patientDao.add(patient)).thenReturn(patient);
         patientManager.add(patient);
         assertTrue(true);
         daoFactoryMockedStatic.close();
@@ -100,4 +103,13 @@ public class patientManagerTest {
         dao.close();
     }
 
+    /**
+     * testing if there is patients with specified name
+     * @throws BloodException
+     */
+    @Test
+    void test() throws BloodException{
+        List<Patient> list=patientManager.searchPatients("Alma");
+        assertTrue(list.isEmpty());
+    }
 }

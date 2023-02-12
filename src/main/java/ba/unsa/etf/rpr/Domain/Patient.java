@@ -14,7 +14,6 @@ public class Patient implements Idable, Serializable {
     private String Full_Name;
     private LocalDate DateOfBirth;
     private String Gender;
-    private String Adress;
     private int PhoneNumber;
     private Blood fk_BloodType;
     private Hospital fk_Hospital_id;
@@ -33,7 +32,6 @@ public class Patient implements Idable, Serializable {
         Full_Name = fullName;
         DateOfBirth = dateOfBirth;
         Gender = gender;
-        Adress = adress;
         PhoneNumber = phoneNumber;
         this.fk_BloodType = fk_BloodType;
         this.fk_Hospital_id = fk_Hospital_id;
@@ -47,16 +45,6 @@ public class Patient implements Idable, Serializable {
     public void setId(int id) {
         this.Id = id;
     }
-
-    public void setAdress(String adress) {
-        Adress = adress;
-    }
-
-    public String getAdress() {
-        return Adress;
-    }
-
-
     public String getFull_Name() {
         return Full_Name;
     }
@@ -99,12 +87,12 @@ public class Patient implements Idable, Serializable {
         if (this == o) return true;
         if (!(o instanceof Patient)) return false;
         Patient patient = (Patient) o;
-        return Id == patient.Id && PhoneNumber == patient.PhoneNumber && Objects.equals(Full_Name, patient.Full_Name) && Objects.equals(DateOfBirth, patient.DateOfBirth) && Objects.equals(Gender, patient.Gender) && Objects.equals(Adress, patient.Adress) && Objects.equals(fk_BloodType, patient.fk_BloodType) && Objects.equals(fk_Hospital_id, patient.fk_Hospital_id);
+        return Id == patient.Id && PhoneNumber == patient.PhoneNumber && Objects.equals(Full_Name, patient.Full_Name) && Objects.equals(DateOfBirth, patient.DateOfBirth) && Objects.equals(Gender, patient.Gender) && Objects.equals(fk_BloodType, patient.fk_BloodType) && Objects.equals(fk_Hospital_id, patient.fk_Hospital_id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, Full_Name, DateOfBirth, Gender, Adress, PhoneNumber, fk_BloodType, fk_Hospital_id);
+        return Objects.hash(Id, Full_Name, DateOfBirth, Gender, PhoneNumber, fk_BloodType, fk_Hospital_id);
     }
 
     @Override
@@ -114,7 +102,6 @@ public class Patient implements Idable, Serializable {
                 ", FullName='" + Full_Name + '\'' +
                 ", DateOfBirth=" + DateOfBirth +
                 ", Gender='" + Gender + '\'' +
-                ", Adress='" + Adress + '\'' +
                 ", PhoneNumber=" + PhoneNumber +
                 ", fk_BloodType=" + fk_BloodType +
                 ", fk_Hospital_id=" + fk_Hospital_id +

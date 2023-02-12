@@ -35,7 +35,7 @@ public static boolean validateDonor(String Name, String Password) {
      * @throws BloodException
      */
     public Donor update(Donor donor) throws BloodException {
-        validateDonor(donor.getFullName(), donor.getPassword());
+//        validateDonor(donor.getFullName(), donor.getPassword());
         return DaoFactory.donorDao().update(donor);
     }
 

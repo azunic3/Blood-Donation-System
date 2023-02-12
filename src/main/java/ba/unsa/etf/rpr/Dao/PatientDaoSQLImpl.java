@@ -42,7 +42,6 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
             Patient pat = new Patient();
             pat.setId(rs.getInt("Patient_id"));
             pat.setFull_Name(rs.getString("Full_Name"));
-            pat.setAdress(rs.getString("Adress"));
             pat.setGender(rs.getString("Gender"));
             pat.setDateOfBirth(rs.getDate("DateOfBirth").toLocalDate());
             pat.setPhoneNumber(rs.getInt("PhoneNumber"));
@@ -65,7 +64,6 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
         item.put("Gender", object.getGender());
         item.put("PhoneNumber", object.getPhoneNumber());
         item.put("DateOfBirth", object.getDateOfBirth());
-        item.put("Adress", object.getAdress());
         item.put("fk_Hospital_id", object.getFk_Hospital_id().getId());
         item.put("fk_BloodType", object.getFk_BloodType().getId());
         return item;
