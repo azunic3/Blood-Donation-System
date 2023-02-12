@@ -21,7 +21,7 @@
                </font>
             </Label>
             <Line endX="54.0" endY="1.1444091796875E-5" layoutX="81.0" layoutY="86.0" startX="-51.599998474121094" startY="1.52587890625E-5" stroke="WHITE" />
-            <Circle fill="#ffffff00" layoutX="83.0" layoutY="75.0" radius="62.0" stroke="#736b6b" strokeType="INSIDE" />
+            <Circle fill="#ffffff00" layoutX="95.0" layoutY="75.0" radius="62.0" stroke="#736b6b" strokeType="INSIDE" />
             <Label layoutX="7.0" layoutY="147.0" text="You can become a superhero too.." textFill="#fcfcfc">
                <font>
                   <Font name="SimSun" size="11.0" />

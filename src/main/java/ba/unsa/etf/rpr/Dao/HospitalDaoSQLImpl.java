@@ -31,6 +31,10 @@ public class HospitalDaoSQLImpl extends AbstractDao<Hospital> implements Hospita
             instance = null;
     }
 
+    /**
+     * @param rs - result set from database
+     * @throws BloodException
+     */
     @Override
     public Hospital row2object(ResultSet rs) throws BloodException {
         try {

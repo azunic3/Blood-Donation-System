@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 /**
- * java beans class for table Hospital
+ * java beans class for table Blood
  * @author Azra Žunić
  * version 1.2
  */

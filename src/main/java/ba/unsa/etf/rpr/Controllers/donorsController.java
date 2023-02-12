@@ -29,6 +29,9 @@ public class donorsController {
     public TextField search;
     private final DonorManager donorManager = new DonorManager();
 
+    /**
+     * specifies actions on TableColumns
+     */
     @FXML
     public void initialize() {
         IDcol.setCellValueFactory(new PropertyValueFactory<Donor,Integer>("Id"));
@@ -51,6 +54,10 @@ public class donorsController {
         stage.close();
     }
 
+    /**
+     * opening register window for donors that wants to create an account
+     * @param actionEvent
+     */
     public void otvoriRegister(ActionEvent actionEvent) {
         try {
             Stage stage = new Stage();

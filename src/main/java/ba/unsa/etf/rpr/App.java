@@ -13,6 +13,10 @@ import java.util.Objects;
  * @author Azra Žunić
  * final version 1.3
  * CLI (Command Line Interface) implementation in following class
+ * available functionalities: add new hospital
+ * get values for table Blood and Hospital
+ * delete values from Hospital
+ * update values in Hospital
  */
 public class App {
     /**
@@ -32,6 +36,10 @@ public class App {
     private static final Option bloodBagNumber = new Option("ba", "blood-bag-number", false, "Defining blood bag number");
     private static final Option bloodGroup = new Option("bg", "blood-group", false, "Defining blood type");
 
+    /**
+     * defining how to start cli
+     * @param options
+     */
     public static void printFormattedOptions(Options options) {
         HelpFormatter helpFormatter = new HelpFormatter();
         PrintWriter printWriter = new PrintWriter(System.out);
@@ -40,6 +48,9 @@ public class App {
         printWriter.close();
     }
 
+    /**
+     * available options
+     */
     public static Options addOptions() {
         Options options = new Options();
         options.addOption(addHospital);
@@ -58,6 +69,11 @@ public class App {
         return options;
     }
 
+    /**
+     * @param listOfHosp
+     * @param eName
+     * @return hospital with specified name
+     */
     public static Hospital searchThroughHospitals(List<Hospital> listOfHosp, String eName) {
         Hospital e = listOfHosp.stream().filter(p -> p.getName().equals(eName.toLowerCase())).findAny().get();
         return e;
@@ -68,21 +84,19 @@ public class App {
         return e;
     }
 
+    /**
+     * main function
+     * trying all available functions through if-else if
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         Options options = addOptions();
         CommandLineParser commandLineParser = new DefaultParser();
         CommandLine cl = commandLineParser.parse(options, args);
         if (cl.hasOption(addHospital.getOpt()) || cl.hasOption(addHospital.getLongOpt())) {
             HospitalManager hospitalManager = new HospitalManager();
-           /* Hospital hosp = null;
-            try {
-               hosp = searchThroughHospitals(hospitalManager.getAll(), cl.getArgList().get(1));
-            } catch (Exception e) {
-                System.out.println("There is no hospital in the list! Try again.");
-                System.exit(1);
-            }*/
             Hospital hospital=new Hospital();
-
 
             hospital.setName(cl.getArgList().get(0));
             hospital.setQuantityOnHand(Integer.parseInt(cl.getArgList().get(1)));
@@ -91,10 +105,9 @@ public class App {
             hospital.setDescription(cl.getArgList().get(4));
 
             hospitalManager.add(hospital);
-            System.out.println("You successfully added new hospital to the DataBase!");
+            System.out.println("You've successfully added new hospital to database!");
         }
-//posto ne radim nista s hospital u gui ovdje sm to stavila al nez sad mozel to bit problem tamo za hospital...
-        //ne moze to bit prob stani da izguglam
+
         else if (cl.hasOption(getHospital.getOpt()) || cl.hasOption(getHospital.getLongOpt())){
             HospitalManager hm=new HospitalManager();
             hm.getAll().forEach(q -> System.out.println(q.getName()));

@@ -65,12 +65,30 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
      * @return key, value sorted map of object
      */
     public abstract Map<String, Object> object2row(T object);
+
+    /**
+     * simple query used for getting information from database
+     * @param id primary key of entity
+     * @return values of the objects with specified primary key
+     * @throws BloodException
+     */
     public T getById(int id) throws BloodException {
         return executeQueryUnique("SELECT * FROM "+this.tableName+" WHERE " +this.tableName.substring(0,tableName.length())+ "_id = ?", new Object[]{id});
     }
+
+    /**
+     * @return all information from specified table
+     * @throws BloodException
+     */
     public List<T> getAll() throws BloodException {
         return executeQuery("SELECT * FROM "+ tableName, null);
     }
+
+    /**
+     * deleting information from table
+     * @param id - primary key of entity
+     * @throws BloodException
+     */
     public void delete(int id) throws BloodException {
         String sql = "DELETE FROM "+tableName+" WHERE "+this.tableName.substring(0,tableName.length())+"_id = ?";
         try{

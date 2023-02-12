@@ -31,6 +31,11 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
         if(instance!=null)
             instance=null;
     }
+
+    /**
+     * @param rs - result set from database
+     * @throws BloodException
+     */
     @Override
     public Patient row2object(ResultSet rs) throws BloodException {
         try{

@@ -32,7 +32,7 @@ public interface PatientDao extends Dao<Patient>{
     List<Patient> searchByFullName(String text) throws BloodException;
 
     /**
-     * @return list
+     * @return list of all patients
      * @throws BloodException
      */
     List<Patient> getAll() throws BloodException;

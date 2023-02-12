@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 /**
- * java beans for table hospital
+ * java beans for Donor table
  * @author Azra Žunić
  * version 1.2
  */
@@ -122,7 +122,7 @@ public class Donor extends DonorDaoSQLImpl implements Idable, Serializable {
 
     @Override
     public String toString() {
-      /*  return "Donor{" +
+      return "Donor{" +
                 "Id=" + Id +
                 ", FullName='" + FullName + '\'' +
                 ", Password='" + Password + '\'' +
@@ -132,8 +132,8 @@ public class Donor extends DonorDaoSQLImpl implements Idable, Serializable {
                 ", BloodType_id_fk=" + BloodType_id_fk.getId() +
                 ", AlreadyDonated='" + AlreadyDonated + '\'' +
                 ", fk_Hospital=" + fk_Hospital.getId() +
-                '}';*/
-        return FullName;
+                '}';
+        //return FullName;
     }
 
     @Override

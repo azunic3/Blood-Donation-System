@@ -3,7 +3,7 @@ package ba.unsa.etf.rpr.Domain;
 import java.io.Serializable;
 import java.util.Objects;
 /**
- * java beans for hospital
+ * java beans for Hospital table
  * @author Azra Žunić
  * version 1.2
  */

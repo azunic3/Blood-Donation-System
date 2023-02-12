@@ -42,6 +42,9 @@ public class ControllerRegister {
 
     private DonorDaoSQLImpl dao = new DonorDaoSQLImpl();
 
+    /**
+     * specifies actions on ChoiceBox option
+     */
     public void initialize(){
         try {
             hospitals.setItems(FXCollections.observableList(hospitalManager.getAll()));
@@ -74,7 +77,6 @@ public class ControllerRegister {
             d.setFk_Hospital(hospitals.getValue());
           if(F.isSelected())
              d.setGender("F");
-              //d.setGender("F");
           else if(M.isSelected())
          d.setGender("M");
            donorManager.add(d);
@@ -96,6 +98,9 @@ public class ControllerRegister {
         stage.close();
     }
 
+    /**
+     * setting values
+     */
     private void refreshDonors() {
         fieldUsername2.setText("");
         fieldPassword.setText("");

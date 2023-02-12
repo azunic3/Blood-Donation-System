@@ -25,16 +25,13 @@ public class ControllerLogin {
     public Button loginBtn;
     public Button btnCancel;
 
-    public TextField fieldUsername2;
-
-
     /**
      * special class that specifies actions on text fields
      * using css files to style text areas
      */
     @FXML
     public void initialize() {
-        fieldUsername.getStyleClass().add("poljeNijeIsoravno");
+        fieldUsername.getStyleClass().add("poljeNijeIspravno");
         fieldUsername.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String o, String n) {

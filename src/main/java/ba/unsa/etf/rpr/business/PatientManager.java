@@ -69,6 +69,7 @@ public class PatientManager {
  */
 
     /**
+     * fetching all information about patients from db
      * @throws BloodException
      */
     public List<Patient> getAll() throws BloodException {
@@ -76,6 +77,7 @@ public class PatientManager {
         }
 
     /**
+     * method used for deleting patients
      * @param id
      * @throws BloodException
      */
@@ -84,6 +86,7 @@ public class PatientManager {
     }
 
     /**
+     * method used for retrieving patients by their id
      * @param Patient_id
      * @throws BloodException
      */
@@ -92,6 +95,7 @@ public class PatientManager {
         }
 
     /**
+     * updating information about patients
      * @param q
      * @throws BloodException
      */
@@ -100,6 +104,8 @@ public class PatientManager {
         }
 
     /**
+     * searching patients by blood group
+     * it is possible that this method is not going to be used
      * @param group
      * @throws BloodException
      */

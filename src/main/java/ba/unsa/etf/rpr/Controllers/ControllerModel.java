@@ -33,6 +33,10 @@ public class ControllerModel {
         bm.fromBlood(d.getBloodType_id_fk());
     }
 
+    /**
+     * specifies actions on Text(Field)
+     * @throws BloodException
+     */
     @FXML
     public void initialize() throws BloodException {
         fname.textProperty().bindBidirectional(bm.fname);

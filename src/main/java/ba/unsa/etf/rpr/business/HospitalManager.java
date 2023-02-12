@@ -1,9 +1,9 @@
 package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.Dao.DaoFactory;
-import ba.unsa.etf.rpr.Domain.Donor;
 import ba.unsa.etf.rpr.Domain.Hospital;
 import ba.unsa.etf.rpr.Exceptions.BloodException;
+
 import java.util.List;
 /**
  * Business Logic Layer for Hospitals
@@ -27,7 +27,7 @@ public class HospitalManager {
     }
 
     /**
-     *
+     * adding new hospital in db
      * @param b
      * @return
      * @throws BloodException
@@ -49,7 +49,7 @@ public class HospitalManager {
     }
 
     /**
-     *
+     * getting all information about hospitals from db
      * @return
      * @throws BloodException
      */

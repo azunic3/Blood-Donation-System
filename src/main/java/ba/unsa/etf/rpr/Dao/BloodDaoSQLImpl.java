@@ -93,9 +93,9 @@ public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao {
 
     /**
      * @author Azra Žunić
-     * method that is used for searching infos by hospital id
+     * method that is used for searching info by hospital id
      * @param hospital
-     * @return list of attributes connected with a specified name
+     * @return list of attributes connected with a specified foreign key
      * @throws BloodException
      */
     @Override
@@ -104,7 +104,8 @@ public class BloodDaoSQLImpl extends AbstractDao<Blood> implements BloodDao {
     }
 
     /**
-     * used to search by blood type
+     * query
+     * @return rows where blood type is the specified one
      * @param group
      * @throws BloodException
      */

@@ -32,7 +32,6 @@ public class MedstaffController {
     public Button DeletePat;
     public TextField search;
     public TableView patientsTable;
-
     public TableColumn<Patient, Integer> Idcol;
     public TableColumn<Patient, String> namecol;
     public TableColumn<Patient, String> gendercol;
@@ -99,8 +98,7 @@ public class MedstaffController {
         p.setFk_BloodType(bManager.searchByBloodGroup(fieldBlood.getText()));
             p=manager.add(p);
             patientsTable.getItems().add(p);
-
-            //patientsTable.refresh();
+            refreshPatients();
         } catch(BloodException e){
             e.printStackTrace();
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
